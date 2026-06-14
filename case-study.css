@@ -22,7 +22,7 @@ body{
 }
 ::selection{background:var(--accent);color:var(--paper)}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(28px,6vw,120px)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(28px,8vw,200px)}
 .measure{max-width:760px;margin:0 auto}
 
 /* ---------- top bar ---------- */
@@ -35,7 +35,7 @@ header{
 }
 header.scrolled{border-color:var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:78px}
-header .wrap.bar{max-width:none;margin:0;padding:0 clamp(28px,6vw,120px)}
+header .wrap.bar{max-width:none;margin:0;padding:0 clamp(28px,8vw,200px)}
 .mark{font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:13px}
 .mark span{color:var(--accent)}
 nav.links{display:flex;gap:38px}
@@ -253,7 +253,7 @@ header.nav-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-4
     position:absolute;left:0;right:0;top:78px;
     background:var(--paper);
     border-bottom:1px solid var(--line);
-    padding:4px clamp(28px,6vw,120px) 20px;
+    padding:4px clamp(28px,8vw,200px) 20px;
     z-index:49;
   }
   header.nav-open nav.links a{
