@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Klaio · Payouts</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+  <style>
+    :root {
+      --bg:#f0ede7; --surface:#fff; --surface2:#f7f5f1;
+      --border:#e4e0d8; --border2:#cdc8be;
+      --dark:#1a3326; --text:#2a2a2a; --muted:#7a8c82; --faint:#b8c9bf;
+      --green:#2d6a4f; --green-dark:#1a3326; --green-deep:#1f4733;
+      --green-mid:#4a9e7a; --green-bg:#f0f7f3; --green-light:#a8d5b5;
+      --red:#b83232; --red-bg:#fdf0f0;
+      --amber:#a06030; --amber-bg:#fdf4ee;
+      --shopify:#3d6b30; --xero:#1a5276; --xero-bg:#eaf3fb;
+      --font-body:'Space Grotesk',sans-serif; --font-mono:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px}
+
+    /* ── SHELL ── */
+    .shell{display:grid;grid-template-columns:220px 1fr;grid-template-rows:56px 1fr;height:100vh;overflow:hidden}
+
+    /* ── TOP BAR ── */
+    .topbar{
+      grid-column:1/-1;
+      background:var(--green-dark); border-bottom:1px solid rgba(255,255,255,0.08);
+      display:flex;align-items:center;padding:0 24px;gap:16px;
+    }
+    .topbar-logo{
+      display:flex;align-items:baseline;gap:2px;
+      font-family:var(--font-body);font-weight:700;font-size:18px;
+      letter-spacing:-0.05em;color:#fff;text-decoration:none;margin-right:4px;
+    }
+    .topbar-logo .io{font-size:9px;font-weight:400;opacity:.5;margin-left:1px}
+    .topbar-divider{width:1px;height:20px;background:rgba(255,255,255,0.1);margin:0 4px}
+    .topbar-breadcrumb{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:.06em}
+    .topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+    .topbar-conn{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:9px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4)}
+    .topbar-conn-dot{width:5px;height:5px;border-radius:50%}
+    .topbar-avatar{width:28px;height:28px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600;cursor:pointer}
+
+    /* ── SIDEBAR ── */
+    .sidebar{background:var(--surface);border-right:1px solid var(--border);padding:20px 12px;display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+    .sidebar-section{font-family:var(--font-mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:4px 10px 8px;margin-top:12px}
+    .sidebar-section:first-child{margin-top:0}
+    .nav-item{
+      display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;
+      font-size:12px;color:var(--muted);cursor:pointer;transition:all .15s;
+      text-decoration:none;
+    }
+    .nav-item:hover{background:var(--surface2);color:var(--dark)}
+    .nav-item.active{background:var(--green);color:#fff}
+    .nav-item .badge{margin-left:auto;font-family:var(--font-mono);font-size:8px;background:var(--red);color:#fff;padding:2px 6px;border-radius:100px}
+    .nav-item.active .badge{background:rgba(255,255,255,0.25)}
+    .sidebar-divider{height:1px;background:var(--border);margin:8px 4px}
+    .platform-row{display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:11px}
+    .platform-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+    /* ── MAIN ── */
+    .main{overflow-y:auto;padding:28px 32px;display:flex;flex-direction:column;gap:24px}
+
+    /* Page header */
+    .page-header{display:flex;align-items:flex-start;justify-content:space-between}
+    .page-title{font-size:22px;font-weight:700;letter-spacing:-0.04em;color:var(--dark);margin-bottom:3px}
+    .page-sub{font-size:12px;color:var(--muted)}
+    .page-actions{display:flex;gap:8px}
+    .btn-outline{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--border2);padding:8px 16px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s}
+    .btn-outline:hover{border-color:var(--dark);color:var(--dark)}
+    .btn-primary{font-family:var(--font-body);font-size:12px;font-weight:500;color:#fff;background:var(--green);border:none;padding:8px 16px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s}
+    .btn-primary:hover{background:var(--green-deep)}
+
+    /* ── MONTH OVERVIEW PANEL ── */
+    .overview-panel{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .overview-stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+    }
+    .overview-stat{
+      padding:18px 22px;
+      border-right:1px solid var(--border);
+    }
+    .overview-stat:last-child{border-right:none}
+    .stat-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .stat-value{font-size:24px;font-weight:700;letter-spacing:-0.04em;color:var(--dark);line-height:1;margin-bottom:5px}
+    .stat-value .dec{color:var(--faint);font-size:16px}
+    .stat-value.needs{color:var(--red)}
+    .stat-delta{font-family:var(--font-mono);font-size:10px}
+    .stat-delta.up{color:var(--green)} .stat-delta.dn{color:var(--red)} .stat-delta.nt{color:var(--faint)}
+
+    /* AI overview strip — bottom of panel */
+    .overview-ai{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:18px 22px;
+      background:var(--green-bg);
+      border-top:1px solid rgba(45,106,79,.15);
+    }
+    .ai-overview-label{
+      font-family:var(--font-mono);
+      font-size:9px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--green);
+      display:flex;
+      align-items:center;
+      gap:5px;
+    }
+    .ai-overview-text{
+      font-size:13.5px;
+      color:var(--text);
+      line-height:1.8;
+    }
+    .ai-overview-text strong{font-weight:700;color:var(--dark)}
+    .ai-overview-text mark{
+      background:rgba(45,106,79,.1);
+      color:var(--dark);
+      padding:2px 7px;
+      border-radius:5px;
+      font-weight:400;
+      font-style:normal;
+    }
+
+    /* ── PAYOUT PANEL ── */
+    .panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:visible}
+    .panel-header{border-radius:12px 12px 0 0;overflow:hidden}
+    .panel-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .panel-title{font-size:12px;font-weight:600;color:var(--dark);letter-spacing:-0.02em}
+    .panel-meta{font-family:var(--font-mono);font-size:10px;color:var(--faint)}
+
+    /* ── PAYOUT ROWS ── */
+    .payout-item{border-bottom:1px solid var(--border)}
+    .payout-item:last-child{border-bottom:none}
+    .payout-item:last-child > .payout-row{border-radius:0 0 12px 12px}
+    .payout-item:last-child.open > .payout-detail{border-radius:0 0 12px 12px}
+
+    .payout-row{
+      display:grid;
+      grid-template-columns:1fr auto auto auto auto;
+      gap:16px;align-items:center;
+      padding:14px 18px;cursor:pointer;transition:background .1s;
+      user-select:none;
+    }
+    .payout-row:hover{background:var(--surface2)}
+    .payout-item.open > .payout-row{background:var(--surface2)}
+
+    .payout-id{font-family:var(--font-mono);font-size:11px;color:var(--dark);font-weight:500;line-height:1;margin-bottom:3px}
+    .payout-date{font-family:var(--font-mono);font-size:10px;color:var(--faint)}
+    .payout-amount{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--dark);text-align:right;white-space:nowrap}
+    .payout-gross{font-family:var(--font-mono);font-size:10px;color:var(--faint);text-align:right}
+
+    /* Status badges */
+    .badge{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;white-space:nowrap}
+    .badge-green{background:var(--green-bg);color:var(--green)}
+    .badge-amber{background:var(--amber-bg);color:var(--amber)}
+    .badge-red{background:var(--red-bg);color:var(--red)}
+    .badge-faint{background:var(--surface2);color:var(--faint);border:1px solid var(--border)}
+
+    /* Platform badge */
+    .plat{font-family:var(--font-mono);font-size:9px;padding:2px 7px;border-radius:4px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+    .plat-shopify{background:#edf5eb;color:var(--shopify)}
+
+    /* Chevron */
+    .chevron{font-size:14px;color:var(--faint);transition:transform .2s;flex-shrink:0}
+    .payout-item.open .chevron{transform:rotate(90deg);color:var(--green)}
+
+    /* ── EXPANDABLE DETAIL ── */
+    .payout-detail{
+      display:none;
+      padding:14px 18px 18px;
+      background:var(--surface2);
+      border-top:1px solid var(--border);
+      flex-direction:column;
+      gap:10px;
+    }
+    .payout-item.open .payout-detail{display:flex}
+
+    /* Summary card */
+    .summary-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+
+    /* AI label */
+    .ai-summary-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:5px}
+
+    /* Summary text */
+    .ai-summary-text{font-size:13px;color:var(--text);line-height:1.75;overflow-wrap:break-word}
+    .ai-summary-text strong{font-weight:600;color:var(--dark)}
+    .ai-summary-text mark{background:none;color:var(--green);padding:0;font-weight:600;font-style:normal}
+
+    /* 4-column horizontal breakdown */
+    .breakdown-cols{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:14px}
+    .breakdown-col{flex:1;padding:12px 14px;border-right:1px solid var(--border);background:var(--surface);min-width:0}
+    .breakdown-col:last-child{border-right:none;background:var(--green-bg)}
+    .breakdown-col-label{font-size:11px;font-weight:500;color:var(--text);margin-bottom:8px}
+    .breakdown-col-bottom{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .breakdown-col-value{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--dark)}
+    .breakdown-col-value.dr{color:var(--red)}
+    .breakdown-col-status{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.04em}
+    .breakdown-col-status.ok{color:var(--green)}
+    .breakdown-col-status.warn{color:var(--amber)}
+    .breakdown-col-status.err{color:var(--red)}
+
+    /* Inline alerts */
+    .inline-alerts{display:flex;flex-direction:column;gap:8px}
+    .inline-alert{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border:1px solid transparent}
+    .inline-alert.high{background:var(--red-bg);border-color:rgba(184,50,50,.15)}
+    .inline-alert.medium{background:var(--amber-bg);border-color:rgba(160,96,48,.15)}
+    .inline-alert.low{background:var(--green-bg);border-color:rgba(45,106,79,.12)}
+    .inline-alert-icon{font-size:15px;flex-shrink:0}
+    .inline-alert-body{flex:1;min-width:0}
+    .inline-alert-title{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:2px}
+    .inline-alert-text{font-size:11px;color:var(--muted);line-height:1.5}
+    .inline-alert-btn{
+      font-family:var(--font-body);font-size:12px;font-weight:500;
+      color:var(--dark);background:none;
+      border:1.5px solid var(--green);
+      padding:7px 16px;border-radius:8px;cursor:pointer;
+      white-space:nowrap;flex-shrink:0;transition:all .2s;
+    }
+    .inline-alert-btn:hover{background:rgba(45,106,79,.06)}
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="#" class="topbar-logo">Klaio<span class="io">.io</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-breadcrumb">Payouts / April 2026</span>
+    <div class="topbar-right">
+      <div class="topbar-conn"><div class="topbar-conn-dot" style="background:#3d6b30"></div>Shopify</div>
+      <div class="topbar-conn"><div class="topbar-conn-dot" style="background:#1a5276"></div>Xero</div>
+      <div class="topbar-avatar">MG</div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">Menu</div>
+    <a href="#" class="nav-item active"><i class="iconoir-coins" style="font-size:14px"></i> Payouts</a>
+    <a href="#" class="nav-item"><i class="iconoir-spark" style="font-size:14px"></i> AI Summaries</a>
+    <a href="#" class="nav-item"><i class="iconoir-bell-notification" style="font-size:14px"></i> Attention <span class="badge">3</span></a>
+    <a href="#" class="nav-item"><i class="iconoir-warning-triangle" style="font-size:14px"></i> Chargebacks</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Connected</div>
+    <div class="platform-row"><div class="platform-dot" style="background:#3d6b30"></div><span style="font-size:11px;color:#3d6b30;font-weight:500">Shopify Payments</span></div>
+    <div class="platform-row"><div class="platform-dot" style="background:#1a5276"></div><span style="font-size:11px;color:#1a5276;font-weight:500">Xero</span></div>
+    <div class="sidebar-divider"></div>
+    <a href="#" class="nav-item"><i class="iconoir-settings" style="font-size:14px"></i> Settings</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="page-header">
+      <div>
+        <div class="page-title">5 payouts · April 2026</div>
+        <div class="page-sub">3 need attention · £1,094 unreconciled · AI summaries ready for all</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-outline"><i class="iconoir-upload" style="font-size:12px"></i> Import CSV</button>
+        <button class="btn-primary"><i class="iconoir-refresh" style="font-size:12px"></i> Sync now</button>
+      </div>
+    </div>
+
+    <!-- Month Overview Panel -->
+    <div class="overview-panel">
+      <div class="overview-stats">
+        <div class="overview-stat">
+          <div class="stat-label">Shopify gross</div>
+          <div class="stat-value">£18,426<span class="dec">.00</span></div>
+          <div class="stat-delta nt">5 payouts this month</div>
+        </div>
+        <div class="overview-stat">
+          <div class="stat-label">Net received</div>
+          <div class="stat-value">£17,840<span class="dec">.00</span></div>
+          <div class="stat-delta nt">After fees &amp; refunds</div>
+        </div>
+        <div class="overview-stat">
+          <div class="stat-label">Reconciled</div>
+          <div class="stat-value">£16,746<span class="dec">.00</span></div>
+          <div class="stat-delta up">↑ 4 of 5 cleared to bank</div>
+        </div>
+        <div class="overview-stat">
+          <div class="stat-label">Needs action</div>
+          <div class="stat-value needs">£1,094<span class="dec">.00</span></div>
+          <div class="stat-delta dn">↓ 3 open issues</div>
+        </div>
+      </div>
+      <div class="overview-ai">
+        <div class="ai-overview-label">
+                    <i class="iconoir-spark" style="font-size:11px"></i>
+          April overview
+        </div>
+        <div class="ai-overview-text">
+          Shopify sent <strong>5 payouts</strong> totalling <strong>£18,426</strong> gross across <strong>171 orders</strong> in April. After <mark>£389.10 in transaction fees</mark> and <mark>£196.90 in refunds</mark>, your net received is <strong>£17,840</strong>. Of that, <strong>£16,746 is fully reconciled in Xero</strong>. The remaining <strong>£1,094</strong> needs attention: <mark>£197.20 in fees across 2 payouts haven't been posted</mark>, and <mark>PAY-APR-18 (£896.80) is missing from your Xero bank feed entirely</mark>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Payout list -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Payouts</span>
+        <span class="panel-meta">Apr 2026 · sorted by date · click to expand</span>
+      </div>
+
+      <!-- ── PAY-APR-29 · Fees unposted · OPEN BY DEFAULT ── -->
+      <div class="payout-item open" id="pay-apr-29">
+        <div class="payout-row" onclick="toggle('pay-apr-29')">
+          <div>
+            <div class="payout-id">PAY-APR-29</div>
+            <div class="payout-date">29 Apr · 47 orders</div>
+          </div>
+          <span class="plat plat-shopify">Shopify</span>
+          <span class="badge badge-amber">Fees unposted</span>
+          <div style="text-align:right">
+            <div class="payout-amount">£4,641.50</div>
+            <div class="payout-gross">of £4,823.00</div>
+          </div>
+          <i class="iconoir-nav-arrow-right chevron"></i>
+        </div>
+        <div class="payout-detail">
+          <div class="summary-card">
+            <div class="ai-summary-label"><i class="iconoir-spark" style="font-size:11px"></i> Plain-English summary</div>
+            <div class="ai-summary-text">Shopify sent you <strong>£4,641.50</strong> from <strong>47 orders</strong> totalling £4,823. The difference is <mark>£92.40 in transaction fees</mark> not yet posted to Xero, and <mark>an £89.10 refund on Order #1031</mark>. Your bank reconciles exactly.</div>
+            <div class="breakdown-cols">
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Gross sales</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£4,823.00</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Transaction fees</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£92.40</span><span class="breakdown-col-status warn">UNPOSTED</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Refund · #1031</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£89.10</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">NET received</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£4,641.50</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="inline-alerts">
+            <div class="inline-alert medium">
+              <div class="inline-alert-icon"><i class="iconoir-warning-triangle" style="color:var(--amber)"></i></div>
+              <div class="inline-alert-body">
+                <div class="inline-alert-title">Fees not posted · P&amp;L overstated</div>
+                <div class="inline-alert-text">£92.40 in transaction fees have not been posted to Xero. Your profit &amp; loss is currently overstated by this amount.</div>
+              </div>
+              <button class="inline-alert-btn">Post fees to Xero →</button>
+            </div>
+            <div class="inline-alert low">
+              <div class="inline-alert-icon"><i class="iconoir-info-circle" style="color:var(--green)"></i></div>
+              <div class="inline-alert-body">
+                <div class="inline-alert-title">VAT flag · review advised</div>
+                <div class="inline-alert-text">Refund on Order #1031 crosses a VAT period. Your accountant may want to check the credit note date.</div>
+              </div>
+              <button class="inline-alert-btn">Flag for accountant →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAY-APR-25 · Reconciled ── -->
+      <div class="payout-item" id="pay-apr-25">
+        <div class="payout-row" onclick="toggle('pay-apr-25')">
+          <div>
+            <div class="payout-id">PAY-APR-25</div>
+            <div class="payout-date">25 Apr · 31 orders</div>
+          </div>
+          <span class="plat plat-shopify">Shopify</span>
+          <span class="badge badge-green">Reconciled</span>
+          <div style="text-align:right">
+            <div class="payout-amount">£3,149.20</div>
+            <div class="payout-gross">of £3,240.00</div>
+          </div>
+          <i class="iconoir-nav-arrow-right chevron"></i>
+        </div>
+        <div class="payout-detail">
+          <div class="summary-card">
+            <div class="ai-summary-label"><i class="iconoir-spark" style="font-size:11px"></i> Plain-English summary</div>
+            <div class="ai-summary-text">Shopify sent you <strong>£3,149.20</strong> from <strong>31 orders</strong> totalling £3,240. The <mark>£90.80 difference</mark> is fully accounted for — £68.40 in fees and a £22.40 refund, both posted to Xero. Everything reconciles cleanly.</div>
+            <div class="breakdown-cols">
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Gross sales</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£3,240.00</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Transaction fees</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£68.40</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Refunds</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£22.40</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">NET received</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£3,149.20</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAY-APR-22 · Fees unposted ── -->
+      <div class="payout-item" id="pay-apr-22">
+        <div class="payout-row" onclick="toggle('pay-apr-22')">
+          <div>
+            <div class="payout-id">PAY-APR-22</div>
+            <div class="payout-date">22 Apr · 58 orders</div>
+          </div>
+          <span class="plat plat-shopify">Shopify</span>
+          <span class="badge badge-amber">Fees unposted</span>
+          <div style="text-align:right">
+            <div class="payout-amount">£5,411.20</div>
+            <div class="payout-gross">of £5,580.00</div>
+          </div>
+          <i class="iconoir-nav-arrow-right chevron"></i>
+        </div>
+        <div class="payout-detail">
+          <div class="summary-card">
+            <div class="ai-summary-label"><i class="iconoir-spark" style="font-size:11px"></i> Plain-English summary</div>
+            <div class="ai-summary-text">Shopify sent you <strong>£5,411.20</strong> from <strong>58 orders</strong> totalling £5,580. The difference is <mark>£104.80 in transaction fees</mark> not yet posted to Xero, and £64 in refunds already reconciled. Post the fees to keep your P&amp;L accurate.</div>
+            <div class="breakdown-cols">
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Gross sales</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£5,580.00</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Transaction fees</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£104.80</span><span class="breakdown-col-status warn">UNPOSTED</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Refunds</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£64.00</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">NET received</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£5,411.20</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="inline-alerts">
+            <div class="inline-alert medium">
+              <div class="inline-alert-icon"><i class="iconoir-warning-triangle" style="color:var(--amber)"></i></div>
+              <div class="inline-alert-body">
+                <div class="inline-alert-title">Fees not posted · P&amp;L overstated</div>
+                <div class="inline-alert-text">£104.80 in transaction fees have not been posted to Xero. Your profit &amp; loss is currently overstated.</div>
+              </div>
+              <button class="inline-alert-btn">Post fees to Xero →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAY-APR-18 · Not in Xero ── -->
+      <div class="payout-item" id="pay-apr-18">
+        <div class="payout-row" onclick="toggle('pay-apr-18')">
+          <div>
+            <div class="payout-id">PAY-APR-18</div>
+            <div class="payout-date">18 Apr · 9 orders</div>
+          </div>
+          <span class="plat plat-shopify">Shopify</span>
+          <span class="badge badge-red">Not in Xero</span>
+          <div style="text-align:right">
+            <div class="payout-amount">£896.80</div>
+            <div class="payout-gross">of £923.00</div>
+          </div>
+          <i class="iconoir-nav-arrow-right chevron"></i>
+        </div>
+        <div class="payout-detail">
+          <div class="summary-card">
+            <div class="ai-summary-label"><i class="iconoir-spark" style="font-size:11px"></i> Plain-English summary</div>
+            <div class="ai-summary-text">Shopify sent you <strong>£896.80</strong> from <strong>9 orders</strong> on 18 Apr, but <mark>this amount doesn't appear in your Xero bank feed</mark>. Everything on the Shopify side looks correct — the issue is in Xero. You'll need to match or create this transaction manually.</div>
+            <div class="breakdown-cols">
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Gross sales</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£923.00</span><span class="breakdown-col-status ok">SHOPIFY ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Transaction fees</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£26.20</span><span class="breakdown-col-status ok">SHOPIFY ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">NET received</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£896.80</span><span class="breakdown-col-status err">MISSING</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="inline-alerts">
+            <div class="inline-alert high">
+              <div class="inline-alert-icon"><i class="iconoir-xmark-circle" style="color:var(--red)"></i></div>
+              <div class="inline-alert-body">
+                <div class="inline-alert-title">Payout missing from Xero bank feed</div>
+                <div class="inline-alert-text">£896.80 received from Shopify on 18 Apr has not been matched in Xero. This payout is absent from your bank feed — it may need to be created manually or matched to an existing transaction.</div>
+              </div>
+              <button class="inline-alert-btn">Match in Xero →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAY-APR-14 · Reconciled ── -->
+      <div class="payout-item" id="pay-apr-14">
+        <div class="payout-row" onclick="toggle('pay-apr-14')">
+          <div>
+            <div class="payout-id">PAY-APR-14</div>
+            <div class="payout-date">14 Apr · 26 orders</div>
+          </div>
+          <span class="plat plat-shopify">Shopify</span>
+          <span class="badge badge-green">Reconciled</span>
+          <div style="text-align:right">
+            <div class="payout-amount">£3,741.30</div>
+            <div class="payout-gross">of £3,860.00</div>
+          </div>
+          <i class="iconoir-nav-arrow-right chevron"></i>
+        </div>
+        <div class="payout-detail">
+          <div class="summary-card">
+            <div class="ai-summary-label"><i class="iconoir-spark" style="font-size:11px"></i> Plain-English summary</div>
+            <div class="ai-summary-text">Shopify sent you <strong>£3,741.30</strong> from <strong>26 orders</strong> totalling £3,860. The <mark>£118.70 difference</mark> is fully accounted for — £97.30 in fees and a £21.40 refund, both posted to Xero. Everything reconciles cleanly.</div>
+            <div class="breakdown-cols">
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Gross sales</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£3,860.00</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Transaction fees</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£97.30</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">Refunds</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value dr">−£21.40</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+              <div class="breakdown-col">
+                <div class="breakdown-col-label">NET received</div>
+                <div class="breakdown-col-bottom"><span class="breakdown-col-value">£3,741.30</span><span class="breakdown-col-status ok">XERO ✓</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel -->
+
+  </main>
+</div>
+
+<script>
+  function toggle(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

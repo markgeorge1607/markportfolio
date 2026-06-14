@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Klaio.io — Get set up</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#f0ede7;--surface:#fff;--surface2:#f7f5f1;
+      --border:#e4e0d8;--border2:#cdc8be;
+      --dark:#1a3326;--text:#2a2a2a;--muted:#9a9488;--faint:#c4bfb5;
+      --green:#2d6a4f;--green-dark:#1a3326;--green-deep:#1f4733;
+      --green-mid:#4a9e7a;--green-bg:#f0f7f3;--green-light:#a8d5b5;
+      --shopify:#3d6b30;--xero:#1a5276;--xero-bg:#eaf3fb;
+      --font-body:'Space Grotesk',sans-serif;--font-mono:'DM Mono',monospace;
+    }
+    html,body{height:100%;font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px;overflow-x:hidden}
+
+    /* ── LAYOUT ── */
+    .page{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+
+    /* ── LEFT PANEL ── */
+    .left-panel{background:var(--green-dark);display:flex;flex-direction:column;padding:40px 36px;position:relative;overflow:hidden}
+    .lp-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none}
+    .lp-glow{position:absolute;bottom:-80px;left:-60px;width:400px;height:300px;background:radial-gradient(ellipse, rgba(74,158,122,0.2) 0%, transparent 70%);pointer-events:none}
+    .lp-logo{display:flex;align-items:baseline;gap:2px;margin-bottom:auto;position:relative;z-index:1}
+    .lp-logo-text{font-family:var(--font-body);font-weight:700;font-size:20px;letter-spacing:-0.05em;color:#fff}
+    .lp-logo-io{font-size:9px;font-weight:400;opacity:.35;vertical-align:super;margin-left:1px}
+
+    /* steps */
+    .lp-steps{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;margin:auto 0}
+    .lp-step{display:flex;gap:16px;align-items:flex-start;position:relative}
+    .lp-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:32px;bottom:-1px;width:1px;background:rgba(255,255,255,0.1);z-index:0}
+    .step-circle{width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,0.35);transition:all .35s;position:relative;z-index:1;background:var(--green-dark)}
+    .lp-step.done .step-circle{background:var(--green-mid);border-color:var(--green-mid);color:#fff}
+    .lp-step.active .step-circle{background:#fff;border-color:#fff;color:var(--green-dark);font-weight:700}
+    .step-check{display:none}
+    .lp-step.done .step-num{display:none}
+    .lp-step.done .step-check{display:block}
+    .step-info{padding-top:5px;padding-bottom:28px}
+    .step-label{font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:-0.02em;transition:color .3s}
+    .lp-step:not(.active):not(.done) .step-label{color:rgba(255,255,255,0.35)}
+    .step-sublabel{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.25);margin-top:3px;letter-spacing:.03em}
+    .lp-step.active .step-sublabel{color:rgba(255,255,255,0.4)}
+
+    /* bottom */
+    .lp-bottom{position:relative;z-index:1;margin-top:auto;padding-top:32px;border-top:1px solid rgba(255,255,255,0.07)}
+    .lp-note{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.2);line-height:1.6;letter-spacing:.03em}
+
+    /* ── RIGHT PANEL ── */
+    .right-panel{display:flex;align-items:center;justify-content:center;padding:48px 40px}
+    .step-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:44px 48px;width:100%;max-width:520px;display:none;animation:fadeIn .3s ease}
+    .step-card.visible{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    .step-card-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .step-card-title{font-family:var(--font-body);font-size:28px;font-weight:700;letter-spacing:-0.04em;color:var(--dark);line-height:1.1;margin-bottom:10px}
+    .step-card-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:36px}
+
+    /* connect block */
+    .connect-block{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px}
+    .connect-row{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--surface)}
+    .connect-row+.connect-row{border-top:1px solid var(--border)}
+    .connect-platform-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .icon-shopify{background:#f0f7ee;color:#3d6b30}
+    .icon-xero{background:var(--xero-bg);color:var(--xero)}
+    .icon-qb{background:#fef9f0;color:#a06030}
+    .connect-platform-info{flex:1}
+    .connect-platform-name{font-size:14px;font-weight:700;color:var(--dark);letter-spacing:-0.02em}
+    .connect-platform-desc{font-size:11px;color:var(--muted);margin-top:2px}
+    .connect-btn{font-family:var(--font-body);font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .connect-btn.primary{background:var(--green);color:#fff}
+    .connect-btn.primary:hover{background:var(--green-deep);transform:translateY(-1px)}
+    .connect-btn.connected{background:var(--green-bg);color:var(--green);cursor:default}
+    .connect-btn.secondary{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+    .connect-btn.secondary:hover{border-color:var(--green);color:var(--green)}
+    .connect-status{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-mid)}
+    .connect-status-dot{width:5px;height:5px;border-radius:50%;background:var(--green-mid)}
+
+    /* form fields */
+    .field{margin-bottom:20px}
+    .field-label{font-size:12px;font-weight:700;color:var(--dark);letter-spacing:-0.01em;margin-bottom:6px;display:block}
+    .field-input{width:100%;font-family:var(--font-body);font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;outline:none;transition:all .2s}
+    .field-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(45,106,79,0.08)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field-hint{font-family:var(--font-mono);font-size:10px;color:var(--faint);margin-top:5px;letter-spacing:.03em}
+
+    /* select */
+    .field-select{width:100%;font-family:var(--font-body);font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;outline:none;cursor:pointer;-webkit-appearance:none;transition:all .2s}
+    .field-select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(45,106,79,0.08)}
+
+    /* radio choice */
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+    .choice-item{border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s}
+    .choice-item:hover{border-color:var(--green-mid)}
+    .choice-item.selected{border-color:var(--green);background:var(--green-bg)}
+    .choice-icon{font-size:20px;margin-bottom:8px}
+    .choice-label{font-size:13px;font-weight:700;color:var(--dark);letter-spacing:-0.02em}
+    .choice-desc{font-size:11px;color:var(--muted);margin-top:3px}
+
+    /* success card */
+    .success-card{text-align:center}
+    .success-logo{width:64px;height:64px;background:var(--green-bg);border:2px solid var(--green-light);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px;color:var(--green)}
+    .success-title{font-size:26px;font-weight:700;letter-spacing:-0.04em;color:var(--dark);margin-bottom:10px}
+    .success-sub{font-size:14px;color:var(--muted);line-height:1.6;max-width:340px;margin:0 auto 32px}
+    .success-items{text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:28px}
+    .success-item{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:13px;color:var(--text)}
+    .success-item:not(:last-child){border-bottom:1px solid var(--border)}
+    .success-item-check{width:22px;height:22px;background:var(--green-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:11px;flex-shrink:0}
+
+    /* progress bar */
+    .progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:36px;overflow:hidden}
+    .progress-fill{height:100%;background:var(--green);border-radius:2px;transition:width .4s ease}
+
+    /* action row */
+    .action-row{display:flex;align-items:center;gap:12px;margin-top:32px}
+    .btn-next{font-family:var(--font-body);font-size:14px;font-weight:500;color:#fff;background:var(--green);border:none;padding:13px 28px;border-radius:10px;cursor:pointer;transition:all .2s;flex:1}
+    .btn-next:hover{background:var(--green-deep);transform:translateY(-1px)}
+    .btn-back{font-family:var(--font-body);font-size:14px;color:var(--muted);background:none;border:1px solid var(--border);padding:13px 20px;border-radius:10px;cursor:pointer;transition:all .2s}
+    .btn-back:hover{border-color:var(--border2);color:var(--dark)}
+    .btn-skip{font-family:var(--font-mono);font-size:10px;color:var(--faint);background:none;border:none;cursor:pointer;letter-spacing:.05em;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+    .btn-skip:hover{color:var(--muted)}
+
+    @media(max-width:800px){
+      .page{grid-template-columns:1fr}
+      .left-panel{display:none}
+      .right-panel{padding:32px 20px}
+      .step-card{padding:32px 24px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT PANEL -->
+  <aside class="left-panel">
+    <div class="lp-noise"></div>
+    <div class="lp-glow"></div>
+
+    <div class="lp-logo">
+      <span class="lp-logo-text">Klaio</span><sup class="lp-logo-io">.io</sup>
+    </div>
+
+    <div class="lp-steps" id="lpSteps">
+      <div class="lp-step done" data-step="0">
+        <div class="step-circle"><span class="step-num">1</span><span class="step-check">✓</span></div>
+        <div class="step-info">
+          <div class="step-label">Your account</div>
+          <div class="step-sublabel">Name & store details</div>
+        </div>
+      </div>
+      <div class="lp-step active" data-step="1">
+        <div class="step-circle"><span class="step-num">2</span><span class="step-check">✓</span></div>
+        <div class="step-info">
+          <div class="step-label">Connect Shopify</div>
+          <div class="step-sublabel">OAuth authorisation</div>
+        </div>
+      </div>
+      <div class="lp-step" data-step="2">
+        <div class="step-circle"><span class="step-num">3</span><span class="step-check">✓</span></div>
+        <div class="step-info">
+          <div class="step-label">Connect accounting</div>
+          <div class="step-sublabel">Xero or QuickBooks</div>
+        </div>
+      </div>
+      <div class="lp-step" data-step="3">
+        <div class="step-circle"><span class="step-num">4</span><span class="step-check">✓</span></div>
+        <div class="step-info">
+          <div class="step-label">Map accounts</div>
+          <div class="step-sublabel">Chart of accounts setup</div>
+        </div>
+      </div>
+      <div class="lp-step" data-step="4">
+        <div class="step-circle"><span class="step-num">5</span><span class="step-check">✓</span></div>
+        <div class="step-info">
+          <div class="step-label">You're live</div>
+          <div class="step-sublabel">First sync in progress</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-bottom">
+      <p class="lp-note">Your data is encrypted in transit and at rest. We use read-only OAuth — we never store your Shopify or accounting passwords.</p>
+    </div>
+  </aside>
+
+  <!-- RIGHT PANEL -->
+  <main class="right-panel">
+
+    <!-- STEP 1: Account details (shown as "done" but visible first) -->
+    <div class="step-card" id="step-0">
+      <p class="step-card-eyebrow">Step 1 of 5</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+      <h2 class="step-card-title">Tell us about your store</h2>
+      <p class="step-card-desc">We'll use this to personalise your dashboard and set the right currency defaults.</p>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">First name</label>
+          <input class="field-input" type="text" placeholder="Mark"/>
+        </div>
+        <div class="field">
+          <label class="field-label">Last name</label>
+          <input class="field-input" type="text" placeholder="George"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Store name</label>
+        <input class="field-input" type="text" placeholder="e.g. Halo Sneakers"/>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Shopify store URL</label>
+          <input class="field-input" type="text" placeholder="yourstore.myshopify.com"/>
+          <p class="field-hint">Without https://</p>
+        </div>
+        <div class="field">
+          <label class="field-label">Country</label>
+          <select class="field-select">
+            <option>United Kingdom</option>
+            <option>Ireland</option>
+            <option>United States</option>
+            <option>Australia</option>
+            <option>Canada</option>
+            <option>New Zealand</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-next" onclick="goToStep(1)">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Connect Shopify -->
+    <div class="step-card" id="step-1">
+      <p class="step-card-eyebrow">Step 2 of 5</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+      <h2 class="step-card-title">Connect Shopify</h2>
+      <p class="step-card-desc">Authorise Klaio to read your payout history, orders, and disputes. We request the minimum permissions needed.</p>
+
+      <div class="connect-block">
+        <div class="connect-row">
+          <div class="connect-platform-icon icon-shopify">
+            <i class="iconoir-cart"></i>
+          </div>
+          <div class="connect-platform-info">
+            <div class="connect-platform-name">Shopify Payments</div>
+            <div class="connect-platform-desc">Payouts, orders, disputes — read-only</div>
+          </div>
+          <button class="connect-btn primary" id="shopifyBtn" onclick="simulateConnect('shopifyBtn','shopifyStatus')">Connect Shopify</button>
+        </div>
+        <div style="padding:10px 20px 14px;border-top:1px solid var(--border);display:none" id="shopifyStatus">
+          <div class="connect-status"><span class="connect-status-dot"></span>Connected · yourstore.myshopify.com</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-size:12px;color:var(--muted);line-height:1.6">
+        <strong style="color:var(--dark);font-size:12px">What we access:</strong><br/>
+        Payout reports, transaction history, order data, and dispute information via the Shopify Admin API. We never access customer personal data beyond what's needed for reconciliation.
+      </div>
+
+      <div class="action-row">
+        <button class="btn-back" onclick="goToStep(0)">Back</button>
+        <button class="btn-next" onclick="goToStep(2)">Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Connect accounting -->
+    <div class="step-card" id="step-2">
+      <p class="step-card-eyebrow">Step 3 of 5</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+      <h2 class="step-card-title">Connect your accounting</h2>
+      <p class="step-card-desc">Choose your accounting platform to enable automatic journal entry posting and reconciliation.</p>
+
+      <div class="choice-grid" id="accountingChoice">
+        <div class="choice-item selected" onclick="selectChoice(this,'xero')">
+          <div class="choice-icon">📒</div>
+          <div class="choice-label">Xero</div>
+          <div class="choice-desc">Most popular with UK & AU merchants</div>
+        </div>
+        <div class="choice-item" onclick="selectChoice(this,'qb')">
+          <div class="choice-icon">📊</div>
+          <div class="choice-label">QuickBooks</div>
+          <div class="choice-desc">Popular in US & Canada</div>
+        </div>
+      </div>
+
+      <div class="connect-block" id="xeroConnect">
+        <div class="connect-row">
+          <div class="connect-platform-icon icon-xero">
+            <i class="iconoir-journal-page"></i>
+          </div>
+          <div class="connect-platform-info">
+            <div class="connect-platform-name">Xero</div>
+            <div class="connect-platform-desc">Journal entries, chart of accounts — read/write</div>
+          </div>
+          <button class="connect-btn primary" id="xeroBtn" onclick="simulateConnect('xeroBtn','xeroStatus')">Connect Xero</button>
+        </div>
+        <div style="padding:10px 20px 14px;border-top:1px solid var(--border);display:none" id="xeroStatus">
+          <div class="connect-status"><span class="connect-status-dot"></span>Connected · My Business Ltd</div>
+        </div>
+      </div>
+
+      <div class="connect-block" id="qbConnect" style="display:none">
+        <div class="connect-row">
+          <div class="connect-platform-icon icon-qb">
+            <i class="iconoir-journal-page"></i>
+          </div>
+          <div class="connect-platform-info">
+            <div class="connect-platform-name">QuickBooks Online</div>
+            <div class="connect-platform-desc">Journal entries, chart of accounts — read/write</div>
+          </div>
+          <button class="connect-btn primary" id="qbBtn" onclick="simulateConnect('qbBtn','qbStatus')">Connect QuickBooks</button>
+        </div>
+        <div style="padding:10px 20px 14px;border-top:1px solid var(--border);display:none" id="qbStatus">
+          <div class="connect-status"><span class="connect-status-dot"></span>Connected · My Business</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-back" onclick="goToStep(1)">Back</button>
+        <button class="btn-next" onclick="goToStep(3)">Continue</button>
+        <button class="btn-skip" onclick="goToStep(3)">Skip for now</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Map accounts -->
+    <div class="step-card" id="step-3">
+      <p class="step-card-eyebrow">Step 4 of 5</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+      <h2 class="step-card-title">Map your accounts</h2>
+      <p class="step-card-desc">Tell Klaio which Xero accounts to use for each payout line type. We've suggested sensible defaults — adjust as needed.</p>
+
+      <div class="field">
+        <label class="field-label">Shopify sales revenue</label>
+        <select class="field-select">
+          <option>200 · Sales</option>
+          <option>201 · Online Sales</option>
+          <option>202 · Product Revenue</option>
+        </select>
+        <p class="field-hint">Where gross payout amounts are posted</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Payment processing fees</label>
+        <select class="field-select">
+          <option>404 · Bank Charges & Fees</option>
+          <option>411 · Merchant Fees</option>
+          <option>412 · Transaction Costs</option>
+        </select>
+        <p class="field-hint">Shopify Payments and gateway fees</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Refunds & adjustments</label>
+        <select class="field-select">
+          <option>200 · Sales (contra)</option>
+          <option>205 · Sales Returns</option>
+          <option>206 · Refunds Issued</option>
+        </select>
+        <p class="field-hint">Refunds posted against this account</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Payout bank account</label>
+        <select class="field-select">
+          <option>090 · Business Current Account</option>
+          <option>091 · Shopify Payments Settlement</option>
+          <option>092 · Main Bank Account</option>
+        </select>
+        <p class="field-hint">The account that receives the net payout</p>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-back" onclick="goToStep(2)">Back</button>
+        <button class="btn-next" onclick="goToStep(4)">Finish setup</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Done -->
+    <div class="step-card success-card" id="step-4">
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+
+      <div class="success-logo">✓</div>
+      <h2 class="success-title">You're all set.</h2>
+      <p class="success-sub">Klaio is syncing your payout history and will have your first reconciliation ready shortly.</p>
+
+      <div class="success-items">
+        <div class="success-item">
+          <div class="success-item-check">✓</div>
+          <span>Shopify Payments connected</span>
+        </div>
+        <div class="success-item">
+          <div class="success-item-check">✓</div>
+          <span>Xero connected and accounts mapped</span>
+        </div>
+        <div class="success-item">
+          <div class="success-item-check">✓</div>
+          <span>Payout history importing (90 days)</span>
+        </div>
+        <div class="success-item">
+          <div class="success-item-check">✓</div>
+          <span>Real-time webhooks active</span>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="window.location.href='../files/klaio-dashboard.html'">Go to dashboard →</button>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  let currentStep = 0;
+
+  function goToStep(n) {
+    // Hide current
+    document.getElementById('step-' + currentStep).classList.remove('visible');
+
+    // Update sidebar steps
+    const sideSteps = document.querySelectorAll('.lp-step');
+    sideSteps.forEach((el, i) => {
+      el.classList.remove('active','done');
+      if (i < n) el.classList.add('done');
+      else if (i === n) el.classList.add('active');
+    });
+
+    currentStep = n;
+    document.getElementById('step-' + n).classList.add('visible');
+  }
+
+  function simulateConnect(btnId, statusId) {
+    const btn = document.getElementById(btnId);
+    btn.textContent = 'Connecting…';
+    btn.disabled = true;
+    btn.style.opacity = '.6';
+    setTimeout(() => {
+      btn.textContent = '✓ Connected';
+      btn.className = 'connect-btn connected';
+      document.getElementById(statusId).style.display = 'block';
+    }, 1400);
+  }
+
+  function selectChoice(el, type) {
+    document.querySelectorAll('#accountingChoice .choice-item').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('xeroConnect').style.display = type === 'xero' ? 'block' : 'none';
+    document.getElementById('qbConnect').style.display = type === 'qb' ? 'block' : 'none';
+  }
+
+  // Start at step 1 (account step shown as done in sidebar)
+  goToStep(1);
+</script>
+
+</body>
+</html>

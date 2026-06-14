@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Klaio.io — Case Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+  <style>
+    :root {
+      --bg:        #f0ede7;
+      --surface:   #ffffff;
+      --surface2:  #f7f5f1;
+      --border:    #e4e0d8;
+      --border2:   #cdc8be;
+      --dark:      #1a3326;
+      --text:      #2a2a2a;
+      --muted:     #7a8c82;
+      --faint:     #b8c9bf;
+      --green:     #2d6a4f;
+      --green-dark:#1a3326;
+      --green-deep:#1f4733;
+      --green-mid: #4a9e7a;
+      --green-bg:  #f0f7f3;
+      --green-light:#a8d5b5;
+      --red:       #b83232;
+      --red-bg:    #fdf0f0;
+      --amber:     #a06030;
+      --amber-bg:  #fdf4ee;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(26,51,38,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      height: 52px; display: flex; align-items: center;
+      padding: 0 40px; gap: 0;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 17px; letter-spacing: -0.05em;
+      color: #fff; display: flex; align-items: baseline; margin-right: 20px;
+    }
+    .nav-logo .io { font-size: 9px; font-weight: 400; opacity: .5; vertical-align: super; margin-left: 2px; }
+    .nav-label {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .nav-pill {
+      margin-left: auto;
+      background: rgba(168,213,181,0.15); border: 1px solid rgba(168,213,181,0.25);
+      color: var(--green-light); font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      position: relative; overflow: hidden;
+      padding: 100px 40px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: .18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: clamp(44px, 6vw, 80px); font-weight: 700;
+      line-height: 1.0; letter-spacing: -0.05em; color: #fff;
+      margin-bottom: 12px;
+    }
+    .hero-title .thin {
+      font-weight: 300; color: rgba(255,255,255,.45);
+      letter-spacing: -0.03em;
+    }
+    .hero-sub {
+      font-size: 16px; font-weight: 400; color: rgba(255,255,255,.5);
+      line-height: 1.65; max-width: 520px; margin-top: 20px;
+    }
+    .hero-meta {
+      margin-top: 48px; display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .hero-meta-item { }
+    .hero-meta-label {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 4px;
+    }
+    .hero-meta-value {
+      font-size: 13px; color: rgba(255,255,255,.7); font-weight: 400;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 80px 40px 120px; }
+
+    /* ── PHASE HEADER ── */
+    .phase {
+      display: flex; align-items: baseline; gap: 16px;
+      margin-bottom: 40px; margin-top: 80px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .phase:first-of-type { margin-top: 0; }
+    .phase-num {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      letter-spacing: .14em; color: var(--green); min-width: 32px;
+    }
+    .phase-title {
+      font-size: 26px; font-weight: 700; letter-spacing: -0.04em; color: var(--dark);
+    }
+    .phase-tag {
+      margin-left: auto; font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .tag-done { color: var(--green); background: var(--green-bg); border: 1px solid rgba(45,106,79,.2); }
+    .tag-live { color: #fff; background: var(--green); }
+    .tag-next { color: var(--amber); background: var(--amber-bg); border: 1px solid rgba(160,96,48,.2); }
+
+    /* ── SECTION WITHIN PHASE ── */
+    .section { margin-bottom: 48px; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--green);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.03em; color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .body + .body { margin-top: 12px; }
+    .body strong { color: var(--text); font-weight: 700; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 10px; padding: 18px 20px;
+      margin: 20px 0; font-size: 13px; color: var(--muted); line-height: 1.7;
+    }
+    .callout strong { color: var(--dark); }
+
+    /* ── TWO-COL GRID ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    @media(max-width: 620px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 24px;
+    }
+    .card-label {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+    }
+    .card-value {
+      font-size: 15px; font-weight: 700; letter-spacing: -0.03em;
+      color: var(--dark); margin-bottom: 6px;
+    }
+    .card-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PROBLEM QUOTES ── */
+    .quote-block {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 24px; margin: 12px 0;
+    }
+    .quote-text {
+      font-size: 13px; color: var(--text); line-height: 1.7;
+      font-style: italic; margin-bottom: 8px;
+    }
+    .quote-source {
+      font-family: var(--font-mono); font-size: 9px; color: var(--faint);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ── DECISION TABLE ── */
+    .decision-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 12px; }
+    .decision-table th {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); padding: 8px 14px;
+      text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border);
+    }
+    .decision-table td {
+      padding: 11px 14px; border-bottom: 1px solid var(--border);
+      color: var(--text); vertical-align: top;
+    }
+    .decision-table tr:last-child td { border-bottom: none; }
+    .decision-table .mono { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; margin: 16px 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--muted); line-height: 1.6;
+      padding: 6px 0; border-bottom: 1px solid var(--border);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+    .check-done { color: var(--green); }
+    .check-next { color: var(--amber); }
+    .check-future { color: var(--faint); }
+    .checklist strong { color: var(--text); font-weight: 700; }
+
+    /* ── COLOUR SWATCHES ── */
+    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+    .swatch {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 6px; min-width: 100px;
+    }
+    .swatch-box {
+      width: 100%; height: 40px; border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.07);
+    }
+    .swatch-name { font-family: var(--font-mono); font-size: 9px; color: var(--muted); }
+    .swatch-hex { font-family: var(--font-mono); font-size: 9px; color: var(--faint); }
+
+    /* ── TIER TABLE ── */
+    .tier-row {
+      display: grid; grid-template-columns: 28px 1fr 80px;
+      align-items: start; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .tier-row:last-child { border-bottom: none; }
+    .tier-num {
+      font-family: var(--font-mono); font-size: 11px; color: var(--faint);
+      font-weight: 500; padding-top: 1px;
+    }
+    .tier-body { }
+    .tier-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .tier-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .tier-badge {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
+      text-align: center; margin-top: 2px; white-space: nowrap;
+    }
+
+    /* ── STACK PILLS ── */
+    .stack-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .stack-pill {
+      font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 7px;
+    }
+
+    /* ── OPEN ITEMS ── */
+    .open-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .open-item:last-child { border-bottom: none; }
+    .open-num {
+      font-family: var(--font-mono); font-size: 11px; color: var(--faint);
+      flex-shrink: 0; padding-top: 1px; min-width: 20px;
+    }
+    .open-body { flex: 1; }
+    .open-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .open-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .open-severity {
+      flex-shrink: 0; font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 6px; margin-top: 2px;
+    }
+    .sev-blocker { color: var(--red); background: var(--red-bg); border: 1px solid rgba(184,50,50,.2); }
+    .sev-pre { color: var(--amber); background: var(--amber-bg); border: 1px solid rgba(160,96,48,.2); }
+    .sev-post { color: var(--muted); background: var(--surface2); border: 1px solid var(--border); }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border); padding: 40px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-weight: 700; font-size: 20px; letter-spacing: -0.05em;
+      color: var(--green); display: inline-flex; align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .footer-logo .io { font-size: 11px; font-weight: 400; opacity: .5; vertical-align: super; margin-left: 2px; }
+    .footer-note { font-family: var(--font-mono); font-size: 10px; color: var(--faint); letter-spacing: .08em; }
+
+    /* ── ON-DARK BLOCK ── */
+    .on-dark {
+      background: var(--green); border-radius: 16px; padding: 32px;
+      position: relative; overflow: hidden; margin: 24px 0;
+    }
+    .on-dark::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .on-dark-inner { position: relative; z-index: 1; }
+    .on-dark-label {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .16em;
+      text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 12px;
+    }
+    .on-dark-title { font-size: 22px; font-weight: 700; letter-spacing: -0.04em; color: #fff; margin-bottom: 10px; }
+    .on-dark-body { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; max-width: 560px; }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Klaio<span class="io">.io</span></div>
+  <span class="nav-label">Case Study</span>
+  <span class="nav-pill">Pre-launch · Waitlist</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Product Case Study</div>
+    <h1 class="hero-title">
+      Klaio.io<br>
+      <span class="thin">Your Shopify payout, explained in plain English.</span>
+    </h1>
+    <p class="hero-sub">A solo-founder SaaS built using Claude as the primary engineering collaborator. From problem discovery to live waitlist in under 8 weeks.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Founded</div>
+        <div class="hero-meta-value">2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Status</div>
+        <div class="hero-meta-value">Pre-launch · Waitlist live</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Market</div>
+        <div class="hero-meta-value">UK Shopify merchants + Xero/QuickBooks</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Build method</div>
+        <div class="hero-meta-value">Solo founder · Claude Code</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="wrap">
+
+
+  <!-- ════════════════════════════════════
+       PHASE 0 — PROBLEM
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">00</span>
+    <h2 class="phase-title">The Problem</h2>
+    <span class="phase-tag tag-done">Research</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Core problem</div>
+    <div class="section-title">Shopify payouts are a black box</div>
+    <p class="body">Shopify pays merchants in lump sums — a single deposit that bundles gross sales, refunds, transaction fees, gateway charges, and chargebacks into one number. That number almost never matches what the merchant sees in Xero or QuickBooks. The delta is the problem.</p>
+    <p class="body">Standard integration tools — like Shopify's native Xero connector or third-party apps like A2X and Link My Books — talk to your accountant. They move data between systems. They don't explain anything. A merchant still has to open a spreadsheet, cross-reference three different reports, and manually hunt for the line that doesn't reconcile. For most small business owners, that's hours every month.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Research signal</div>
+    <div class="section-title">What merchants actually say</div>
+    <div class="quote-block">
+      <p class="quote-text">"Every month I spend two or three hours trying to work out why my Shopify payout doesn't match what landed in the bank. My accountant can't figure it out either. We just write it off as 'reconciling items' and move on."</p>
+      <div class="quote-source">QuickBooks UK Community Forum</div>
+    </div>
+    <div class="quote-block">
+      <p class="quote-text">"The Xero integration just dumps a lump sum. It doesn't tell you it's 43 orders minus a PayPal reserve minus two refunds from October. You find that out yourself at 11pm."</p>
+      <div class="quote-source">Shopify Community · Payout discrepancy thread</div>
+    </div>
+    <div class="quote-block">
+      <p class="quote-text">"I've tried three different reconciliation apps. They all sync the data. None of them explain it. The discrepancy still exists — I just have cleaner books with the same hole in them."</p>
+      <div class="quote-source">Shopify App Store review · Reconciliation category</div>
+    </div>
+
+    <div class="callout">
+      <strong>Key insight from community research:</strong> The core problem isn't data transfer — it's comprehension. Merchants don't need better sync tools. They need someone to tell them, in plain English, exactly what happened to their money. That's the gap Klaio fills.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Competitive landscape</div>
+    <div class="section-title">Where Klaio sits</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">A2X / Link My Books</div>
+        <div class="card-value">Accountant-first tools</div>
+        <div class="card-sub">Move data cleanly between Shopify and Xero. Built for accountants who understand the structure. Merchants still can't read the output without help.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Klaio.io</div>
+        <div class="card-value">Merchant-first intelligence</div>
+        <div class="card-sub">Reconciles every payout automatically and explains exactly what happened — in one sentence — without requiring any accounting knowledge. Built for the merchant, not their accountant.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       PHASE 1 — CONCEPT & PIVOT
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">01</span>
+    <h2 class="phase-title">Concept &amp; Pivot</h2>
+    <span class="phase-tag tag-done">Complete</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Origin</div>
+    <div class="section-title">Started as something broader</div>
+    <p class="body">The first version of the product — called <strong>Coreflow</strong> — was a unified SMB intelligence dashboard connecting Shopify, HubSpot, and QuickBooks into a single real-time view. The concept was compelling: see every customer event, from first purchase to invoice, in one place. The problem was scope.</p>
+    <p class="body">Three OAuth integrations, three webhook streams, fuzzy identity matching across platforms — for a solo founder using Claude Code, that's a significant surface area before a single paying customer exists. After the initial architecture and prototype were mapped out, the decision was made to narrow.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The pivot decision</div>
+    <div class="section-title">Shopify payout reconciliation as the beachhead</div>
+    <p class="body">Community research across Shopify forums, QuickBooks UK support threads, and Xero user groups surfaced a specific, painful, recurring problem — payout discrepancies — that existing tools weren't solving from the merchant's perspective. That was the pivot point.</p>
+
+    <div class="callout">
+      <strong>Decision rationale:</strong> One integration (Shopify → Xero/QuickBooks) is shippable. Three integrations is a roadmap. The payout problem is specific enough to solve well, frequent enough to retain on, and painful enough that merchants will pay to fix it. Start here, expand later.
+    </div>
+
+    <table class="decision-table">
+      <thead>
+        <tr>
+          <th>Consideration</th>
+          <th>Coreflow (original)</th>
+          <th>Klaio (pivot)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Integration count</td>
+          <td class="mono">3 platforms</td>
+          <td class="mono">1 platform → 1 accounting tool</td>
+        </tr>
+        <tr>
+          <td>Time to first value</td>
+          <td class="mono">Weeks of infra setup</td>
+          <td class="mono">15-minute onboarding</td>
+        </tr>
+        <tr>
+          <td>Target user clarity</td>
+          <td class="mono">Any SMB with 3 tools</td>
+          <td class="mono">Shopify merchants using Xero or QuickBooks</td>
+        </tr>
+        <tr>
+          <td>Problem specificity</td>
+          <td class="mono">General visibility gap</td>
+          <td class="mono">Payout reconciliation — specific pain, known frequency</td>
+        </tr>
+        <tr>
+          <td>Solo build feasibility</td>
+          <td class="mono">High complexity</td>
+          <td class="mono">Achievable in 10–14 weeks with Claude Code</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       PHASE 2 — BRAND
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">02</span>
+    <h2 class="phase-title">Brand &amp; Design System</h2>
+    <span class="phase-tag tag-done">Complete</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Naming</div>
+    <div class="section-title">From Coreflow to Klaio.io</div>
+    <p class="body">Coreflow had naming conflicts. The rename wasn't just a domain decision — it was an opportunity to give the product a more distinctive identity. Klaio.io was available, short, and pronounceable. The <strong>.io</strong> suffix signals a developer-adjacent, modern SaaS product. The wordmark carries it.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Logo</div>
+    <div class="section-title">Full wordmark · Space Grotesk 700</div>
+    <div class="on-dark">
+      <div class="on-dark-inner" style="display:flex; align-items:center; justify-content:center; padding: 20px 0;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:56px; letter-spacing:-0.05em; color:#fff; display:flex; align-items:baseline;">
+          Klaio<span style="font-size:28px; font-weight:400; opacity:0.5; vertical-align:super; margin-left:3px;">.io</span>
+        </div>
+      </div>
+    </div>
+    <p class="body" style="margin-top:16px;">The logo is a pure wordmark — no icon. Deliberately chosen to avoid the templated compass/arrow marks that crowd the fintech and SaaS space. Space Grotesk at 700 weight gives it confidence. The <strong>.io</strong> suffix drops to 400 weight at 60% opacity — present but subordinate, so it doesn't compete with the name. Primary context is white-on-green. Secondary is green-on-parchment.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Colour system</div>
+    <div class="section-title">Green-forward, with restraint</div>
+    <p class="body">The palette is anchored in a deep forest green — warm and serious without feeling clinical. Parchment as the background avoids the cold-white look of most fintech products. Status colours (amber, red) are muted versions of their defaults to stay within the brand register.</p>
+
+    <div class="swatch-row">
+      <div class="swatch" style="flex:1; min-width:90px;">
+        <div class="swatch-box" style="background:#2d6a4f;"></div>
+        <div class="swatch-name">Brand green</div>
+        <div class="swatch-hex">#2d6a4f</div>
+      </div>
+      <div class="swatch" style="flex:1; min-width:90px;">
+        <div class="swatch-box" style="background:#1a3326;"></div>
+        <div class="swatch-name">Deep forest</div>
+        <div class="swatch-hex">#1a3326</div>
+      </div>
+      <div class="swatch" style="flex:1; min-width:90px;">
+        <div class="swatch-box" style="background:#f0ede7; border:1px solid #e4e0d8;"></div>
+        <div class="swatch-name">Parchment</div>
+        <div class="swatch-hex">#f0ede7</div>
+      </div>
+      <div class="swatch" style="flex:1; min-width:90px;">
+        <div class="swatch-box" style="background:#a06030;"></div>
+        <div class="swatch-name">Amber</div>
+        <div class="swatch-hex">#a06030</div>
+      </div>
+      <div class="swatch" style="flex:1; min-width:90px;">
+        <div class="swatch-box" style="background:#b83232;"></div>
+        <div class="swatch-name">Alert red</div>
+        <div class="swatch-hex">#b83232</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Typography</div>
+    <div class="section-title">Space Grotesk + DM Mono</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Display + Body</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; letter-spacing:-0.05em; color:var(--dark); margin-bottom:8px;">Space Grotesk</div>
+        <div class="card-sub">Used for all headings, body copy, and UI text. 700 for display, 400 for body. The tight letter-spacing (-0.05em at large sizes) gives it density without feeling heavy.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Mono — Labels, tags, metadata</div>
+        <div style="font-family:'DM Mono',monospace; font-size:18px; font-weight:500; letter-spacing:.1em; color:var(--green); text-transform:uppercase; margin-bottom:8px;">DM Mono</div>
+        <div class="card-sub">Used exclusively for eyebrows, status tags, monospaced values, and structural labels. Creates a technical register without using a generic coding font.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Icon system</div>
+    <div class="section-title">Iconoir — exclusively</div>
+    <p class="body">One icon library, used throughout with no exceptions. Iconoir's line style sits cleanly against the Space Grotesk wordmarks without competing. All icon usage via CDN class names — no SVG embeds, no custom icons.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Design system</div>
+    <div class="section-title">Token-first, Claude Code-enforced</div>
+    <p class="body">The design system was built as a living HTML reference document — <strong>klaio-design-system.html</strong> — containing every CSS custom property, component, button variant, pill style, card type, and surface pattern used across the product. It doubles as the source of truth and a copy-paste library for Claude Code.</p>
+    <p class="body">All tokens are defined in a single <code style="font-family:var(--font-mono); font-size:12px; color:var(--green); background:var(--green-bg); padding:1px 6px; border-radius:4px;">:root</code> block. No hardcoded hex values appear outside of it. This makes the entire visual system changeable from one file.</p>
+
+    <div class="callout">
+      <strong>Claude Code enforcement:</strong> A <code style="font-family:var(--font-mono); font-size:12px;">CLAUDE.md</code> file at the project root instructs Claude Code to check the design system before any UI work. The Pre-Build Decision Protocol mandates: check for an existing component first, use only <code style="font-family:var(--font-mono); font-size:12px;">--dt-*</code>-equivalent tokens, never add custom CSS to existing components. This prevents design drift across long build sessions.
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       PHASE 3 — LANDING PAGE
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">03</span>
+    <h2 class="phase-title">Landing Page</h2>
+    <span class="phase-tag tag-live">Live</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Goal</div>
+    <div class="section-title">Validate the problem before building the product</div>
+    <p class="body">The landing page isn't a marketing site for a finished product. It's a validation instrument. The job is to answer one question: <strong>do Shopify merchants with a payout reconciliation problem care enough to give us their email?</strong></p>
+    <p class="body">The design decision follows from that: no pricing, no feature list, no customer logos. Just the problem stated clearly, the solution described concisely, and a waitlist form with as little friction as possible.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Design decisions</div>
+    <div class="section-title">Every choice is intentional</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Hero — Green full-bleed</div>
+        <div class="card-value">Anchor the brand immediately</div>
+        <div class="card-sub">The hero section is the only place in the product world where the deep green fills the entire viewport. It signals confidence and makes the white wordmark unmistakeable. No stock imagery, no illustration — the grid texture does the work.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Headline — Two-line structure</div>
+        <div class="card-value">"Your Shopify payout, explained in plain English."</div>
+        <div class="card-sub">The first line (bold) names what the merchant already knows — their payout. The second line (light weight, reduced opacity) states what Klaio does. The typographic contrast makes the proposition scannable in under 2 seconds.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">CTAs removed</div>
+        <div class="card-value">Try free / Book a demo → Waitlist only</div>
+        <div class="card-sub">Original CTAs implied a working product. Replaced with a single name + email waitlist form. "Join waitlist" sets correct expectations. "No spam. No credit card. Just an early invite." removes the remaining hesitation.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Sections removed</div>
+        <div class="card-value">Pricing and Customers stripped out</div>
+        <div class="card-sub">Pricing implies a ready product and invites price objections. Fake customer logos undermine trust. Both were removed. The page earns credibility through problem clarity, not social proof theatre.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">App UI preview</div>
+    <div class="section-title">Show the real product, even before it exists</div>
+    <p class="body">Below the fold, a browser-chrome mockup shows the actual dashboard design — payout list, reconciliation stats, attention-needed alerts, AI summary panel. This isn't decorative. It anchors the merchant's imagination to something concrete and shows the product's north star interface. The mockup uses real Klaio design system components, so it's consistent with what will ship.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Technical setup</div>
+    <div class="section-title">Live via GitHub Pages + Formspree</div>
+    <div class="stack-pills">
+      <span class="stack-pill">GitHub Pages</span>
+      <span class="stack-pill">GoDaddy DNS</span>
+      <span class="stack-pill">Formspree (waitlist capture)</span>
+      <span class="stack-pill">klaio.io</span>
+    </div>
+    <p class="body" style="margin-top:12px;">Static HTML, no framework dependency. Fast, free to host, zero infrastructure to maintain during the waitlist phase. Formspree handles email capture and forwards signups without needing a backend. The site is intentionally over-engineered only where it matters: the visual design.</p>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       PHASE 4 — PRODUCT ARCHITECTURE
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">04</span>
+    <h2 class="phase-title">Product Architecture</h2>
+    <span class="phase-tag tag-done">Designed</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Technical stack</div>
+    <div class="section-title">Chosen for solo-founder build speed</div>
+    <div class="stack-pills">
+      <span class="stack-pill">Next.js 14</span>
+      <span class="stack-pill">TypeScript</span>
+      <span class="stack-pill">Supabase</span>
+      <span class="stack-pill">Prisma</span>
+      <span class="stack-pill">BullMQ</span>
+      <span class="stack-pill">Redis</span>
+      <span class="stack-pill">Vercel</span>
+      <span class="stack-pill">Railway</span>
+    </div>
+    <p class="body" style="margin-top:16px;">Every stack decision was made with solo feasibility in mind. Supabase handles auth and RLS without custom server code. Prisma gives type-safe database access. BullMQ handles the async reconciliation jobs that run after each Shopify payout webhook. Railway hosts the worker process separately from the Next.js app on Vercel.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Gateway adapter pattern</div>
+    <div class="section-title">Three tiers of integration, matched to feasibility</div>
+    <p class="body">Not all payment gateways expose the same data. The gateway adapter pattern handles this without building three entirely different reconciliation engines.</p>
+
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:8px 20px; margin-top:16px;">
+      <div class="tier-row">
+        <div class="tier-num">T1</div>
+        <div class="tier-body">
+          <div class="tier-title">Shopify Payments</div>
+          <div class="tier-desc">Full automation. The Shopify Balance Transactions GraphQL API exposes every fee line, refund, and chargeback at the payout level. Klaio fetches, normalises, and reconciles without any merchant input.</div>
+        </div>
+        <div>
+          <div class="tier-badge" style="color:var(--green); background:var(--green-bg); border:1px solid rgba(45,106,79,.2);">Full auto</div>
+        </div>
+      </div>
+      <div class="tier-row">
+        <div class="tier-num">T2</div>
+        <div class="tier-body">
+          <div class="tier-title">PayPal &amp; Stripe</div>
+          <div class="tier-desc">API with fuzzy matching. Payouts are fetched via their respective APIs, then matched against Xero bank feed entries using amount + date proximity. Exceptions flagged for merchant review.</div>
+        </div>
+        <div>
+          <div class="tier-badge" style="color:var(--amber); background:var(--amber-bg); border:1px solid rgba(160,96,48,.2);">API + review</div>
+        </div>
+      </div>
+      <div class="tier-row">
+        <div class="tier-num">T3</div>
+        <div class="tier-body">
+          <div class="tier-title">Klarna &amp; others</div>
+          <div class="tier-desc">CSV upload. Gateways without usable APIs. Merchant uploads their payout export, Klaio parses it and runs the same reconciliation logic. Less seamless, but complete coverage.</div>
+        </div>
+        <div>
+          <div class="tier-badge" style="color:var(--muted); background:var(--surface2); border:1px solid var(--border);">CSV upload</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">AI summaries</div>
+    <div class="section-title">Claude explains every payout in one sentence</div>
+    <p class="body">After reconciliation, Klaio calls the Claude API with a structured payout summary — total, line-by-line breakdown, discrepancies — and receives a plain-English explanation. This is the core differentiator. Not a data dump, not a report: a sentence a merchant can read and understand without accounting knowledge.</p>
+
+    <div class="on-dark">
+      <div class="on-dark-inner">
+        <div class="on-dark-label">Example AI summary output</div>
+        <div class="on-dark-title" style="font-size:16px; font-weight:400; line-height:1.7; color:rgba(255,255,255,0.85);">"Your April 25 payout of £3,140.20 covered 28 orders. It reconciles cleanly against Xero — all 4 Shopify transaction fees (£34.80 total) are posted to your Fees account. No action needed."</div>
+      </div>
+    </div>
+
+    <div class="on-dark" style="background:var(--surface); border:1px solid var(--border);">
+      <div class="on-dark-inner">
+        <div class="on-dark-label" style="color:var(--amber);">When something's wrong</div>
+        <div style="font-size:15px; font-weight:400; line-height:1.7; color:var(--text);">"Your April 28 payout of £4,541.50 is missing £106.20 in transaction fees from Xero — they were deducted by Shopify but never posted to your P&amp;L. This overstates your profit by the same amount. Click to post the missing entry."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Onboarding</div>
+    <div class="section-title">Six steps, 15 minutes to first insight</div>
+    <p class="body">The onboarding flow was designed and prototyped before any backend was built. Six linear steps: create account → connect Xero (OAuth) → live chart of accounts fetch + account mapping → select gateways → connect Shopify → first reconciliation runs in background. The merchant sees their first report before they close the onboarding tab.</p>
+    <div class="callout">
+      <strong>Key design decision — live chart of accounts:</strong> Instead of asking merchants to type account codes they don't know, Klaio calls the Xero API immediately after OAuth and fetches their real account list as dropdown options. Eliminates the most common onboarding failure mode.
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       PHASE 5 — OPEN ITEMS & NEXT
+  ════════════════════════════════════ -->
+  <div class="phase">
+    <span class="phase-num">05</span>
+    <h2 class="phase-title">Open Items &amp; What's Next</h2>
+    <span class="phase-tag tag-next">Planned</span>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Pre-launch blockers</div>
+    <div class="section-title">What needs to happen before merchant data goes live</div>
+
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:8px 20px;">
+      <div class="open-item">
+        <div class="open-num">01</div>
+        <div class="open-body">
+          <div class="open-title">Next.js CVE — upgrade required</div>
+          <div class="open-desc">Current codebase is on Next.js 14.2.0 which has a documented security vulnerability. Shipping financial merchant data on a known CVE is not defensible under UK GDPR Article 32. Must upgrade before any live merchant connections.</div>
+        </div>
+        <div class="open-severity sev-blocker">Blocker</div>
+      </div>
+      <div class="open-item">
+        <div class="open-num">02</div>
+        <div class="open-body">
+          <div class="open-title">Xero token refresh — Redis lock</div>
+          <div class="open-desc">Xero access tokens expire every 30 minutes with rotating refresh tokens. Without a Redis distributed lock, two concurrent BullMQ jobs can race on token refresh, invalidate each other, and break the Xero connection. Fix is a <code style="font-family:var(--font-mono); font-size:11px;">SET key NX EX 30</code> lock per organisation.</div>
+        </div>
+        <div class="open-severity sev-blocker">Blocker</div>
+      </div>
+      <div class="open-item">
+        <div class="open-num">03</div>
+        <div class="open-body">
+          <div class="open-title">UK GDPR — Data Processing Agreement</div>
+          <div class="open-desc">Klaio is a data processor for each merchant. A GDPR-compliant DPA must be in place before any live merchant data is handled. This is a legal document, not a code change — needs drafting and including in the onboarding flow.</div>
+        </div>
+        <div class="open-severity sev-pre">Pre-launch</div>
+      </div>
+      <div class="open-item">
+        <div class="open-num">04</div>
+        <div class="open-body">
+          <div class="open-title">Webhook HMAC verification — all gateways</div>
+          <div class="open-desc">Shopify, Stripe, and PayPal webhooks all include signature headers. These must be verified before processing. Without it, a bad actor could POST fabricated payout data to the endpoint and corrupt reconciliation records.</div>
+        </div>
+        <div class="open-severity sev-pre">Pre-launch</div>
+      </div>
+      <div class="open-item">
+        <div class="open-num">05</div>
+        <div class="open-body">
+          <div class="open-title">Stripe billing — post-waitlist validation</div>
+          <div class="open-desc">Payments are intentionally not implemented yet. After waitlist validation, Stripe will be added: subscription pricing tiers, post-payment webhook to activate accounts, customer self-serve portal. Estimated 1–2 days of Claude Code work.</div>
+        </div>
+        <div class="open-severity sev-post">Post-validation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Product roadmap</div>
+    <div class="section-title">Phases after launch</div>
+
+    <ul class="checklist">
+      <li>
+        <span class="check-icon check-done">✓</span>
+        <span><strong>Done — </strong>Problem validation, brand, design system, landing page, waitlist live</span>
+      </li>
+      <li>
+        <span class="check-icon check-done">✓</span>
+        <span><strong>Done — </strong>Full product architecture, onboarding flow design, dashboard prototype, SECURITY.md, CLAUDE.md</span>
+      </li>
+      <li>
+        <span class="check-icon check-next">→</span>
+        <span><strong>Next — </strong>Security fixes (Next.js upgrade, Redis lock, webhook verification), DPA drafting</span>
+      </li>
+      <li>
+        <span class="check-icon check-next">→</span>
+        <span><strong>Next — </strong>Ship Tier 1 (Shopify Payments + Xero) as closed beta with first 10 waitlist signups</span>
+      </li>
+      <li>
+        <span class="check-icon check-future">○</span>
+        <span><strong>Planned — </strong>Stripe billing, subscription tiers, customer portal</span>
+      </li>
+      <li>
+        <span class="check-icon check-future">○</span>
+        <span><strong>Planned — </strong>QuickBooks parity (Tier 1 currently Xero-only)</span>
+      </li>
+      <li>
+        <span class="check-icon check-future">○</span>
+        <span><strong>Planned — </strong>Tier 2 gateway expansion — PayPal and Stripe reconciliation</span>
+      </li>
+      <li>
+        <span class="check-icon check-future">○</span>
+        <span><strong>Planned — </strong>Accountant access mode — shared read-only view for the merchant's bookkeeper</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Build method</div>
+    <div class="section-title">Solo founder + Claude Code as engineering partner</div>
+    <p class="body">Every line of code, every architectural decision, and every design implementation in this project has been produced by a solo founder using Claude as the primary engineering collaborator. The workflow: Claude Chat for architecture, strategy, and design decisions; Claude Code for implementation and iteration in the codebase.</p>
+    <p class="body">The CLAUDE.md Pre-Build Decision Protocol exists specifically to maintain quality across long Claude Code sessions — preventing over-engineering, enforcing the design system, and ensuring each build decision is checked against existing components before new ones are created.</p>
+
+    <div class="callout">
+      <strong>Timeline:</strong> Concept to live waitlist in under 8 weeks, solo, part-time. Full product build estimate: 10–14 weeks to Tier 1 beta with paying customers.
+    </div>
+  </div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Klaio<span class="io">.io</span></div>
+  <p class="footer-note" style="margin-top:4px;">Case Study · 2026 · Pre-launch</p>
+</footer>
+
+</body>
+</html>

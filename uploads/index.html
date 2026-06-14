@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Klaio.io — Your Shopify payout, explained in plain English.</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#f0ede7;--surface:#fff;--surface2:#f7f5f1;
+      --border:#e4e0d8;--border2:#cdc8be;
+      --dark:#1a3326;--text:#2a2a2a;--muted:#9a9488;--faint:#c4bfb5;
+      --green:#2d6a4f;--green-bg:#f0f7f3;--green-mid:#4a9e7a;
+      --red:#b83232;--red-bg:#fdf0f0;
+      --amber:#a06030;--amber-bg:#fdf4ee;
+      --shopify:#3d6b30;--xero:#1a5276;--xero-bg:#eaf3fb;
+      --ai:#2d6a4f;--ai-bg:#f0f7f3;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(45,106,79,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);transition:background .4s,border-color .4s}
+    nav.scrolled{background:rgba(240,237,231,0.92);border-bottom-color:var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+    .nav-logo-text{font-size:17px;font-weight:400;letter-spacing:-0.02em;color:#fff;transition:color .4s}
+    nav.scrolled .nav-logo-text{color:var(--dark)}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:#fff}nav.scrolled .nav-links a{color:var(--muted)}nav.scrolled .nav-links a:hover{color:var(--dark)}
+    .nav-cta{display:flex;align-items:center;gap:14px}
+    .btn-ghost-nav{font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);background:none;border:none;cursor:pointer;transition:color .2s}
+    .btn-ghost-nav:hover{color:#fff}nav.scrolled .btn-ghost-nav{color:var(--muted)}
+    .btn-primary-nav{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--dark);background:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;transition:all .3s}
+    .btn-primary-nav:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,255,255,0.15)}
+    nav.scrolled .btn-primary-nav{color:#fff;background:#2d6a4f}
+
+    /* ── DARK HERO BLOCK ── */
+    .hero-dark-block{background:#2d6a4f;padding-bottom:60px;position:relative;overflow:hidden}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.3;mix-blend-mode:luminosity}
+    .hero-overlay{position:absolute;inset:0;background:rgba(26,51,38,0.72);z-index:1}
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:160px 48px 60px;position:relative;text-align:center;background:transparent}
+    .hero::before,.hero::after{display:none}
+    .hero-fade{display:none}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);padding:6px 14px 6px 10px;border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:36px;animation:fadeDown .6s ease both;position:relative;z-index:3}
+    .hero-badge-dot{width:6px;height:6px;background:#4a9e7a;border-radius:50%;animation:blink 2.5s infinite}
+    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    .hero-headline{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,5.5vw,76px);font-weight:700;line-height:1.0;letter-spacing:-0.05em;color:#fff;max-width:860px;position:relative;z-index:3;animation:fadeUp .7s .1s ease both}
+    .hero-headline em{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:400;color:rgba(255,255,255,0.4);letter-spacing:-0.03em;display:block;font-size:0.9em}
+    .hero-sub{font-size:17px;font-weight:400;color:rgba(255,255,255,0.45);max-width:500px;line-height:1.7;margin-top:26px;letter-spacing:-0.01em;position:relative;z-index:3;animation:fadeUp .7s .2s ease both}
+    .hero-actions{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:40px;position:relative;z-index:3;animation:fadeUp .7s .3s ease both}
+    .btn-large{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:var(--dark);background:#fff;border:none;padding:15px 30px;border-radius:10px;cursor:pointer;transition:all .25s}
+    .btn-large:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+    .btn-large-ghost{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.6);background:transparent;border:1px solid rgba(255,255,255,0.18);padding:15px 26px;border-radius:10px;cursor:pointer;transition:all .2s}
+    .btn-large-ghost:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+
+    /* ── HERO PAYOUT CARD ── */
+    .hero-payout-viz{position:relative;z-index:3;animation:fadeUp .7s .4s ease both;margin-top:52px;width:100%;max-width:580px}
+    .payout-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:20px 24px;backdrop-filter:blur(8px)}
+    .payout-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .payout-card-id{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:.08em}
+    .payout-status-pill{font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px;transition:all .5s}
+    .pill-amber{color:#fbbf24;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25)}
+    .pill-green{color:#4ade80;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25)}
+    .payout-rows{display:flex;flex-direction:column}
+    .payout-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+    .payout-row:last-child{border-bottom:none}
+    .payout-row.net{border-top:1px solid rgba(255,255,255,0.14);padding-top:11px}
+    .pr-label{font-size:12px;color:rgba(255,255,255,0.45);font-weight:400}
+    .pr-label.strong{color:rgba(255,255,255,0.8);font-weight:400}
+    .pr-xero{font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.08em;padding:2px 7px;border-radius:4px;transition:all .5s}
+    .xero-ok{color:#4ade80;background:rgba(74,222,128,.1)}
+    .xero-no{color:#fbbf24;background:rgba(251,191,36,.1)}
+    .pr-amount{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.8);text-align:right;white-space:nowrap}
+    .pr-amount.debit{color:rgba(255,100,80,.8)}
+    .pr-amount.net{color:#fff;font-size:14px;font-weight:400}
+    .payout-cta-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)}
+    .payout-cta-note{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;transition:all .5s}
+    .payout-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 14px;border-radius:7px;cursor:pointer}
+
+    /* ── DASHBOARD PREVIEW ── */
+    .dashboard-section{padding:0 48px 0;max-width:1200px;margin:0 auto;position:relative;z-index:3}
+    .dashboard-frame{background:var(--surface);border:1px solid var(--border2);border-radius:18px;overflow:hidden;box-shadow:0 32px 96px rgba(20,20,20,0.08)}
+    .dashboard-bar{background:var(--surface2);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;gap:12px}
+    .db-dots{display:flex;gap:6px}
+    .db-dot{width:10px;height:10px;border-radius:50%}
+    .db-dot.r{background:#e8a0a0}.db-dot.y{background:#e8d0a0}.db-dot.g{background:#a0d0a0}
+    .db-url{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-family:'DM Mono',monospace;font-size:11px;color:var(--faint);max-width:260px}
+    .db-content{padding:20px;display:grid;grid-template-columns:170px 1fr;gap:16px;min-height:370px}
+    .db-sidebar{display:flex;flex-direction:column;gap:2px;padding-top:4px}
+    .db-logo-row{display:flex;align-items:center;gap:7px;padding:8px 10px 12px;margin-bottom:6px}
+    .db-logo-text{font-size:14px;font-weight:400;letter-spacing:-0.02em;color:var(--dark)}
+    .db-nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--muted);cursor:pointer}
+    .db-nav-item.active{background:#2d6a4f;color:#fff}
+    .db-nav-divider{height:1px;background:var(--border);margin:6px 0}
+    .db-platform-row{display:flex;align-items:center;gap:7px;padding:5px 10px;font-size:11px}
+    .db-platform-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .db-main{display:flex;flex-direction:column;gap:12px}
+    .db-heading{font-size:18px;font-weight:400;letter-spacing:-0.02em;color:var(--dark)}
+    .db-subtext{font-size:11px;color:var(--faint)}
+    .db-top-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .db-stat{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+    .db-stat-label{font-size:10px;color:var(--muted);letter-spacing:.05em;margin-bottom:8px}
+    .db-stat-value{font-size:20px;font-weight:400;letter-spacing:-0.03em;color:var(--dark);line-height:1}
+    .db-stat-value .dec{color:var(--faint)}
+    .db-stat-delta{font-size:10px;margin-top:5px;font-family:'DM Mono',monospace}
+    .db-stat-delta.up{color:#2d6a4f}.db-stat-delta.dn{color:var(--red)}.db-stat-delta.nt{color:var(--faint)}
+    .db-bottom-row{display:grid;grid-template-columns:1.6fr 1fr;gap:10px}
+    .db-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+    .db-card-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+    .db-payout-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:11px}
+    .db-payout-row:last-child{border-bottom:none}
+    .db-payout-id{color:var(--dark);font-weight:500;font-family:'DM Mono',monospace;font-size:10px}
+    .db-payout-val{color:var(--muted)}
+    .db-badge{font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+    .db-badge.g{background:var(--green-bg);color:#2d6a4f}.db-badge.a{background:var(--amber-bg);color:var(--amber)}.db-badge.r{background:var(--red-bg);color:var(--red)}
+    .db-alert-row{display:flex;align-items:flex-start;gap:8px;padding:7px 9px;border-radius:7px;margin-bottom:6px;font-size:11px;line-height:1.4}
+    .db-alert-row.warn{background:var(--amber-bg);border:1px solid rgba(160,96,48,.18)}.db-alert-row.ok{background:var(--green-bg);border:1px solid rgba(61,107,79,.18)}.db-alert-row.err{background:var(--red-bg);border:1px solid rgba(184,50,50,.18)}
+    .db-alert-icon{font-size:13px;flex-shrink:0;font-family:'DM Mono',monospace;font-weight:600}
+    .db-alert-text strong{color:var(--dark);font-weight:500}
+    .db-alert-text{color:var(--muted)}
+
+    /* ── WAITLIST INPUT ── */
+    .waitlist-input::placeholder{color:var(--green-bg);opacity:1}
+
+    /* ── COMMON SECTION ── */
+    .section-wrap{padding:96px 48px;max-width:1200px;margin:0 auto}
+    .section-divider{border:none;border-top:1px solid var(--border)}
+    .section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+    .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.8vw,50px);font-weight:700;letter-spacing:-0.05em;line-height:1.05;color:var(--dark);max-width:580px}
+    .section-title em{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:400;color:var(--muted);letter-spacing:-0.03em;display:block;font-size:0.95em}
+
+    /* ── AI EXPLANATION SECTION ── */
+    .ai-section-wrap{padding:96px 48px;max-width:1200px;margin:0 auto}
+    .ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:56px;align-items:start}
+
+    .ai-steps{display:flex;flex-direction:column;gap:0}
+    .ai-step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-16px);transition:all .5s}
+    .ai-step.visible{opacity:1;transform:translateX(0)}
+    .ai-step-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--faint);min-width:24px;margin-top:3px}
+    .ai-step-content h3{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:5px;letter-spacing:-0.04em}
+    .ai-step-content p{font-size:13px;color:var(--muted);line-height:1.65;font-weight:400}
+
+    /* The AI explanation card */
+    .ai-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden}
+    .ai-card-header{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .ai-card-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-family:'DM Mono',monospace}
+    .ai-badge{display:flex;align-items:center;gap:6px;font-size:10px;font-family:'DM Mono',monospace;font-weight:600;letter-spacing:.08em;color:var(--ai);background:var(--ai-bg);padding:4px 10px;border-radius:20px;border:1px solid rgba(91,75,212,0.2)}
+    .ai-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--ai);animation:blink 2s infinite}
+
+    /* Payout breakdown mini */
+    .ai-payout-mini{padding:16px 22px;border-bottom:1px solid var(--border);background:var(--surface2)}
+    .ai-payout-mini-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .ai-payout-mini-id{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)}
+    .ai-payout-mini-rows{display:flex;flex-direction:column;gap:0}
+    .ai-payout-mini-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--border)}
+    .ai-payout-mini-row:last-child{border-bottom:none}
+    .ai-mini-label{font-size:11px;color:var(--muted);font-weight:400}
+    .ai-mini-tag{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;padding:2px 6px;border-radius:4px;letter-spacing:.06em}
+    .ai-mini-amount{font-family:'DM Mono',monospace;font-size:12px;text-align:right;white-space:nowrap;color:var(--dark)}
+    .ai-mini-amount.dr{color:var(--red)}
+
+    /* The explanation bubble */
+    .ai-explanation{padding:20px 22px}
+    .ai-explanation-label{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ai);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+    .ai-explanation-text{font-size:13px;color:var(--text);line-height:1.75;font-weight:400}
+    .ai-explanation-text strong{font-weight:500;color:var(--dark)}
+    .ai-explanation-highlight{display:inline;background:var(--ai-bg);color:var(--ai);padding:1px 5px;border-radius:4px;font-weight:500;font-size:12px}
+    .ai-action-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+    .ai-action-btn{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;color:#fff;background:#2d6a4f;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;transition:all .2s}
+    .ai-action-btn:hover{background:#1f4733;transform:translateY(-1px)}
+    .ai-action-note{font-size:11px;color:var(--faint);font-family:'DM Mono',monospace}
+
+    /* typing cursor effect */
+    .typing-cursor{display:inline-block;width:2px;height:14px;background:var(--ai);margin-left:2px;animation:blink-cursor .8s infinite;vertical-align:text-bottom}
+    @keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* ── VS SECTION ── */
+    .vs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);border-radius:18px;overflow:hidden;margin-top:56px}
+    .vs-card{background:var(--surface);padding:36px;transition:background .2s}
+    .vs-card:hover{background:var(--surface2)}
+    .vs-icon{font-size:22px;margin-bottom:16px}
+    .vs-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:8px;letter-spacing:-0.05em}
+    .vs-body{font-size:13px;color:var(--muted);line-height:1.7;font-weight:400}
+    .vs-compare{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
+    .vs-before,.vs-after{flex:1}
+    .vs-label{font-size:9px;font-family:'DM Mono',monospace;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+    .vs-label.before{color:var(--red)}.vs-label.after{color:var(--green)}
+    .vs-text{font-size:12px;color:var(--muted);line-height:1.55;font-weight:400}
+    .vs-divider{width:1px;background:var(--border);margin-top:20px;flex-shrink:0}
+
+    /* ── COMPETITOR CALLOUT ── */
+    .competitor-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:56px}
+    .competitor-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px}
+    .competitor-name{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:4px;letter-spacing:.01em}
+    .competitor-role{font-size:10px;color:var(--faint);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+    .competitor-feature-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted)}
+    .competitor-feature-row:last-child{border-bottom:none}
+    .cf-tick{font-size:12px;flex-shrink:0}
+    .cf-tick.yes{color:var(--green)}.cf-tick.no{color:var(--faint)}.cf-tick.ai{color:var(--ai)}
+    .competitor-coreflow{border-color:#2d6a4f}
+    .competitor-coreflow .competitor-name{color:#2d6a4f}
+
+    /* ── INTEGRATIONS ── */
+    .integrations-section{text-align:center}
+    .integrations-section .section-title{margin:0 auto 14px}
+    .int-sub{font-size:15px;color:var(--muted);margin-bottom:56px;font-weight:400}
+    .int-track-wrap{overflow:hidden;position:relative;margin:0 -48px}
+    .int-track-wrap::before,.int-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:90px;z-index:2}
+    .int-track-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+    .int-track-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+    .int-track{display:flex;gap:12px;animation:scrolltrack 32s linear infinite;width:max-content;padding:0 48px}
+    @keyframes scrolltrack{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .int-pill{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-size:12px;color:var(--muted);white-space:nowrap;transition:all .2s}
+    .int-pill:hover{border-color:#2d6a4f;color:#2d6a4f}
+    .int-pill-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px}
+
+    /* ── PRICING ── */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+    .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:34px;position:relative;transition:border-color .2s}
+    .pricing-card:hover{border-color:var(--border2)}
+    .pricing-card.featured{border-color:var(--dark)}
+    .pricing-featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--dark);color:var(--surface);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:100px;font-family:'DM Mono',monospace;white-space:nowrap}
+    .pricing-tier{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+    .pricing-price{font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;letter-spacing:-0.05em;color:var(--dark);margin-bottom:4px;line-height:1}
+    .pricing-price span{font-size:16px;font-weight:400;color:var(--muted)}
+    .pricing-period{font-size:12px;color:var(--faint);margin-bottom:26px}
+    .pricing-divider{height:1px;background:var(--border);margin-bottom:22px}
+    .pricing-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .pricing-features li{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);font-weight:400}
+    .pricing-check{width:16px;height:16px;border-radius:50%;background:#e8f5ee;border:1px solid rgba(45,106,79,.3);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;color:#2d6a4f}
+    .pricing-check.ai-check{background:var(--ai-bg);border-color:rgba(91,75,212,.25);color:var(--ai)}
+    .btn-pricing{width:100%;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:13px;border-radius:9px;cursor:pointer;transition:all .2s;border:none}
+    .btn-pricing.outline{background:none;border:1px solid var(--border2);color:var(--muted)}
+    .btn-pricing.outline:hover{border-color:var(--dark);color:var(--dark);background:var(--surface2)}
+    .btn-pricing.filled{background:#2d6a4f;color:#fff}
+    .btn-pricing.filled:hover{background:#1f4733;box-shadow:0 8px 24px rgba(20,20,20,.15)}
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+    .testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px}
+    .testimonial-stars{color:var(--amber);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+    .testimonial-text{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:22px;font-weight:400}
+    .testimonial-author{display:flex;align-items:center;gap:11px}
+    .testimonial-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px}
+    .testimonial-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--dark);letter-spacing:-0.03em}
+    .testimonial-role{font-size:10px;color:var(--faint);font-family:'DM Mono',monospace;margin-top:2px}
+
+    /* ── CTA ── */
+    .cta-section{padding:40px 48px 96px;max-width:1200px;margin:0 auto}
+    .cta-inner{background:#2d6a4f;border-radius:22px;padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+    .cta-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.3;mix-blend-mode:luminosity}
+    .cta-overlay{position:absolute;inset:0;background:rgba(26,51,38,0.72);z-index:1}
+    .cta-inner > *:not(.cta-video):not(.cta-overlay){position:relative;z-index:2}
+    .cta-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.8vw,50px);font-weight:700;letter-spacing:-0.05em;line-height:1.05;color:#fff;margin-bottom:18px}
+    .cta-title em{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:400;color:rgba(255,255,255,0.55);letter-spacing:-0.03em;display:block;font-size:0.95em}
+    .cta-sub{font-size:15px;color:rgba(255,255,255,0.45);max-width:440px;margin:0 auto 36px;line-height:1.65;font-weight:400}
+    .cta-actions{display:flex;align-items:center;justify-content:center;gap:12px}
+    .btn-cta-white{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:#2d6a4f;background:#fff;border:none;padding:15px 30px;border-radius:10px;cursor:pointer;transition:all .2s}
+    .btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+    .btn-cta-ghost{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.55);background:none;border:1px solid rgba(255,255,255,0.15);padding:15px 26px;border-radius:10px;cursor:pointer;transition:all .2s}
+    .btn-cta-ghost:hover{border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.8)}
+    .cta-note{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);margin-top:18px;letter-spacing:.05em}
+    .platform-row{display:flex;align-items:center;justify-content:center;gap:10px;padding:28px 0 0;flex-wrap:wrap}
+    .platform-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:7px 14px;font-size:11px;color:rgba(255,255,255,0.5)}
+    .platform-pill-dot{width:5px;height:5px;border-radius:50%}
+
+    /* ── FOOTER ── */
+    footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between}
+    .footer-logo{display:flex;align-items:center;gap:8px}
+    .footer-logo-text{font-size:14px;font-weight:400;letter-spacing:-0.02em;color:var(--muted)}
+    .footer-links{display:flex;gap:28px;list-style:none}
+    .footer-links a{font-size:12px;color:var(--faint);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--muted)}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--faint)}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* hero content z */
+    .hero-badge,.hero-headline,.hero-sub,.hero-actions,.hero-payout-viz{position:relative;z-index:3}
+    .dashboard-section{position:relative;z-index:3}
+
+    @media(max-width:900px){
+      nav{padding:0 20px}.nav-links{display:none}
+      .section-wrap,.ai-section-wrap{padding:60px 24px}
+      .hero{padding:120px 24px 72px}
+      .dashboard-section{padding:0 24px}
+      .ai-grid,.vs-grid,.pricing-grid,.testimonials-grid,.competitor-row{grid-template-columns:1fr}
+      .db-content{grid-template-columns:1fr}.db-sidebar,.db-bottom-row{display:none}
+      .db-top-row{grid-template-columns:repeat(2,1fr)}
+      .cta-section{padding:20px 24px 60px}.cta-inner{padding:48px 28px}
+      footer{flex-direction:column;gap:20px;text-align:center}
+      .footer-links{flex-wrap:wrap;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo" style="text-decoration:none;display:flex;align-items:center">
+      <span id="navWordmark" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.05em;line-height:1;color:#ffffff;display:flex;align-items:baseline;transition:color .4s ease">
+        Klaio<span style="font-size:12px;font-weight:400;opacity:0.6;vertical-align:super;margin-left:2px;letter-spacing:0">.io</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#ai">AI explanations</a></li>
+    </ul>
+    <div class="nav-cta"></div>
+  </nav>
+
+  <!-- DARK BLOCK -->
+  <div class="hero-dark-block">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero-overlay"></div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-fade"></div>
+
+      <div class="hero-badge">
+        Built for Shopify merchants · not accountants
+      </div>
+
+      <h1 class="hero-headline">
+        Your Shopify payout,<br/><em>explained in plain English.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Standard integration tools talk to your accountant; Klaio talks to <em style="font-style:normal;color:rgba(255,255,255,0.7)">you</em>. Get the story behind every payout, summarised in a single sentence, automatically.
+      </p>
+
+      <div class="hero-actions">
+        <div data-fs-success hidden style="display:inline-block;background:#f0f7f3;color:#2d6a4f;border:1px solid rgba(45,106,79,0.2);border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 20px;margin-bottom:8px">You're on the list ✓</div>
+        <div data-fs-error hidden style="display:inline-block;background:#fdf0f0;color:#b83232;border:1px solid rgba(184,50,50,0.2);border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 20px;margin-bottom:8px"></div>
+        <form id="hero-form" class="waitlist-form" novalidate style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center">
+          <input class="waitlist-input" type="text" name="name" placeholder="Your name" autocomplete="given-name" data-fs-field style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:14px 18px;border-radius:10px;outline:none;width:180px;transition:border-color .2s" onfocus="this.style.borderColor='rgba(255,255,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'" />
+          <input class="waitlist-input" type="email" name="email" placeholder="Email" autocomplete="email" data-fs-field style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:14px 18px;border-radius:10px;outline:none;width:230px;transition:border-color .2s" onfocus="this.style.borderColor='rgba(255,255,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'" />
+          <button type="submit" data-fs-submit-btn style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:#1a3326;background:#fff;border:none;padding:14px 24px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:all .25s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">Join waitlist</button>
+        </form>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:4px;font-family:'DM Mono',monospace;letter-spacing:.04em;text-align:center">No spam. No credit card. Just an early invite.</p>
+      </div>
+
+    </div>
+
+    <!-- DASHBOARD PREVIEW -->
+    <div class="dashboard-section">
+      <div class="dashboard-frame">
+        <div class="dashboard-bar">
+          <div class="db-dots"><div class="db-dot r"></div><div class="db-dot y"></div><div class="db-dot g"></div></div>
+          <div class="db-url">app.klaio.io/payouts</div>
+        </div>
+        <div class="db-content">
+          <div class="db-sidebar">
+            <div class="db-logo-row">
+              <span class="db-logo-text" style="display:inline-flex;align-items:baseline;font-weight:700;letter-spacing:-0.05em;font-size:16px;color:#2d6a4f">Klaio<span style="font-size:9px;font-weight:400;opacity:0.6;margin-left:2px;letter-spacing:0">.io</span></span>
+            </div>
+            <div class="db-nav-item active"><i class="iconoir-coins" style="font-size:13px"></i> Payouts</div>
+            <div class="db-nav-item"><i class="iconoir-spark" style="font-size:13px"></i> AI Summaries</div>
+            <div class="db-nav-item"><i class="iconoir-bell-notification" style="font-size:13px"></i> Attention</div>
+            <div class="db-nav-item"><i class="iconoir-settings" style="font-size:13px"></i> Settings</div>
+            <div class="db-nav-divider"></div>
+            <div class="db-platform-row"><div class="db-platform-dot" style="background:#3d6b30"></div><span style="font-size:11px;color:#3d6b30;font-weight:500">Shopify</span></div>
+            <div class="db-platform-row"><div class="db-platform-dot" style="background:#1a5276"></div><span style="font-size:11px;color:#1a5276;font-weight:500">Xero</span></div>
+          </div>
+          <div class="db-main">
+            <div>
+              <div class="db-heading">5 payouts · April 2026</div>
+              <div class="db-subtext">3 need attention · £1,783 unreconciled · AI summaries ready</div>
+            </div>
+            <div class="db-top-row">
+              <div class="db-stat"><div class="db-stat-label">Shopify gross</div><div class="db-stat-value">£14,573<span class="dec">.00</span></div><div class="db-stat-delta nt">5 payouts</div></div>
+              <div class="db-stat"><div class="db-stat-label">Net received</div><div class="db-stat-value">£13,836<span class="dec">.60</span></div><div class="db-stat-delta nt">After all fees</div></div>
+              <div class="db-stat"><div class="db-stat-label">Reconciled</div><div class="db-stat-value">£12,790<span class="dec">.70</span></div><div class="db-stat-delta up">↑ 2 of 5 clear</div></div>
+              <div class="db-stat"><div class="db-stat-label">Needs action</div><div class="db-stat-value">£1,094<span class="dec">.00</span></div><div class="db-stat-delta dn">↓ 3 issues</div></div>
+            </div>
+            <div class="db-bottom-row">
+              <div class="db-card">
+                <div class="db-card-title">Recent Payouts</div>
+                <div class="db-payout-row"><span class="db-payout-id">PAY-APR-29</span><span class="db-payout-val">£4,641.50</span><span class="db-badge a">Fees unposted</span></div>
+                <div class="db-payout-row"><span class="db-payout-id">PAY-APR-25</span><span class="db-payout-val">£3,149.20</span><span class="db-badge g">Reconciled</span></div>
+                <div class="db-payout-row"><span class="db-payout-id">PAY-APR-22</span><span class="db-payout-val">£5,407.80</span><span class="db-badge a">Fees unposted</span></div>
+                <div class="db-payout-row"><span class="db-payout-id">PAY-APR-18</span><span class="db-payout-val">£896.80</span><span class="db-badge r">Not in Xero</span></div>
+              </div>
+              <div class="db-card">
+                <div class="db-card-title">Attention needed</div>
+                <div class="db-alert-row warn"><div class="db-alert-icon"><i class="iconoir-warning-triangle" style="font-size:12px"></i></div><div class="db-alert-text"><strong>£108.20 fees</strong> not posted · P&amp;L overstated</div></div>
+                <div class="db-alert-row err"><div class="db-alert-icon"><i class="iconoir-xmark-circle" style="font-size:12px"></i></div><div class="db-alert-text"><strong>PayPal payout</strong> £896.80 missing from Xero</div></div>
+                <div class="db-alert-row ok"><div class="db-alert-icon"><i class="iconoir-check-circle" style="font-size:12px"></i></div><div class="db-alert-text"><strong>£7,790</strong> fully reconciled this month</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end dark block -->
+
+  <!-- ── AI EXPLANATION SECTION ── -->
+  <hr class="section-divider"/>
+  <div class="ai-section-wrap" id="ai">
+    <div class="reveal">
+      <div class="section-eyebrow">Klaio AI</div>
+      <div class="section-title">No accountant jargon.<br/><em>Klaio talks to you in plain English.</em></div>
+      <p style="font-size:14px;color:var(--muted);max-width:520px;margin-top:16px;line-height:1.7;font-weight:400;">
+        Every existing reconciliation tool posts data to Xero. None of them explain what that data means in language a non-accountant can understand. Klaio does both — automatically, for every payout, from day one.
+      </p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-steps">
+        <div class="ai-step">
+          <div class="ai-step-num">01</div>
+          <div class="ai-step-content">
+            <h3>Klaio reads your payout</h3>
+            <p>Every time Shopify issues a payout, Klaio pulls the full breakdown — gross sales, fees, refunds, chargebacks — to individual order level.</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">02</div>
+          <div class="ai-step-content">
+            <h3>It checks every line against Xero</h3>
+            <p>Each component is verified against your Xero bank feed and expense accounts. Missing entries are flagged. Duplicates are caught. The numbers are made to agree.</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">03</div>
+          <div class="ai-step-content">
+            <h3>Then it writes you a plain-English summary</h3>
+            <p>Not a journal entry. Not a reconciliation report. A sentence — or two — that explains what happened in your payout in language anyone can understand. No accounting knowledge needed.</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">04</div>
+          <div class="ai-step-content">
+            <h3>One click to fix anything that needs fixing</h3>
+            <p>If Klaio finds a missing fee, a refund crossing VAT periods, or a chargeback not in Xero — it prepares the fix and posts it with one click. You confirm. It posts. Done.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Card -->
+      <div class="reveal">
+        <div class="ai-card">
+          <div class="ai-card-header">
+            <div class="ai-card-title">PAY-APR-29 · AI Summary</div>
+            <div class="ai-badge">
+              <div class="ai-badge-dot"></div>
+              Klaio AI
+            </div>
+          </div>
+
+          <!-- Mini payout breakdown -->
+          <div class="ai-payout-mini">
+            <div class="ai-payout-mini-header">
+              <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace">Shopify Payments · 47 orders · 29 Apr</span>
+              <span style="font-size:11px;font-weight:500;color:var(--dark);font-family:'DM Mono',monospace">£4,641.50 received</span>
+            </div>
+            <div class="ai-payout-mini-rows">
+              <div class="ai-payout-mini-row">
+                <span class="ai-mini-label">Gross sales</span>
+                <span class="ai-mini-tag" style="color:var(--green);background:var(--green-bg)">XERO ✓</span>
+                <span class="ai-mini-amount">£4,823.00</span>
+              </div>
+              <div class="ai-payout-mini-row">
+                <span class="ai-mini-label">Transaction fees</span>
+                <span class="ai-mini-tag" style="color:var(--amber);background:var(--amber-bg)">FIXED ✓</span>
+                <span class="ai-mini-amount dr">−£92.40</span>
+              </div>
+              <div class="ai-payout-mini-row">
+                <span class="ai-mini-label">Refund · Order #1031</span>
+                <span class="ai-mini-tag" style="color:var(--green);background:var(--green-bg)">XERO ✓</span>
+                <span class="ai-mini-amount dr">−£89.10</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI explanation -->
+          <div class="ai-explanation">
+            <div class="ai-explanation-label">
+              <i class="iconoir-spark" style="font-size:14px"></i>
+              Plain-English summary
+            </div>
+            <div class="ai-explanation-text" id="aiText">
+              Shopify sent you <strong>£4,641.50</strong> on Tuesday — from <strong>47 orders</strong> totalling £4,823. The difference is made up of <span class="ai-explanation-highlight">£92.40 in transaction fees</span> (now posted to Xero as an expense) and <span class="ai-explanation-highlight">an £89.10 refund on Order #1031</span> from March, which Shopify deducted from this payout. <strong>Your bank reconciles exactly.</strong> One thing to flag: the March refund crossed a VAT period — your accountant may want to check the credit note date is correct.<span class="typing-cursor" id="cursor"></span>
+            </div>
+            <div class="ai-action-row">
+              <button class="ai-action-btn"><i class="iconoir-open-new-window" style="font-size:13px"></i> View in Xero</button>
+              <span class="ai-action-note">Posted · reconciled · VAT flagged</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOW IT WORKS ── -->
+  <hr class="section-divider"/>
+  <div class="section-wrap" id="how-it-works">
+    <div class="reveal">
+      <div class="section-eyebrow">How it works</div>
+      <div class="section-title">Connected within 15 minutes.<br/><em>Books accurate from day one.</em></div>
+      <p style="font-size:14px;color:var(--muted);max-width:500px;margin-top:16px;line-height:1.7;font-weight:400;">
+        Klaio uses secure, one-click authorisation to connect your platforms without ever seeing your passwords. Forget about hiring engineers or tedious field mapping—Klaio automatically syncs your VAT settings between Shopify and Xero so you can get started instantly.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px" class="reveal">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 24px">
+        <div style="margin-bottom:14px"><i class="iconoir-link" style="font-size:28px;color:var(--dark)"></i></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px;letter-spacing:-0.05em">Connect</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.65;font-weight:400">Authorise Shopify + Xero via secure, one-click authorisation. Klaio reads your payout history and VAT settings immediately.</div>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em">~15 minutes</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 24px">
+        <div style="margin-bottom:14px"><i class="iconoir-search" style="font-size:28px;color:var(--dark)"></i></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px;letter-spacing:-0.05em">Scan</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.65;font-weight:400">Klaio scans your last 90 days of payouts, finds every unposted fee, refund mismatch and chargeback.</div>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em">~30 seconds</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 24px">
+        <div style="margin-bottom:14px"><i class="iconoir-spark" style="font-size:28px;color:var(--dark)"></i></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px;letter-spacing:-0.05em">Explain</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.65;font-weight:400">Every payout gets a plain-English AI summary. You understand exactly what happened without opening Xero.</div>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em">Automatic</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 24px">
+        <div style="margin-bottom:14px"><i class="iconoir-check-circle" style="font-size:28px;color:var(--green)"></i></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:8px;letter-spacing:-0.05em">Fix</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.65;font-weight:400">Missing entries are prepared and ready to post. One click. Xero is accurate. Month end takes minutes.</div>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--faint);letter-spacing:.06em">One click</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VS SECTION ── -->
+  <hr class="section-divider"/>
+  <div class="section-wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">Why not other integration tools?</div>
+      <div class="section-title">They're built<br/><em>for your accountant.</em></div>
+      <p style="font-size:14px;color:var(--muted);max-width:520px;margin-top:16px;line-height:1.7;font-weight:400;">All post journal entries to Xero or QuickBooks that only an accountant can interpret — and then leave you to figure out the rest. Klaio is built for the merchant who runs the business, not the accountant who files the returns.</p>
+    </div>
+
+    <!-- Competitor comparison table -->
+    <div class="competitor-row reveal">
+      <div class="competitor-card">
+        <div class="competitor-name">Standard integration tools</div>
+        <div class="competitor-role">Accountant-first · data in, data out</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> Payout reconciliation to Xero / QuickBooks</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> Journal entry posting</div>
+        <div class="competitor-feature-row"><span class="cf-tick no"><i class="iconoir-xmark" style="font-size:13px"></i></span> Requires accountant to interpret output</div>
+        <div class="competitor-feature-row"><span class="cf-tick no"><i class="iconoir-xmark" style="font-size:13px"></i></span> No plain-English explanations</div>
+        <div class="competitor-feature-row"><span class="cf-tick no"><i class="iconoir-xmark" style="font-size:13px"></i></span> No chargeback alerts or responses</div>
+        <div class="competitor-feature-row"><span class="cf-tick no"><i class="iconoir-xmark" style="font-size:13px"></i></span> Setup often requires configuration help</div>
+      </div>
+<div class="competitor-card competitor-coreflow">
+        <div class="competitor-name">Klaio.io</div>
+        <div class="competitor-role">Merchant-first · Shopify + Xero / QuickBooks</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> Payout reconciliation to Xero / QuickBooks</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> Journal entry posting</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> 15-minute setup, no accountant needed</div>
+        <div class="competitor-feature-row"><span class="cf-tick ai"><i class="iconoir-spark" style="font-size:13px"></i></span> Plain-English AI payout explanations</div>
+        <div class="competitor-feature-row"><span class="cf-tick ai"><i class="iconoir-spark" style="font-size:13px"></i></span> AI-drafted chargeback responses</div>
+        <div class="competitor-feature-row"><span class="cf-tick yes"><i class="iconoir-check-circle" style="font-size:13px"></i></span> Real-time chargeback alerts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTEGRATIONS ── -->
+  <hr class="section-divider"/>
+  <div class="section-wrap integrations-section">
+    <div class="reveal">
+      <div class="section-eyebrow" style="text-align:center">Integrations</div>
+      <div class="section-title" style="text-align:center;margin:0 auto;max-width:560px">Built for Shopify merchants.<br/><em>Works where you already work.</em></div>
+      <p class="int-sub" style="margin-top:14px">Connect via secure, one-click authorisation in minutes. No field mapping, no engineers, no new software to learn.</p>
+    </div>
+    <div class="reveal" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
+      <div class="int-pill">Shopify Payments</div>
+      <div class="int-pill">Xero</div>
+      <div class="int-pill">QuickBooks</div>
+      <div class="int-pill" style="color:var(--faint);border-style:dashed;font-style:italic">+ more coming soon</div>
+    </div>
+  </div>
+
+
+  <!-- ── CTA ── -->
+  <div class="cta-section">
+    <div class="cta-inner reveal">
+      <video class="cta-video" autoplay muted loop playsinline>
+        <source src="background.mp4" type="video/mp4"/>
+      </video>
+      <div class="cta-overlay"></div>
+      <h2 class="cta-title">Your Shopify payout,<br/><em>explained in plain English.</em></h2>
+      <p class="cta-sub">Connect Shopify, Xero or QuickBooks within 15 minutes. Klaio explains every payout in plain English.</p>
+      <div class="cta-actions" style="flex-direction:column;gap:14px">
+        <div data-fs-success hidden style="display:inline-block;background:#f0f7f3;color:#2d6a4f;border:1px solid rgba(45,106,79,0.2);border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 20px;margin-bottom:8px">You're on the list ✓</div>
+        <div data-fs-error hidden style="display:inline-block;background:#fdf0f0;color:#b83232;border:1px solid rgba(184,50,50,0.2);border-radius:100px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 20px;margin-bottom:8px"></div>
+        <form id="cta-form" class="waitlist-form" novalidate style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center">
+          <input class="waitlist-input" type="text" name="name" placeholder="Your name" autocomplete="given-name" data-fs-field style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:14px 18px;border-radius:10px;outline:none;width:180px;transition:border-color .2s" onfocus="this.style.borderColor='rgba(255,255,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'" />
+          <input class="waitlist-input" type="email" name="email" placeholder="Email" autocomplete="email" data-fs-field style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:14px 18px;border-radius:10px;outline:none;width:230px;transition:border-color .2s" onfocus="this.style.borderColor='rgba(255,255,255,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'" />
+          <button type="submit" data-fs-submit-btn style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:#1a3326;background:#fff;border:none;padding:14px 24px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:all .25s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">Join waitlist</button>
+        </form>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;letter-spacing:.04em">No spam. No credit card. Just an early invite.</p>
+      </div>
+      <div class="cta-note" style="margin-top:8px"></div>
+      <div class="platform-row">
+        <div class="platform-pill">Shopify</div>
+        <div class="platform-pill">Xero</div>
+        <div class="platform-pill">QuickBooks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.05em;line-height:1;color:#9a9488;display:flex;align-items:baseline">
+        Klaio<span style="font-size:10px;font-weight:400;opacity:0.6;vertical-align:super;margin-left:2px;letter-spacing:0">.io</span>
+      </span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#ai">AI explanations</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Klaio.io</div>
+  </footer>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#hero-form', formId: 'mbdwkodp' });
+    formspree('initForm', { formElement: '#cta-form',  formId: 'mbdwkodp' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Reset state on every page load
+      document.querySelectorAll('[data-fs-success],[data-fs-error]').forEach(function (el) { el.hidden = true; });
+      document.querySelectorAll('#hero-form,#cta-form').forEach(function (f) { f.hidden = false; });
+
+      // Capture-phase validation fires before Formspree's submit listener
+      ['hero-form', 'cta-form'].forEach(function (id) {
+        var form = document.getElementById(id);
+        if (!form) return;
+        var errorDiv = form.parentElement.querySelector('[data-fs-error]');
+        form.addEventListener('submit', function (e) {
+          var name  = form.querySelector('input[name="name"]').value.trim();
+          var email = form.querySelector('input[name="email"]').value.trim();
+          var msg = !name  ? 'Name required'
+                  : !email ? 'Email required'
+                  : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Invalid email'
+                  : '';
+          if (msg) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if (errorDiv) { errorDiv.textContent = msg; errorDiv.hidden = false; }
+          } else {
+            if (errorDiv) errorDiv.hidden = true;
+          }
+        }, true);
+      });
+    });
+  </script>
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('mainNav');
+    const wordmark = document.getElementById('navWordmark');
+    const hero = document.querySelector('.hero');
+    function updateNav() {
+      const scrolled = hero.getBoundingClientRect().bottom <= 80;
+      nav.classList.toggle('scrolled', scrolled);
+      if (wordmark) wordmark.style.color = scrolled ? '#2d6a4f' : '#ffffff';
+    }
+    window.addEventListener('scroll', updateNav, {passive:true});
+    updateNav();
+
+    // Hero payout card resolves after 3.5s
+    setTimeout(() => {
+      const tag  = document.getElementById('feeTag');
+      const pill = document.getElementById('heroStatusPill');
+      const note = document.getElementById('heroCtaNote');
+      const btn  = document.getElementById('heroCtaBtn');
+      if(tag)  { tag.textContent='POSTED ✓'; tag.className='pr-xero xero-ok'; }
+      if(pill) { pill.textContent='Reconciled ✓'; pill.className='payout-status-pill pill-green'; }
+      if(note) note.textContent='All lines reconciled · Xero up to date';
+      if(btn)  { btn.textContent='View breakdown →'; btn.style.opacity='0.5'; }
+    }, 3500);
+
+    // AI text typing effect
+    function typeAiText() {
+      const el = document.getElementById('aiText');
+      const cursor = document.getElementById('cursor');
+      if (!el) return;
+      const finalHtml = el.innerHTML;
+      el.innerHTML = '<span class="typing-cursor" id="cursor"></span>';
+
+      // We'll fade in the text rather than true character typing
+      // since it contains HTML tags
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.innerHTML = finalHtml;
+        el.style.transition = 'opacity 1.2s ease';
+        setTimeout(() => { el.style.opacity = '1'; }, 100);
+      }, 800);
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:0.08, rootMargin:'0px 0px -48px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // AI steps stagger
+    document.querySelectorAll('.ai-step').forEach((item, i) => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) setTimeout(() => item.classList.add('visible'), i*120); });
+      }, { threshold:0.1 });
+      io.observe(item);
+    });
+
+    // Trigger AI text when section is in view
+    const aiCard = document.querySelector('.ai-card');
+    if (aiCard) {
+      const aiObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) { typeAiText(); aiObs.disconnect(); } });
+      }, { threshold:0.3 });
+      aiObs.observe(aiCard);
+    }
+  </script>
+</body>
+</html>
