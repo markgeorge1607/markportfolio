@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mark George — Selected Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --paper-2:#EFEBE1;
+    --ink:#15140F;
+    --ink-soft:#3A382F;
+    --gray:#8C887B;
+    --line:#D8D3C6;
+    --accent:#7E3A2E;
+    --grotesk:'Hanken Grotesk', system-ui, sans-serif;
+    --serif:'Newsreader', Georgia, serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--grotesk);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:var(--paper)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 clamp(24px,5vw,80px)}
+
+  /* ---------- top bar ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(1.1) blur(6px);
+    background:color-mix(in srgb, var(--paper) 82%, transparent);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, background .4s ease;
+  }
+  header.scrolled{border-color:var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:78px}
+  header .wrap.bar{max-width:none;margin:0;padding:0 clamp(24px,5vw,80px)}
+  .mark{font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:13px}
+  .mark span{color:var(--accent)}
+  nav.links{display:flex;gap:38px}
+  nav.links a{font-size:13.5px;color:var(--ink-soft);letter-spacing:.01em;position:relative;padding:4px 0;white-space:nowrap}
+  nav.links a.active{color:var(--ink)}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--ink);transition:width .35s cubic-bezier(.2,.7,.2,1)}
+  nav.links a:hover::after,nav.links a.active::after{width:100%}
+
+  /* motion primitive (matches homepage) */
+  .fx{opacity:0;transform:translateY(22px)}
+  .fx.shown{opacity:1;transform:none}
+  .fx.playing{animation:fxin .8s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes fxin{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .draw{transform:scaleX(0);transform-origin:left}
+  .draw.shown{transform:scaleX(1)}
+  .draw.playing{animation:drawin 1s cubic-bezier(.62,0,.2,1) both}
+  @keyframes drawin{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* ---------- page masthead ---------- */
+  .masthead{padding:clamp(60px,11vh,140px) 0 clamp(40px,6vh,72px)}
+  .eyebrow{display:flex;align-items:center;gap:16px;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:34px}
+  .eyebrow .rule{height:1px;width:46px;background:var(--line)}
+  .mh-grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,30vw,420px);gap:clamp(36px,6vw,90px);align-items:end}
+  .mh-title{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,8.5vw,7.2rem);line-height:.94;letter-spacing:-.025em;color:var(--ink)}
+  .mh-title em{font-style:italic;color:var(--accent)}
+  .mh-note{font-family:var(--serif);font-weight:300;font-size:clamp(1.18rem,1.7vw,1.5rem);line-height:1.5;letter-spacing:-.008em;color:var(--ink-soft);text-wrap:pretty}
+  .mh-note b{font-weight:500;color:var(--ink)}
+  .mh-note em{font-style:italic;color:var(--accent)}
+  .mh-rule{height:1.5px;background:var(--ink);margin-top:clamp(38px,6vh,64px)}
+
+  /* ---------- entries ---------- */
+  .entries{padding-bottom:clamp(40px,7vh,80px)}
+  .entry{
+    display:grid;grid-template-columns:88px minmax(0,1fr) clamp(300px,32vw,480px);
+    gap:clamp(28px,4vw,60px);
+    padding:clamp(46px,7vh,86px) 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .entry .e-num{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,3vw,2.8rem);line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums;padding-top:6px}
+  .e-body{max-width:60ch}
+  .e-kicker{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:20px}
+  .e-kicker .role{color:var(--accent)}
+  .e-kicker .sep{width:4px;height:4px;border-radius:50%;background:var(--line)}
+  .e-title{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:500;letter-spacing:-.018em;line-height:1.02;color:var(--ink);transition:color .35s}
+  .e-intro{font-family:var(--serif);font-weight:300;font-size:clamp(1.18rem,1.6vw,1.42rem);line-height:1.5;letter-spacing:-.006em;color:var(--ink-soft);margin-top:22px;text-wrap:pretty}
+  .e-intro em{font-style:italic;color:var(--accent)}
+  .e-intro b{font-weight:500;color:var(--ink)}
+  .e-metrics{display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,52px);margin-top:30px}
+  .e-metric .m-num{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,2.4vw,2.3rem);line-height:1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;display:block}
+  .e-metric .m-num i{font-style:normal;color:var(--accent)}
+  .e-metric .m-lab{display:block;margin-top:9px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);line-height:1.5}
+  .e-read{display:inline-flex;align-items:center;gap:12px;margin-top:34px;font-size:13.5px;letter-spacing:.04em;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:6px;transition:gap .3s,color .3s,border-color .3s}
+  .e-read span{transition:transform .3s}
+  .e-read:hover{gap:20px;color:var(--accent);border-color:var(--accent)}
+  .e-media{position:relative}
+  .e-media image-slot{display:block;width:100%;height:auto;aspect-ratio:4/5;background:var(--paper-2);box-shadow:0 1px 0 var(--line)}
+  .e-cap{margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:right}
+  .entry:hover .e-title{color:var(--accent)}
+
+  /* ---------- secondary list ---------- */
+  .also{padding:clamp(50px,8vh,96px) 0 clamp(20px,4vh,40px)}
+  .also-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:8px}
+  .section-label{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+  .section-note{font-size:13px;color:var(--gray);max-width:32ch;text-align:right}
+  .rows{margin-top:26px;border-top:1px solid var(--line)}
+  .row{
+    display:grid;grid-template-columns:54px 1fr auto auto;align-items:center;gap:28px;
+    padding:28px 8px;border-bottom:1px solid var(--line);
+  }
+  .row .num{font-family:var(--serif);font-size:15px;color:var(--gray);font-variant-numeric:tabular-nums}
+  .row .title{font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:500;letter-spacing:-.015em;color:var(--ink)}
+  .row .title small{display:block;font-family:var(--grotesk);font-weight:400;font-size:13.5px;letter-spacing:0;color:var(--gray);margin-top:7px}
+  .row .role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+  .row .year{font-family:var(--serif);font-size:15px;color:var(--gray);font-variant-numeric:tabular-nums}
+  .row .soon{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:1px solid var(--line);border-radius:100px;padding:6px 12px;white-space:nowrap}
+
+  /* ---------- contact ---------- */
+  .contact{padding:clamp(80px,14vh,170px) 0 clamp(50px,8vh,90px);border-top:1px solid var(--line)}
+  .contact .lead{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:26px}
+  .contact h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,7vw,6rem);line-height:1;letter-spacing:-.02em}
+  .contact h2 em{font-style:italic}
+  .contact .email{display:inline-flex;align-items:center;gap:14px;margin-top:38px;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:7px;transition:gap .3s,color .3s,border-color .3s}
+  .contact .email:hover{gap:22px;color:var(--accent);border-color:var(--accent)}
+  footer .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:30px 0 60px;font-size:12.5px;color:var(--gray)}
+  footer .foot a:hover{color:var(--ink)}
+  .foot-top{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft)!important}
+  .foot-top:hover{color:var(--accent)!important}
+  .foot-top span{transition:transform .3s}
+  .foot-top:hover span{transform:translateY(-3px)}
+
+  .to-top{
+    position:fixed;right:clamp(20px,3vw,38px);bottom:clamp(20px,3vw,38px);z-index:60;
+    width:48px;height:48px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:var(--paper);border:none;cursor:pointer;
+    font-size:17px;line-height:1;
+    box-shadow:0 6px 22px rgba(21,20,15,.18);
+    opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;
+    transition:opacity .4s cubic-bezier(.2,.7,.2,1),transform .4s cubic-bezier(.2,.7,.2,1),background .3s;
+  }
+  .to-top.show{opacity:1;transform:none;pointer-events:auto}
+  .to-top:hover{background:var(--accent)}
+  .to-top span{transition:transform .3s}
+  .to-top:hover span{transform:translateY(-3px)}
+
+  @media(max-width:920px){
+    .mh-grid{grid-template-columns:1fr;gap:32px;align-items:start}
+    .entry{grid-template-columns:1fr;gap:26px}
+    .entry .e-num{padding-top:0}
+    .e-media{order:-1}
+    .e-media image-slot{aspect-ratio:16/10;height:auto}
+    .e-cap{text-align:left}
+  }
+  .menu-btn{
+    display:none;background:none;border:none;cursor:pointer;
+    width:44px;height:44px;align-items:center;justify-content:center;
+    flex-direction:column;gap:5.5px;padding:10px;margin-right:-10px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .menu-btn span{
+    display:block;width:20px;height:1.5px;background:var(--ink);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .25s;
+    transform-origin:center;
+  }
+  header.nav-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  header.nav-open .menu-btn span:nth-child(2){opacity:0;transform:scaleX(0)}
+  header.nav-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:820px){
+    nav.links{display:none}
+    .row{grid-template-columns:38px 1fr;gap:16px}
+    .row .role,.row .year,.row .soon{display:none}
+    .wrap{padding-left:28px;padding-right:28px}
+    .menu-btn{display:flex}
+    header.nav-open nav.links{
+      display:flex;flex-direction:column;gap:0;
+      position:absolute;left:0;right:0;top:78px;
+      background:var(--paper);border-bottom:1px solid var(--line);
+      padding:4px 28px 20px;z-index:49;
+    }
+    header.nav-open nav.links a{
+      font-size:1.25rem;font-weight:500;color:var(--ink);
+      padding:14px 0;border-bottom:1px solid var(--line);letter-spacing:-.01em;
+    }
+    header.nav-open nav.links a:last-child{border-bottom:none}
+    header.nav-open nav.links a::after{display:none}
+  }
+</style>
+</head>
+<body>
+<header id="hdr"><a id="top"></a>
+  <div class="wrap bar">
+    <a href="01 - The Statement.html" class="mark">Mark<span>.</span> George</a>
+    <nav class="links">
+      <a href="Selected Work.html" class="active">Selected Work</a>
+      <a href="01 - The Statement.html#leadership">Leadership</a>
+      <a href="01 - The Statement.html#about">About</a>
+      <a href="01 - The Statement.html#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="masthead wrap">
+    <div class="eyebrow fx"><span class="rule"></span>Selected Work — 2025–2026</div>
+    <div class="mh-grid">
+      <h1 class="mh-title fx">Growth &amp;<br/><em>loyalty,</em> led.</h1>
+      <p class="mh-note fx">A short record of programmes I’ve led end-to-end — the framing, the team decisions, and the <b>business results that followed.</b> Each entry opens into the full story of <em>how the work got made.</em></p>
+    </div>
+    <div class="mh-rule draw"></div>
+  </section>
+
+  <section class="entries wrap">
+
+    <article class="entry">
+      <div class="e-num fx">01</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Lead Product Designer · Loyalty</span><span class="sep"></span><span>Cross-platform</span><span class="sep"></span><span>2026</span></div>
+        <h2 class="e-title fx">JET+ Loyalty Ecosystem</h2>
+        <p class="e-intro fx">Transforming transactional behaviour into loyal memberships. As loyalty design lead, I shipped a <b>90-day membership pass</b> (built to beat subscription fatigue), spearheaded the <b>Amazon Prime partnership</b> across three markets, and led design end-to-end on web, iOS and Android. <b>A case study about strategy, behavioural economics, and leading a cross-functional machine</b> at scale.</p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">6<i>M</i></span><span class="m-lab">JET+<br/>memberships</span></div>
+          <div class="e-metric"><span class="m-num"><i>+</i>15<i>%</i></span><span class="m-lab">Order<br/>frequency</span></div>
+          <div class="e-metric"><span class="m-num">100<i>%</i></span><span class="m-lab">Cross-<br/>platform</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — JET Plus Loyalty.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-jetplus" shape="rounded" radius="4" placeholder="Drop a JET+ membership image"></image-slot>
+        <div class="e-cap">Loyalty · Just Eat Takeaway</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">02</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Founder · Solo build</span><span class="sep"></span><span>SaaS</span><span class="sep"></span><span>2026</span></div>
+        <h2 class="e-title fx">Klaio.io</h2>
+        <p class="e-intro fx">A solo-founder SaaS that explains a Shopify payout <em>in plain English.</em> I took it from problem discovery to a live waitlist in under 8 weeks, without Figma — <b>pivoting from a broad three-integration dashboard to one sharp, shippable beachhead,</b> and building it with Claude as engineering partner. <b>A case study about product strategy, ruthless scoping, and shipping solo.</b></p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num"><i>&lt;</i>8<i>wk</i></span><span class="m-lab">To live<br/>waitlist</span></div>
+          <div class="e-metric"><span class="m-num">3<i>→1</i></span><span class="m-lab">Scope<br/>narrowed</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">Solo<br/>SaaS</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — Klaio.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-klaio" shape="rounded" radius="4" placeholder="Drop a Klaio.io screenshot"></image-slot>
+        <div class="e-cap">Solo SaaS · Built with Claude</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">03</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">UX Lead · End-to-end</span><span class="sep"></span><span>Consumer Search</span><span class="sep"></span><span>2025</span></div>
+        <h2 class="e-title fx">Smart Dish Search</h2>
+        <p class="e-intro fx">As Just Eat’s variety exploded, customers couldn’t find what they were craving — search only matched restaurant names, not menus. I led it end-to-end, <b>reframing the brief from “match a dish” to “understand a craving,”</b> partnering with data science on an intelligent menu ontology, and aligning a cross-functional team on a <em>phased North Star.</em></p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">268<i>K</i></span><span class="m-lab">Order-driving<br/>sessions</span></div>
+          <div class="e-metric"><span class="m-num"><i>↑</i></span><span class="m-lab">MVP<br/>conversion</span></div>
+          <div class="e-metric"><span class="m-num">3</span><span class="m-lab">Phases to<br/>North Star</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — Smart Dish Search.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-dish" shape="rounded" radius="4" placeholder="Drop a Smart Dish Search image"></image-slot>
+        <div class="e-cap">Consumer Search · Just Eat</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">04</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Introduced &amp; embedded</span><span class="sep"></span><span>Design Practice</span><span class="sep"></span><span>2024</span></div>
+        <h2 class="e-title fx">Framing Complexity</h2>
+        <p class="e-intro fx">Most teams rush to solutions. I embedded <b>Problem Framing</b> as a discipline across the design org — borrowing the Design Sprint Academy’s method, building reusable templates, and having senior designers teach it on. <b>This one’s about changing how a team thinks,</b> not shipping a single screen: spending the thinking <em>where it actually moves the outcome.</em></p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">3</span><span class="m-lab">Problem types<br/>named</span></div>
+          <div class="e-metric"><span class="m-num">2</span><span class="m-lab">Reusable<br/>formats</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">Org-wide<br/>practice</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — Framing Complexity.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-framing" shape="rounded" radius="4" placeholder="Drop a Problem Framing workshop image"></image-slot>
+        <div class="e-cap">Design Practice · JET</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">05</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Introduced &amp; embedded</span><span class="sep"></span><span>Design Practice</span><span class="sep"></span><span>2024</span></div>
+        <h2 class="e-title fx">Facts Over Guesses</h2>
+        <p class="e-intro fx">Teams ship on assumptions dressed up as facts. I gave the org two complementary methods — <b>the FOG Method</b> (Facts, Opinions, Guesses) and <b>Assumption Mapping</b> — to separate what we know from what we’re hoping, and <em>test the riskiest bets first.</em> <b>A case study about building an evidence-led culture,</b> not a single screen.</p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">3</span><span class="m-lab">Certainty<br/>levels</span></div>
+          <div class="e-metric"><span class="m-num">2×2</span><span class="m-lab">Risk<br/>lens</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">Evidence-led<br/>practice</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — FOG and Assumption Mapping.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-fog" shape="rounded" radius="4" placeholder="Drop a FOG board / assumption-mapping image"></image-slot>
+        <div class="e-cap">Design Practice · JET</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">06</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">UX Lead · End-to-end</span><span class="sep"></span><span>0→1 Product</span><span class="sep"></span><span>2021</span></div>
+        <h2 class="e-title fx">Just Eat Dine-In</h2>
+        <p class="e-intro fx">As the UK reopened from lockdown, I led a small team to pioneer a <b>new dine-in proposition</b> — from a pressure-tested MVP <b>shipped in 11 weeks</b> to a Phase 2 vision built on real customer behaviour. <b>A case study about leading under a hard deadline,</b> facilitating cross-pillar teams, and <em>standing up for the customer.</em></p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">11<i>wk</i></span><span class="m-lab">To live<br/>MVP</span></div>
+          <div class="e-metric"><span class="m-num"><i>↑</i></span><span class="m-lab">Week-one<br/>orders</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">New<br/>proposition</span></div>
+        </div>
+        <a class="e-read fx" href="Case Study — Just Eat Dine-In.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-dinein" shape="rounded" radius="4" placeholder="Drop a Just Eat Dine-In image"></image-slot>
+        <div class="e-cap">Customer Discovery · Just Eat</div>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="contact wrap" id="contact">
+    <div class="lead fx">— Let’s build a team that does the best work of their careers</div>
+    <h2 class="fx">Let’s <em>talk.</em></h2>
+    <div class="fx"><a class="email" href="mailto:hello@markgeorge.co.uk">hello@markgeorge.co.uk <span>→</span></a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Mark George — Product Design Leadership</span>
+    <span style="display:flex;gap:26px;align-items:center"><a href="#">LinkedIn</a><a href="Curriculum Vitae.html">CV</a><a class="foot-top" href="#top">Back to top <span>↑</span></a></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><span>↑</span></button>
+
+<script src="image-slot.js"></script>
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>12)},{passive:true});
+
+  const toTop=document.getElementById('toTop');
+  function toggleTop(){toTop.classList.toggle('show',scrollY>innerHeight*0.6)}
+  addEventListener('scroll',toggleTop,{passive:true});toggleTop();
+  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+  function play(el){
+    if(!el||el.classList.contains('shown'))return;
+    el.classList.add('shown','playing');
+    setTimeout(()=>el.classList.remove('playing'),1000);
+  }
+  const fxEls=[...document.querySelectorAll('.fx,.draw')];
+  function check(){
+    const vh=innerHeight;
+    fxEls.forEach(el=>{
+      if(el.classList.contains('shown'))return;
+      const r=el.getBoundingClientRect();
+      if(r.top<vh*0.92 && r.bottom>0) play(el);
+    });
+  }
+  addEventListener('scroll',check,{passive:true});
+  addEventListener('resize',check);
+  setTimeout(check,60);setTimeout(check,500);setTimeout(check,1400);
+</script>
+<script src="nav.js"></script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+</style>
