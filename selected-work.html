@@ -63,7 +63,7 @@
   @keyframes drawin{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
   /* ---------- page masthead ---------- */
-  .masthead{padding:clamp(60px,11vh,140px) 0 clamp(40px,6vh,72px)}
+  .masthead{padding-top:clamp(60px,11vh,140px);padding-bottom:clamp(40px,6vh,72px)}
   .eyebrow{display:flex;align-items:center;gap:16px;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:34px}
   .eyebrow .rule{height:1px;width:46px;background:var(--line)}
   .mh-grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,30vw,420px);gap:clamp(36px,6vw,90px);align-items:end}
@@ -79,7 +79,7 @@
   .entry{
     display:grid;grid-template-columns:88px minmax(0,1fr) clamp(300px,32vw,480px);
     gap:clamp(28px,4vw,60px);
-    padding:clamp(46px,7vh,86px) 0;
+    padding-top:clamp(46px,7vh,86px);padding-bottom:clamp(46px,7vh,86px);
     border-bottom:1px solid var(--line);
     align-items:start;
   }
@@ -105,7 +105,7 @@
   .entry:hover .e-title{color:var(--accent)}
 
   /* ---------- secondary list ---------- */
-  .also{padding:clamp(50px,8vh,96px) 0 clamp(20px,4vh,40px)}
+  .also{padding-top:clamp(50px,8vh,96px);padding-bottom:clamp(20px,4vh,40px)}
   .also-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:8px}
   .section-label{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
   .section-note{font-size:13px;color:var(--gray);max-width:32ch;text-align:right}
@@ -122,7 +122,7 @@
   .row .soon{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:1px solid var(--line);border-radius:100px;padding:6px 12px;white-space:nowrap}
 
   /* ---------- contact ---------- */
-  .contact{padding:clamp(80px,14vh,170px) 0 clamp(50px,8vh,90px);border-top:1px solid var(--line)}
+  .contact{padding-top:clamp(80px,14vh,170px);padding-bottom:clamp(50px,8vh,90px);border-top:1px solid var(--line)}
   .contact .lead{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:26px}
   .contact h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,7vw,6rem);line-height:1;letter-spacing:-.02em}
   .contact h2 em{font-style:italic}
