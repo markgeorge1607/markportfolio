@@ -69,11 +69,10 @@
   </section>
 
   <section class="cs-hero wrap">
-    <div class="fx" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,24px);">
-      <img src="assets/JET+-lanscape1.png" alt="JET+ loyalty ecosystem — product overview" style="width:100%;border-radius:4px;display:block;" loading="lazy" />
-      <img src="assets/JET+-lanscape2.png" alt="JET+ Figma design explorations" style="width:100%;border-radius:4px;display:block;" loading="lazy" />
+    <div class="fx">
+      <image-slot id="cs8-hero" shape="rounded" radius="4" placeholder="Drop a hero image — JET+ membership experience"></image-slot>
+      <div class="cs-cap">JET+ · the loyalty ecosystem</div>
     </div>
-    <div class="cs-cap" style="margin-top:clamp(10px,1.5vh,16px);">JET+ · product designs &amp; Figma explorations</div>
   </section>
 
   <!-- KEY NUMBERS -->
@@ -175,7 +174,10 @@
     </div>
 
     <div class="figure fx" style="padding-bottom:0">
-      <image-slot id="cs8-jetplus" shape="rounded" radius="4" placeholder="Drop the JET+ one-time-payment E2E journey"></image-slot>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,24px);">
+        <img src="assets/JET+-lanscape1.png" alt="JET+ loyalty ecosystem — product overview" style="width:100%;border-radius:4px;display:block;" loading="lazy" />
+        <img src="assets/JET+-lanscape2.png" alt="JET+ checkout upselling — Figma explorations" style="width:100%;border-radius:4px;display:block;" loading="lazy" />
+      </div>
       <div class="cs-cap">JET+ one-time-payment — end-to-end, web &amp; native</div>
     </div>
 
