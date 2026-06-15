@@ -9,6 +9,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="case-study.css" />
+<style>
+  /* ── Manager lens callout ── */
+  .manager-lens{
+    border-left:3px solid var(--accent);
+    padding:clamp(20px,3vh,30px) 0 clamp(20px,3vh,30px) clamp(24px,3vw,40px);
+    margin:clamp(34px,5vh,52px) 0;
+  }
+  .ml-label{
+    font-size:10.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);
+    margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .ml-label::before{content:'';display:inline-block;width:14px;height:1px;background:var(--accent)}
+  .ml-text{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.05rem,1.4vw,1.22rem);
+    line-height:1.65;color:var(--ink);margin:0;
+  }
+  .ml-text b{color:var(--ink);font-weight:500}
+  .ml-text em{font-style:italic;color:var(--gray)}
+</style>
 </head>
 <body>
 <script src="lock.js"></script>
@@ -33,15 +54,16 @@
     <a href="selected-work.html"><span>←</span> Selected Work</a>
   </div>
 
+  <!-- HERO -->
   <section class="cs-head wrap">
-    <div class="eyebrow fx"><span>Case 08</span><span class="sep"></span><span class="role">Lead Product Designer · Loyalty</span><span class="sep"></span><span>JET+ Ecosystem</span><span class="sep"></span><span>2026</span></div>
+    <div class="eyebrow fx"><span>Case 08</span><span class="sep"></span><span class="role">Design Lead &amp; Manager · Loyalty</span><span class="sep"></span><span>JET+ Ecosystem</span><span class="sep"></span><span>2026</span></div>
     <h1 class="cs-title fx">JET+ <em>Loyalty</em></h1>
-    <p class="cs-dek fx">Transforming transactional behaviour into loyal memberships — shifting users from treating Just Eat as an <b>occasional treat</b> to a <em>daily habit,</em> across web, iOS and Android.</p>
+    <p class="cs-dek fx">How I led three designers across five product squads — managing two global partnerships, a three-month MVP window, and a programme that turned <b>6 million transactional users</b> into loyal members.</p>
 
     <div class="credits">
-      <div class="credit fx"><div class="c-lab">My role</div><div class="c-val">Lead Product Designer &amp; <em>design lead</em></div></div>
-      <div class="credit fx"><div class="c-lab">Scope</div><div class="c-val">Cross-platform — web, iOS, Android</div></div>
-      <div class="credit fx"><div class="c-lab">Timeline</div><div class="c-val">MVP delivered in 3 months</div></div>
+      <div class="credit fx"><div class="c-lab">My role</div><div class="c-val">Design Lead &amp; <em>Manager</em></div></div>
+      <div class="credit fx"><div class="c-lab">Team</div><div class="c-val">3 product designers, cross-squad</div></div>
+      <div class="credit fx"><div class="c-lab">Scope</div><div class="c-val">Web · iOS · Android</div></div>
       <div class="credit fx"><div class="c-lab">Partners</div><div class="c-val">Amazon Prime · Lieferando</div></div>
     </div>
   </section>
@@ -53,245 +75,158 @@
     </div>
   </section>
 
+  <!-- KEY NUMBERS -->
+  <section class="chapter wrap">
+    <div class="outcome-grid">
+      <div class="ometric fx"><span class="o-num">6<i>M</i></span><span class="o-lab">JET+ memberships across all mechanisms</span></div>
+      <div class="ometric fx"><span class="o-num"><i>+</i>15<i>%</i></span><span class="o-lab">Incremental order frequency among members</span></div>
+      <div class="ometric fx"><span class="o-num">60<i>%</i></span><span class="o-lab">Reorder rate — Amazon/Lieferando cohort</span></div>
+      <div class="ometric fx"><span class="o-num">3<i>mo</i></span><span class="o-lab">MVP — web, iOS &amp; Android, live</span></div>
+    </div>
+  </section>
+
+  <!-- 01: CHALLENGE -->
   <section class="chapter wrap">
     <div class="ch-label fx"><span class="idx">01</span> The Challenge</div>
-    <h2 class="ch-h fx">Just Eat had a retention problem: users came for the <em>treat,</em> not the habit.</h2>
+    <h2 class="ch-h fx">A retention problem that needed a <em>structural intervention,</em> not a better UI.</h2>
     <div class="prose measure fx">
-      <p>Engagement was sporadic. People saw the platform as a transactional utility, order frequency was inconsistent, and the cost of re-acquiring lapsed users kept rising. The business needed a <b>structural intervention — not another marketing campaign</b> — to shift mindset and build sustainable, subscription-backed revenue.</p>
-      <p>We were also playing catch-up. With competitors, paid members were spending <b>24× more</b> and ordering 10–30% more than non-members, and <b>13% of our lapsed customers</b> had left specifically for a rival’s paid programme.</p>
+      <p>Users treated Just Eat as an occasional treat. Order frequency was inconsistent, re-acquisition costs were rising, and competitors with paid memberships were winning. Paid members at rival platforms were spending <b>24× more</b> and ordering 10–30% more — and <b>13% of lapsed Just Eat customers</b> had left specifically for a better loyalty programme.</p>
+      <p>This wasn't a UX problem. It was a business model problem that needed a design-led strategic intervention: reframe the user relationship from transactional to membership-based, in three months, across every surface.</p>
     </div>
     <div class="triad">
       <div class="tcard fx">
         <div class="t-idx">Tension 01</div>
         <div class="t-name">Time Horizon</div>
-        <div class="t-desc">Instant gratification for the customer vs. medium-to-long-term behavioural change for the business.</div>
+        <div class="t-desc">Customers want instant gratification. The business needed medium-to-long-term behavioural change. Both had to be true at once.</div>
       </div>
       <div class="tcard fx">
         <div class="t-idx">Tension 02</div>
-        <div class="t-name">Success Metrics</div>
-        <div class="t-desc">Retention and order frequency as dual — and sometimes competing — measures of success.</div>
+        <div class="t-name">Competing Metrics</div>
+        <div class="t-desc">Retention and order frequency are related but distinct. Optimising for one could undermine the other — the team had to hold both.</div>
       </div>
       <div class="tcard fx">
         <div class="t-idx">Tension 03</div>
         <div class="t-name">Value Exchange</div>
-        <div class="t-desc">Balancing genuine customer value against the need to generate sustainable revenue.</div>
+        <div class="t-desc">Membership had to feel genuinely valuable to users, while remaining commercially sustainable. Neither could be sacrificed.</div>
       </div>
     </div>
   </section>
 
   <section class="pull wrap">
-    <blockquote class="fx">“Consumers primarily switched to competitors because they offered more compelling deals and <em>superior reward programmes.</em>”</blockquote>
-    <div class="attr fx">The signal we couldn’t ignore</div>
+    <blockquote class="fx">"Consumers primarily switched to competitors because they offered more compelling deals and <em>superior reward programmes.</em>"</blockquote>
+    <div class="attr fx">JET Customer Research, 2025</div>
   </section>
 
+  <!-- 02: LEADING THE TEAM -->
   <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">02</span> The Goal</div>
-    <h2 class="ch-h fx">Reframe the relationship — from <em>transactional</em> to <em>membership.</em></h2>
+    <div class="ch-label fx"><span class="idx">02</span> Leading the Team</div>
+    <h2 class="ch-h fx">Three designers. Five squads. One experience that <em>couldn't fragment.</em></h2>
     <div class="prose measure fx">
-      <p>The goal was twofold: retain existing customers by giving them a tangible reason to stay, and acquire high-value new ones through a compelling, low-friction entry point. The design challenge was to make membership value feel <b>immediate, not deferred</b> — so users felt the benefit before they had time to second-guess the decision. Three principles anchored every screen:</p>
+      <p>Loyalty touches every part of the product — search, menu, basket, checkout, accounts. My three designers were each embedded in different squads, with different PMs, engineers, and release cycles. The risk wasn't bad design. The risk was <b>incoherent design</b> — individually sensible decisions that added up to a fractured experience.</p>
     </div>
-    <div class="triad">
-      <div class="tcard fx">
-        <div class="t-idx">Principle 01</div>
-        <div class="t-name">Instant Rewards</div>
-        <div class="t-desc">Drive habit formation, anchored in behavioural economics — value the moment you join.</div>
-      </div>
-      <div class="tcard fx">
-        <div class="t-idx">Principle 02</div>
-        <div class="t-name">Transparent Savings</div>
-        <div class="t-desc">Show users exactly where their money goes, and what membership is saving them.</div>
-      </div>
-      <div class="tcard fx">
-        <div class="t-idx">Principle 03</div>
-        <div class="t-name">Frictionless Onboarding</div>
-        <div class="t-desc">Reduce cognitive load at every step of the journey to join.</div>
-      </div>
-    </div>
-  </section>
 
-  <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">03</span> Leading the Work</div>
-    <h2 class="ch-h fx">My job was to hold the <em>vision</em> — and the cross-functional machine — together.</h2>
-    <div class="prose measure fx">
-      <p>As design lead I orchestrated strategy across multiple loyalty initiatives and managed a team of designers, acting as the bridge between Product, Engineering and Analytics across compressed timelines.</p>
+    <div class="manager-lens fx">
+      <div class="ml-label">As manager</div>
+      <p class="ml-text">I introduced a <b>fortnightly design sync</b> with a fixed agenda: decisions made, decisions pending, one cross-squad dependency to resolve. Not a status meeting — an alignment mechanism. I also created a shared Figma workspace so all three designers' live work was visible in one place. Not for surveillance — for context. <em>When designer A's checkout flow and designer B's account page needed to connect, they could see each other's work without booking a meeting.</em></p>
     </div>
-    <figure class="figure fx" style="margin:clamp(30px,5vh,52px) 0 clamp(34px,5vh,56px)">
-      <img src="assets/jetplus-ux-strategy.png" alt="The end-to-end UX strategy as a double-diamond: Contextualising the problem space (loyalty behaviour interviews), Understanding the customer (behavioural archetypes and design principles), Define business goals (high-level strategic objective), and Define Now and North-star opportunities (short and long-term customer-centred loyalty strategy) — all driven by a quantified LEAN experimentation strategy." loading="lazy" />
-      <figcaption class="fig-cap"><b>The UX strategy</b> — a four-stage path from contextualising the problem space and understanding the customer, to defining business goals and the now / north-star opportunities — all driven by a quantified <b>LEAN</b> experimentation strategy.</figcaption>
-    </figure>
+
     <div class="moves">
       <div class="move fx">
         <div class="m-idx">01</div>
         <div>
           <div class="m-t">Owned the design vision, end to end</div>
-          <div class="m-d">I defined the loyalty design vision and led UX/UI from <b>discovery through to dev handover</b> — keeping a single thread of intent across every initiative and platform.</div>
+          <div class="m-d">Set the UX/UI direction from discovery to dev handover — the single thread of intent that held across every initiative, squad, and platform.</div>
         </div>
       </div>
       <div class="move fx">
         <div class="m-idx">02</div>
         <div>
-          <div class="m-t">Introduced a two-week workflow</div>
-          <div class="m-d">To tame the cross-functional complexity, I introduced a fortnightly rhythm that improved coordination and made <b>sprint delivery predictable</b> under pressure.</div>
+          <div class="m-t">Grounded the roadmap in research</div>
+          <div class="m-d">Partnered with researchers and tech leads to shape the 2025/26 loyalty roadmap — every initiative grounded in user evidence, not assumption.</div>
         </div>
       </div>
       <div class="move fx">
         <div class="m-idx">03</div>
         <div>
-          <div class="m-t">Shaped the roadmap with research &amp; tech</div>
-          <div class="m-d">I partnered with researchers and tech leads to define the 2025/26 loyalty roadmap — grounding ambition in what was both wanted and feasible.</div>
-        </div>
-      </div>
-      <div class="move fx">
-        <div class="m-idx">04</div>
-        <div>
-          <div class="m-t">Managed high-stakes stakeholders</div>
-          <div class="m-d">I kept senior stakeholders — including <b>Amazon and Lieferando</b> — aligned, while protecting design integrity through the trade-offs that partnerships demand.</div>
+          <div class="m-t">Held the Amazon &amp; Lieferando relationship</div>
+          <div class="m-d">Served as the primary design bridge to senior stakeholders at Amazon — protecting design integrity while navigating the trade-offs global partnerships demand.</div>
         </div>
       </div>
     </div>
+
+    <figure class="figure fx" style="margin:clamp(30px,5vh,52px) 0 0">
+      <img src="assets/jetplus-ux-strategy.png" alt="The end-to-end UX strategy: four stages from contextualising the problem space to defining now and north-star opportunities, all driven by a LEAN experimentation strategy." loading="lazy" />
+      <figcaption class="fig-cap"><b>The UX strategy</b> — four stages, each owned by a different designer, unified under a single LEAN experimentation framework.</figcaption>
+    </figure>
   </section>
 
+  <!-- 03: THE SOLUTION -->
   <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">04</span> The Solution — JET+</div>
-    <h2 class="ch-h fx">A lightweight, <em>90-day</em> pass — not another subscription trap.</h2>
+    <div class="ch-label fx"><span class="idx">03</span> The Solution</div>
+    <h2 class="ch-h fx">A 90-day pass — not a <em>subscription trap.</em></h2>
     <div class="prose measure fx">
-      <p>Research into <b>subscription fatigue</b> pushed us away from a standard recurring model toward a flexible, one-time-payment 90-day pass. The tiered design made the initial entry feel risk-free, while the bundle rewarded commitment with significant savings — without the perceived “lock-in” of a long-term subscription.</p>
-      <p>By offering it as a free-trial upsell <b>directly in the checkout flow,</b> we captured users at the peak of engagement — already in a spending mindset. It validated a clear truth: a low-friction, time-bound offer converts far better than a traditional subscription. I architected it as one unified experience across web and native, eliminating fragmentation so the brand journey felt cohesive at every touchpoint.</p>
+      <p>Research surfaced subscription fatigue. Users didn't object to paying for value — they objected to being locked in. A flexible, one-time-payment 90-day pass made entry feel risk-free, while the bundle rewarded commitment with real savings. By embedding it as a free-trial upsell <b>directly in the checkout flow,</b> we captured users at peak engagement — already in a spending mindset, already committed to an order.</p>
     </div>
-    <div class="figure" style="padding-bottom:0">
-      <div class="fx figure">
-        <image-slot id="cs8-jetplus" shape="rounded" radius="4" placeholder="Drop the JET+ one-time-payment E2E journey"></image-slot>
-      </div>
+
+    <div class="manager-lens fx">
+      <div class="ml-label">The strategic call</div>
+      <p class="ml-text">The original brief asked for a standard subscription. I challenged it. I tasked one designer with a focused competitive audit and concept testing against three models — subscription, bundle, free trial — before we committed. The data came back clearly in favour of the bundle. <b>Making space for that discovery cost two weeks but saved us from building the wrong product.</b> That's a management decision, not a design one.</p>
+    </div>
+
+    <div class="figure fx" style="padding-bottom:0">
+      <image-slot id="cs8-jetplus" shape="rounded" radius="4" placeholder="Drop the JET+ one-time-payment E2E journey"></image-slot>
       <div class="cs-cap">JET+ one-time-payment — end-to-end, web &amp; native</div>
     </div>
+
+    <div class="outcome-grid" style="margin-top:clamp(34px,5vh,52px)">
+      <div class="ometric fx"><span class="o-num">~4<i>M</i></span><span class="o-lab">Total membership purchases — JET+ one-time-payment</span></div>
+      <div class="ometric fx"><span class="o-num">9<i>K</i></span><span class="o-lab">Extra sign-ups driven by savings-awareness feature alone</span></div>
+    </div>
+  </section>
+
+  <!-- 04: AMAZON PARTNERSHIP -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">04</span> The Amazon &amp; Lieferando Partnership</div>
+    <h2 class="ch-h fx">Two global brands. Three markets. <em>One activation moment.</em></h2>
+    <div class="prose measure fx">
+      <p>I led the design and cross-platform integration of the <b>Amazon Prime × Just Eat Takeaway</b> partnership — free delivery for Prime members in Germany, Austria, and Spain. Two brands with different design systems, technical constraints, and definitions of "done." Amazon's single-URL login architecture conflicted with Just Eat's per-market URLs; I made the call to accept the extra country-selection step rather than compromise the security model, and communicated that trade-off clearly to both sides.</p>
+    </div>
+
+    <div class="manager-lens fx">
+      <div class="ml-label">Protecting the team</div>
+      <p class="ml-text">My designers were under pressure from both sides — Amazon's PMs wanted faster turnaround; internal stakeholders wanted more polish. <b>I kept that pressure at my level.</b> I ran weekly stakeholder syncs with Amazon myself, bringing decisions to those calls with rationale and options — so my designers weren't asked to justify their work in rooms they hadn't been part of.</p>
+    </div>
+
     <div class="outcome-grid">
-      <div class="ometric fx"><span class="o-num">4<i>M</i></span><span class="o-lab">Total membership purchases</span></div>
-      <div class="ometric fx"><span class="o-num"><i>+</i>15<i>%</i></span><span class="o-lab">Incremental order frequency</span></div>
+      <div class="ometric fx"><span class="o-num">~2<i>M</i></span><span class="o-lab">Total membership purchases — Amazon/Lieferando</span></div>
+      <div class="ometric fx"><span class="o-num">60<i>%</i></span><span class="o-lab">Reorder rate among activated Prime members</span></div>
+      <div class="ometric fx"><span class="o-num">3</span><span class="o-lab">Markets live — Germany, Austria, Spain</span></div>
     </div>
   </section>
 
+  <!-- 05: EXPERIMENTATION -->
   <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">05</span> The Amazon Partnership</div>
-    <h2 class="ch-h fx">Free delivery for Prime members — across <em>three markets.</em></h2>
+    <div class="ch-label fx"><span class="idx">05</span> Led by Experimentation</div>
+    <h2 class="ch-h fx">Moving the team from <em>"launch and see"</em> to hypothesis-first.</h2>
     <div class="prose measure fx">
-      <p>I spearheaded the design and cross-platform integration of the <b>Amazon Prime × Just Eat Takeaway</b> partnership, bringing free delivery to Prime members in Germany, Austria and Spain. I was the primary design bridge between senior leadership and global stakeholders at Amazon — ensuring brand alignment and a frictionless experience across two ecosystems, and delivering complex multi-state UI under condensed global deadlines.</p>
+      <p>One of my goals was to shift the team's operating model. Every initiative needed a stated hypothesis and a defined success metric before work began. Initially it felt like extra process. Within two months it was how they thought. One early experiment showed <b>£10 credit driving 3.83% redemption vs. 1.49% for unlimited free delivery</b> — at a lower cost per outcome. That data shaped the entire next phase of the programme.</p>
     </div>
-    <div class="figure" style="padding-bottom:0">
-      <div class="fx figure">
-        <image-slot id="cs8-amazon" shape="rounded" radius="4" placeholder="Drop the Amazon → JET activation flow"></image-slot>
-      </div>
-      <div class="cs-cap">Amazon → JET activation — live in Germany &amp; Austria</div>
-    </div>
-    <div class="outcome-grid">
-      <div class="ometric fx"><span class="o-num">2<i>M</i></span><span class="o-lab">Total membership purchases</span></div>
-      <div class="ometric fx"><span class="o-num">60<i>%</i></span><span class="o-lab">Reorder rate</span></div>
+
+    <div class="manager-lens fx">
+      <div class="ml-label">Building the culture</div>
+      <p class="ml-text">I introduced a <b>hypothesis-first brief template</b> — no work started without a stated hypothesis and a defined success metric. The change wasn't procedural — it was conceptual. <em>Designers who think in hypotheses write better briefs, push back on vague requests more confidently, and advocate for their work in commercial language.</em> That's a career-level shift, not just a process improvement.</p>
     </div>
   </section>
 
-  <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">06</span> Designing the Behaviour</div>
-    <h2 class="ch-h fx">The mechanics were grounded in <em>behavioural economics.</em></h2>
-    <div class="prose measure fx">
-      <p>Membership value isn’t just a number — it’s how it’s framed. We embedded a handful of psychological principles into the information architecture, copy and interaction design to systematically reduce drop-off:</p>
-    </div>
-    <div class="roles">
-      <div class="role-item fx"><div class="r-t">Instant Rewards</div><div class="r-d">Free delivery activated immediately on sign-up — no waiting period.</div></div>
-      <div class="role-item fx"><div class="r-t">Loss Aversion</div><div class="r-d">“Don’t lose your free delivery — trial expires soon” framing, over “save money.”</div></div>
-      <div class="role-item fx"><div class="r-t">Peak-End Rule</div><div class="r-d">A delight animation at the activation moment, creating a memorable positive peak.</div></div>
-      <div class="role-item fx"><div class="r-t">Bandwagon Effect</div><div class="r-d">Social proof — “Most JET members are saving €X.00.”</div></div>
-    </div>
-    <h3 class="section-title-cs fx" style="font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,2.2vw,1.9rem);letter-spacing:-.015em;color:var(--ink);margin:clamp(44px,6vh,68px) 0 clamp(24px,3vh,36px)">Perfect UX, balanced against real constraints.</h3>
-    <div class="moves" style="margin-top:0">
-      <div class="move fx">
-        <div class="m-idx">01</div>
-        <div>
-          <div class="m-t">Subscribe at checkout vs. a separate funnel</div>
-          <div class="m-d">Embedding the upsell in checkout maximised conversion for frequent users — but cost awareness among infrequent users who never reached that step. A deliberate, measured trade.</div>
-        </div>
-      </div>
-      <div class="move fx">
-        <div class="m-idx">02</div>
-        <div>
-          <div class="m-t">The Amazon activation friction</div>
-          <div class="m-d">Amazon’s single-login URL vs. Just Eat’s separate URLs required an extra country-selection step — a necessary friction point to enable global benefit redemption.</div>
-        </div>
-      </div>
-      <div class="move fx">
-        <div class="m-idx">03</div>
-        <div>
-          <div class="m-t">Free-delivery bundles</div>
-          <div class="m-d">Designed to mitigate cost to the business <b>without reducing perceived appeal</b> — and measuring free-delivery savings alone drove 9k extra sign-ups.</div>
-        </div>
-      </div>
-    </div>
-    <div class="prose measure fx" style="margin-top:clamp(34px,5vh,52px)">
-      <p>I also partnered with the design systems and studio teams to give JET+ its own visual language inside the core JET PIE library — a premium identity built on <b>dynamic orange gradients and 3D-rendered iconography,</b> created under my creative direction.</p>
-    </div>
-  </section>
-
-  <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">07</span> The Impact</div>
-    <h2 class="ch-h fx">A well-designed entry point, shifting behaviour <em>at scale.</em></h2>
-    <div class="prose measure fx">
-      <p>Across all one-time-payment mechanisms, the work proved that leading with instant value — and removing friction — converts transactional users into loyal members. The numbers are live, cross-platform, and still informing iteration.</p>
-    </div>
-    <div class="outcome-grid">
-      <div class="ometric fx"><span class="o-num">6<i>M</i></span><span class="o-lab">JET+ memberships, across mechanisms</span></div>
-      <div class="ometric fx"><span class="o-num"><i>+</i>15<i>%</i></span><span class="o-lab">Incremental order frequency</span></div>
-      <div class="ometric fx"><span class="o-num">100<i>%</i></span><span class="o-lab">Cross-platform — web, iOS, Android</span></div>
-      <div class="ometric fx"><span class="o-num"><i>↑</i></span><span class="o-lab">Positive trial-to-paid conversion</span></div>
-    </div>
-  </section>
-
-  <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">08</span> What’s Next</div>
-    <h2 class="ch-h fx">From a live foundation to a <em>personalised,</em> AI-powered north star.</h2>
-    <div class="prose measure fx">
-      <p>The live product is the foundation. The next phase deepens personalisation, reinforces habit, and maximises ROI through intelligent segmentation — built on four behavioural archetypes from our research, and shaped by ongoing experimentation. (Early tests already showed a <b>£10 credit driving 3.83% redemption vs. 1.49% for free delivery</b>, at a lower cost per outcome.)</p>
-    </div>
-    <div class="roles">
-      <div class="role-item fx"><div class="r-t">Alex — the Value-Seeking Pragmatist</div><div class="r-d">Prioritises clear, tangible benefits and an effortless experience; maximise value, minimise hassle.</div></div>
-      <div class="role-item fx"><div class="r-t">Luke — the Quality-Conscious Seeker</div><div class="r-d">Prioritises food quality, reliable service, and a seamless, enjoyable overall experience.</div></div>
-      <div class="role-item fx"><div class="r-t">Mia — the Effortless Expediter</div><div class="r-d">Prioritises simplicity and convenience — value with minimal effort or active engagement.</div></div>
-      <div class="role-item fx"><div class="r-t">Sam — the Squeezed Saver</div><div class="r-d">Prioritises financial necessity; value is tied to clear, tangible savings that ease pressure.</div></div>
-    </div>
-
-    <div class="figure duo" style="margin-top:clamp(34px,5vh,56px)">
-      <figure class="figure" style="padding:0">
-        <img src="assets/jetplus-next-phase.png" alt="Next-phase JET+ concepts shown across iPhone mockups: credit iterations, the Reorder Rewards MVP, and personalised gamification." loading="lazy" />
-        <figcaption class="fig-cap"><b>Next-phase concepts</b> — credit iterations across Loyalty &amp; JET+, the Reorder Rewards MVP, and personalised gamification.</figcaption>
-      </figure>
-      <figure class="figure" style="padding:0">
-        <img src="assets/jetplus-alex-story.png" alt="Storyboard of Alex, the value-seeking pragmatist, building a personalised JET+ plan from core benefits plus optional add-ons." loading="lazy" />
-        <figcaption class="fig-cap"><b>Archetype in motion</b> — Alex, the Value-Seeking Pragmatist, composing a personalised JET+ plan to attract and convert.</figcaption>
-      </figure>
-    </div>
-  </section>
-
+  <!-- CLOSING PULL -->
   <section class="pull wrap">
-    <blockquote class="fx">“Become the most rewarding platform — the right reward, to the <em>right customer,</em> at the right time.”</blockquote>
-    <div class="attr fx">The JET+ north star</div>
+    <blockquote class="fx">"The right reward, to the right customer, <em>at the right time.</em>"</blockquote>
+    <div class="attr fx">JET+ North Star</div>
   </section>
 
-  <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">09</span> Reflection</div>
-    <h2 class="ch-h fx">What I taught the team along the way.</h2>
-    <div class="triad">
-      <div class="tcard fx">
-        <div class="t-idx">On leadership</div>
-        <div class="t-name">Prototypes as negotiation</div>
-        <div class="t-desc">A hi-fi prototype is a negotiation tool. Visualising the end-state early forced technical trade-offs — like Amazon’s single-URL constraint — months before they became blockers.</div>
-      </div>
-      <div class="tcard fx">
-        <div class="t-idx">On strategy</div>
-        <div class="t-name">Framing the real problem</div>
-        <div class="t-desc">I mentored designers to use the Kano Model and Outcome-Driven Innovation — shifting focus from low-impact tweaks to high-value bets like the 90-day bundle that addressed churn at its root.</div>
-      </div>
-      <div class="tcard fx">
-        <div class="t-idx">On craft</div>
-        <div class="t-name">Designers as architects</div>
-        <div class="t-desc">Integrating agentic AI tooling bridged the design-to-dev gap with spec-driven prototypes — eliminating design debt at the source and freeing designers to be product architects, not pixel-pushers.</div>
-      </div>
+  <section class="chapter wrap" style="border-top:none;padding-top:0">
+    <div class="prose measure fx" style="text-align:center;max-width:52ch;margin:0 auto">
+      <p style="color:var(--gray)">The full case study — including experimentation data, behavioural design framework, stakeholder decisions, and next-phase roadmap — is available as a <b style="color:var(--ink)">deck on request.</b></p>
     </div>
   </section>
 
@@ -309,38 +244,41 @@
 <footer>
   <div class="wrap foot">
     <span>© 2026 Mark George — Product Design Leader</span>
-    <span style="display:flex;gap:26px;align-items:center"><a href="https://linkedin.com/in/mark-george-31b89360" target="_blank" rel="noopener">LinkedIn</a><a href="selected-work.html">Selected Work</a><a href="index.html#contact">Contact</a>
-      <a href="curriculum-vitae.html">CV</a><a href="curriculum-vitae.html">CV</a></span>
+    <span style="display:flex;gap:26px;align-items:center"><a href="https://linkedin.com/in/mark-george-31b89360" target="_blank" rel="noopener">LinkedIn</a><a href="selected-work.html">Selected Work</a><a href="index.html#contact">Contact</a><a href="curriculum-vitae.html">CV</a></span>
   </div>
 </footer>
 
 <button class="to-top" id="toTop" aria-label="Back to top"><span>↑</span></button>
 
 <script src="image-slot.js"></script>
-<script>
-  const hdr=document.getElementById('hdr');
-  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>12)},{passive:true});
-  const toTop=document.getElementById('toTop');
-  function toggleTop(){toTop.classList.toggle('show',scrollY>innerHeight*0.6)}
-  addEventListener('scroll',toggleTop,{passive:true});toggleTop();
-  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-  function play(el){if(!el||el.classList.contains('shown'))return;el.classList.add('shown','playing');setTimeout(()=>el.classList.remove('playing'),1000);}
-  const fxEls=[...document.querySelectorAll('.fx,.draw')];
-  function check(){
-    const vh=innerHeight;
-    fxEls.forEach(el=>{
-      if(el.classList.contains('shown'))return;
-      const r=el.getBoundingClientRect();
-      if(r.top<vh*0.92 && r.bottom>0) play(el);
-    });
-  }
-  addEventListener('scroll',check,{passive:true});
-  addEventListener('resize',check);
-  setTimeout(check,60);setTimeout(check,500);setTimeout(check,1400);
-</script>
 <script src="nav.js"></script>
+<script>
+  // scroll reveal
+  var fxEls = document.querySelectorAll('.fx');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('shown');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.1});
+    fxEls.forEach(function(el){io.observe(el)});
+  } else {
+    fxEls.forEach(function(el){el.classList.add('shown')});
+  }
+  // header scroll border
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll',function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 10);
+  },{passive:true});
+  // back to top
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    toTop.classList.toggle('show', window.scrollY > 400);
+  },{passive:true});
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+</script>
 </body>
 </html>
-
-<style id="__om-edit-overrides">
-</style>
