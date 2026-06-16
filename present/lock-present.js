@@ -13,7 +13,7 @@
   overlay.id='lock-overlay';
   overlay.style.cssText=[
     'position:fixed','inset:0','z-index:99999',
-    'background:#0A0905',
+    'background:#15140F',
     'display:flex','align-items:center','justify-content:center',
     'font-family:"Hanken Grotesk",system-ui,sans-serif',
     'transition:opacity 0.4s ease'
@@ -21,15 +21,15 @@
 
   overlay.innerHTML=[
     '<div style="width:100%;max-width:380px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:0">',
-      '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FF6900;margin-bottom:28px">Presentation Portal</div>',
+      '<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7E3A2E;margin-bottom:28px">Presentation Portal</div>',
       '<input id="lock-pwd" type="password" placeholder="Password" autocomplete="current-password" style="',
         'width:100%;padding:14px 16px;background:rgba(246,243,236,0.06);border:1px solid rgba(246,243,236,0.15);',
         'border-radius:6px;color:#F6F3EC;font-family:inherit;font-size:15px;outline:none;',
         'letter-spacing:.04em;margin-bottom:12px',
       '">',
       '<button id="lock-btn" style="',
-        'width:100%;padding:14px;background:#FF6900;border:none;border-radius:6px;',
-        'color:#0A0905;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;',
+        'width:100%;padding:14px;background:#7E3A2E;border:none;border-radius:6px;',
+        'color:#15140F;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;',
         'letter-spacing:.04em;transition:opacity .2s',
       '">Enter</button>',
       '<div id="lock-err" style="color:#e53935;font-size:12px;margin-top:12px;min-height:18px;opacity:0;transition:opacity .2s">Incorrect password</div>',

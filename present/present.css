@@ -1,11 +1,11 @@
-/* Tokens */
+/* Tokens — matches main portfolio colour system */
 :root {
-  --bg: #0A0905;
+  --bg: #15140F;
   --paper: #F6F3EC;
-  --orange: #FF6900;
-  --orange-dim: rgba(255,105,0,0.15);
+  --orange: #7E3A2E;
+  --orange-dim: rgba(126,58,46,0.15);
   --gray: #8C887B;
-  --line: rgba(246,243,236,0.1);
+  --line: #D8D3C6;
   --serif: 'Newsreader', Georgia, serif;
   --sans: 'Hanken Grotesk', system-ui, sans-serif;
 }
