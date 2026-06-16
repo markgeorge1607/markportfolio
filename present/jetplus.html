@@ -542,57 +542,47 @@
 
 <script>
 (function(){
-  var total = 24;
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
   var current = 0;
-  var slides = document.querySelectorAll('.slide');
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
   var counter = document.getElementById('counter');
   var bar = document.getElementById('progressBar');
 
-  function update(){
-    counter.textContent = (current+1) + ' / ' + total;
-    bar.style.width = ((current+1)/total*100) + '%';
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total-1;
-  }
-
-  function goTo(n){
-    if(n < 0 || n >= total) return;
-    var from = current;
+  function show(n){
+    slides[current].classList.remove('active');
     current = n;
-    update(); // update buttons + counter immediately
-    slides[from].classList.remove('active');
-    slides[from].classList.add('exit-left');
-    setTimeout(function(){
-      slides[from].classList.remove('exit-left');
-      slides[current].classList.add('active');
-    }, 50);
+    slides[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+    bar.style.width = ((current + 1) / total * 100) + '%';
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === total - 1);
   }
 
-  function next(){ if(current < total-1) goTo(current+1); }
-  function prev(){ if(current > 0) goTo(current-1); }
-
-  prevBtn.addEventListener('click', prev);
-  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', function(){ if(current > 0) show(current - 1); });
+  nextBtn.addEventListener('click', function(){ if(current < total - 1) show(current + 1); });
 
   document.addEventListener('keydown', function(e){
-    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); next(); }
-    if(e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
+    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); if(current < total - 1) show(current + 1); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); if(current > 0) show(current - 1); }
     if(e.key === 'Escape'){ window.location.href = 'index.html'; }
   });
 
-  // Touch swipe
   var touchX = null;
   document.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, {passive:true});
   document.addEventListener('touchend', function(e){
     if(touchX === null) return;
     var dx = touchX - e.changedTouches[0].clientX;
-    if(Math.abs(dx) > 50){ dx > 0 ? next() : prev(); }
+    if(dx > 50 && current < total - 1) show(current + 1);
+    if(dx < -50 && current > 0) show(current - 1);
     touchX = null;
   }, {passive:true});
 
-  update();
+  // init
+  counter.textContent = '1 / ' + total;
+  bar.style.width = (1 / total * 100) + '%';
+  prevBtn.disabled = true;
 })();
 </script>
 </body>

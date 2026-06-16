@@ -21,11 +21,9 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
   display: flex; flex-direction: column; justify-content: center;
   padding: clamp(40px,6vw,100px) clamp(48px,8vw,120px);
   opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  transform: translateX(60px);
+  transition: opacity 0.3s ease;
 }
-.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
-.slide.exit-left { opacity: 0; transform: translateX(-60px); }
+.slide.active { opacity: 1; pointer-events: all; }
 
 /* Navigation UI */
 .nav-bar {
