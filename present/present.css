@@ -1,7 +1,7 @@
 /* Tokens — matches main portfolio colour system */
 :root {
-  --bg: #15140F;
-  --paper: #F6F3EC;
+  --bg: #F6F3EC;
+  --paper: #15140F;
   --orange: #7E3A2E;
   --orange-dim: rgba(126,58,46,0.15);
   --gray: #8C887B;
@@ -32,12 +32,12 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
   position: fixed; bottom: 0; left: 0; right: 0;
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px clamp(24px,4vw,60px);
-  background: linear-gradient(to top, rgba(10,9,5,0.9), transparent);
+  background: linear-gradient(to top, rgba(246,243,236,0.95), transparent);
   z-index: 100;
 }
 .nav-btn {
   width: 44px; height: 44px; border-radius: 50%;
-  border: 1px solid var(--line); background: rgba(246,243,236,0.06);
+  border: 1px solid var(--line); background: rgba(21,20,15,0.05);
   color: var(--paper); font-size: 18px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: background 0.2s, border-color 0.2s;
@@ -77,7 +77,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 
 .s-body {
   font-size: clamp(1rem,1.4vw,1.25rem); line-height: 1.7;
-  color: rgba(246,243,236,0.75); max-width: 72ch;
+  color: rgba(21,20,15,0.72); max-width: 72ch;
 }
 .s-body b, .s-body strong { color: var(--paper); font-weight: 500; }
 
@@ -104,7 +104,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 .s-list li {
   padding-left: 24px; position: relative;
   font-size: clamp(0.95rem,1.3vw,1.15rem); line-height: 1.5;
-  color: rgba(246,243,236,0.8);
+  color: rgba(21,20,15,0.80);
 }
 .s-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--orange); }
 
@@ -124,7 +124,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 }
 .p-card { border: 1px solid var(--line); border-radius: 6px; padding: 24px 20px; }
 .p-card-title { font-size: 13px; font-weight: 600; color: var(--orange); margin-bottom: 10px; letter-spacing: .05em; }
-.p-card-body { font-size: clamp(12px,1.1vw,14px); color: rgba(246,243,236,0.65); line-height: 1.5; }
+.p-card-body { font-size: clamp(12px,1.1vw,14px); color: rgba(21,20,15,0.65); line-height: 1.5; }
 
 /* Image fills */
 .img-fill { width: 100%; border-radius: 6px; display: block; object-fit: cover; }
@@ -148,7 +148,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 .arch-card { border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
 .arch-name { font-size: 18px; font-weight: 600; color: var(--orange); margin-bottom: 6px; }
 .arch-role { font-size: 11px; letter-spacing: .08em; color: var(--gray); margin-bottom: 12px; text-transform: uppercase; }
-.arch-desc { font-size: 12px; color: rgba(246,243,236,0.65); line-height: 1.5; }
+.arch-desc { font-size: 12px; color: rgba(21,20,15,0.65); line-height: 1.5; }
 
 /* Experiment result */
 .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; }
@@ -163,7 +163,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 .reflect-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 28px; }
 .r-card { border-left: 2px solid var(--orange); padding-left: 20px; }
 .r-title { font-size: 13px; font-weight: 600; color: var(--orange); margin-bottom: 10px; }
-.r-body { font-size: clamp(12px,1.1vw,14px); color: rgba(246,243,236,0.65); line-height: 1.55; }
+.r-body { font-size: clamp(12px,1.1vw,14px); color: rgba(21,20,15,0.65); line-height: 1.55; }
 
 /* Roadmap */
 .roadmap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 28px; }
