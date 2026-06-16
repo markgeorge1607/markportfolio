@@ -29,7 +29,7 @@
       '">',
       '<button id="lock-btn" style="',
         'width:100%;padding:14px;background:#7E3A2E;border:none;border-radius:6px;',
-        'color:#15140F;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;',
+        'color:#F6F3EC;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;',
         'letter-spacing:.04em;transition:opacity .2s',
       '">Enter</button>',
       '<div id="lock-err" style="color:#e53935;font-size:12px;margin-top:12px;min-height:18px;opacity:0;transition:opacity .2s">Incorrect password</div>',
