@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JET+ Loyalty — Mark George</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="present.css">
+</head>
+<body>
+<script src="lock-present.js"></script>
+
+<div class="progress-bar" id="progressBar"></div>
+<a href="index.html" class="home-btn">← All cases</a>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: COVER -->
+<section class="slide cover-slide active" id="s-1">
+  <div style="flex:1;display:flex;align-items:flex-end">
+    <div>
+      <div class="s-eyebrow" style="margin-bottom:32px">Just Eat Takeaway · Loyalty · 2026</div>
+      <h1 class="cover-title">Transforming Transactional Behaviour Into <em>Loyal Memberships</em></h1>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">My Role</div>
+          <div class="cover-meta-val">Lead Product Designer, Loyalty</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Scope</div>
+          <div class="cover-meta-val">Cross-platform — Web, iOS, Android</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Team</div>
+          <div class="cover-meta-val">3 designers across 5 squads</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Timeline</div>
+          <div class="cover-meta-val">MVP delivered in three months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: BUSINESS CHALLENGE -->
+<section class="slide" id="s-2">
+  <div class="s-eyebrow">01 · The Challenge</div>
+  <h2 class="s-title">From Utility to <em>Habit</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">Users treated Just Eat as an occasional treat, not a daily habit. Paid members at competitors were spending <strong>24× more</strong> and ordering 10–30% more than non-paid members.</p>
+      <p class="s-body" style="margin-top:16px">Just Eat faced a critical retention problem: <strong>13% of lapsed customers</strong> had left specifically for better loyalty programmes elsewhere.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card">
+        <div class="p-card-title">Tension 01 · Time Horizon</div>
+        <div class="p-card-body">Instant gratification (customer) vs. medium-to-long-term behavioural change (business).</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Tension 02 · Competing Metrics</div>
+        <div class="p-card-body">Retention and order frequency are related but distinct — optimising for one could undermine the other.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Tension 03 · Value Exchange</div>
+        <div class="p-card-body">Membership had to feel genuinely valuable to users while remaining commercially sustainable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: RESEARCH QUOTE -->
+<section class="slide" id="s-3" style="justify-content:center">
+  <div class="s-eyebrow">02 · Research Finding</div>
+  <blockquote class="big-quote">"Consumers primarily switched to competitor products because they offered more compelling deals and <em>superior reward programmes.</em>"</blockquote>
+  <div class="quote-attr">JET Customer Research — the brief that shaped everything</div>
+  <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px);max-width:600px">
+    <div class="stat"><span class="stat-num">24<i>×</i></span><div class="stat-lab">More spending by paid members at competitor platforms</div></div>
+    <div class="stat"><span class="stat-num">10–30<i>%</i></span><div class="stat-lab">Higher order frequency vs non-paid members</div></div>
+    <div class="stat"><span class="stat-num">13<i>%</i></span><div class="stat-lab">Lapsed customers who left for a better loyalty programme</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 4: THE GOAL -->
+<section class="slide" id="s-4">
+  <div class="s-eyebrow">03 · The Goal</div>
+  <h2 class="s-title">Reframe the <em>Relationship</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">The strategic goal was twofold: <strong>retain existing customers</strong> by giving them a tangible reason to stay, and <strong>acquire new high-value customers</strong> through a compelling, low-friction entry point.</p>
+      <p class="s-body" style="margin-top:16px">The design challenge: make the value of membership feel <strong>immediate — not deferred</strong> — so users experience the benefit before they've had time to second-guess the decision.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card">
+        <div class="p-card-title">Instant Rewards</div>
+        <div class="p-card-body">Free delivery activated immediately upon sign-up. No waiting period.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Transparent Savings</div>
+        <div class="p-card-body">Show users exactly where their money goes and what they're saving.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Frictionless Onboarding</div>
+        <div class="p-card-body">Reduce cognitive load at every decision point in the sign-up journey.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: MY ROLE -->
+<section class="slide" id="s-5">
+  <div class="s-eyebrow">04 · My Role</div>
+  <h2 class="s-title">Design Lead — <em>Strategy to Handover</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">I led design across multiple loyalty initiatives simultaneously — three designers, five squads, two global partnerships. My role wasn't just craft. It was <strong>orchestration, alignment, and decision-making</strong> under commercial pressure.</p>
+    </div>
+    <ul class="s-list">
+      <li>Defined the design vision end-to-end — from discovery through dev handover</li>
+      <li>Partnered with researchers and tech leads to shape the 2025/26 loyalty roadmap</li>
+      <li>Introduced a two-week workflow to improve cross-functional coordination</li>
+      <li>Managed high-stakes stakeholder relationships with Amazon and Lieferando</li>
+      <li>Created a shared Figma workspace for cross-squad design visibility</li>
+      <li>Introduced hypothesis-first briefs — shifting how the team thinks, not just what they ship</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SLIDE 6: UX STRATEGY -->
+<section class="slide" id="s-6">
+  <div class="s-eyebrow">05 · UX Strategy</div>
+  <h2 class="s-title">A <em>Discovery Framework</em> That Shaped the Roadmap</h2>
+  <div class="principles" style="margin-top:clamp(24px,4vh,48px)">
+    <div class="p-card">
+      <div class="p-card-title">Stage 1</div>
+      <div class="p-card-title" style="color:var(--paper);font-size:15px;margin:8px 0">Contextualise the Problem Space</div>
+      <div class="p-card-body">Understanding customers' loyalty behaviour and perceptions through interviews and behavioural data.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Stage 2</div>
+      <div class="p-card-title" style="color:var(--paper);font-size:15px;margin:8px 0">Understand the Customer</div>
+      <div class="p-card-body">Creating loyalty behavioural archetypes and design principles to guide implementation.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Stage 3</div>
+      <div class="p-card-title" style="color:var(--paper);font-size:15px;margin:8px 0">Define Business Goals</div>
+      <div class="p-card-body">Understanding high-level business strategic objectives and translating them into design intent.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Stage 4</div>
+      <div class="p-card-title" style="color:var(--paper);font-size:15px;margin:8px 0">Define Now &amp; North Star</div>
+      <div class="p-card-body">Short and long-term customer-centred strategy, aligned with business objectives. Driven by LEAN experimentation.</div>
+    </div>
+  </div>
+  <div style="margin-top:clamp(20px,3vh,36px)">
+    <img src="../assets/jetplus-ux-strategy.png" class="img-fill" style="max-height:180px;object-fit:contain;object-position:left" alt="UX strategy framework" loading="lazy">
+  </div>
+</section>
+
+<!-- SLIDE 7: THE SOLUTION -->
+<section class="slide" id="s-7">
+  <div class="s-eyebrow">06 · The Solution</div>
+  <h2 class="s-title">A 90-Day Pass — Not a <em>Subscription Trap</em></h2>
+  <div class="two-col wide-left">
+    <div>
+      <p class="s-body">Research surfaced <strong>subscription fatigue</strong>. Users didn't object to paying for value — they objected to being locked in. A flexible, one-time-payment 90-day pass made entry feel risk-free, while the bundle rewarded commitment with real savings.</p>
+      <p class="s-body" style="margin-top:16px">By embedding it as a <strong>free-trial upsell directly in the checkout flow</strong>, we captured users at peak engagement — already spending, already committed to an order, already in a value-seeking mindset.</p>
+      <p class="s-body" style="margin-top:16px;border-left:2px solid var(--orange);padding-left:16px;color:rgba(246,243,236,0.6)"><em>The strategic call: the original brief asked for a standard subscription. I challenged it — tasking a designer with competitive audit and concept testing across three models before we committed. The data came back clearly in favour of the bundle.</em></p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card" style="border-color:var(--orange);background:rgba(255,105,0,0.06)">
+        <div class="p-card-title">The Model</div>
+        <div class="p-card-body" style="color:var(--paper)">One-time-payment · 90-day free delivery · Significant upfront savings vs. paying per order</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Entry Point</div>
+        <div class="p-card-body">Free trial upsell at checkout — captured at peak intent, minimal added friction</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">The Pivot</div>
+        <div class="p-card-body">Away from recurring subscription model — reducing "lock-in" fear while preserving LTV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: E2E JOURNEY VISUALS -->
+<section class="slide" id="s-8">
+  <div class="s-eyebrow">07 · Design · End-to-End Journey</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Unified design across <em>web and native</em></h2>
+  <div class="img-pair" style="flex:1;gap:16px">
+    <img src="../assets/JET+-lanscape1.png" class="img-fill" style="height:100%;max-height:55vh" alt="JET+ Figma design overview" loading="lazy">
+    <img src="../assets/JET+-lanscape2.png" class="img-fill" style="height:100%;max-height:55vh" alt="JET+ checkout upselling design" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">JET+ one-time-payment — end-to-end, web &amp; native</div>
+</section>
+
+<!-- SLIDE 9: OTP RESULTS -->
+<section class="slide" id="s-9">
+  <div class="s-eyebrow">08 · Results · One-Time-Payment</div>
+  <h2 class="s-title">The Numbers <em>Speak</em></h2>
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num">~4<i>M</i></span><div class="stat-lab">Total membership purchases — JET+ one-time-payment</div></div>
+    <div class="stat"><span class="stat-num"><i>+</i>15<i>%</i></span><div class="stat-lab">Incremental order frequency among members</div></div>
+    <div class="stat"><span class="stat-num">9<i>K</i></span><div class="stat-lab">Extra sign-ups from savings-awareness feature alone</div></div>
+    <div class="stat"><span class="stat-num">100<i>%</i></span><div class="stat-lab">Cross-platform — fully live across web, iOS and Android</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 10: AMAZON PARTNERSHIP -->
+<section class="slide" id="s-10">
+  <div class="s-eyebrow">09 · Amazon &amp; Lieferando Partnership</div>
+  <h2 class="s-title">Two Global Brands. Three Markets. <em>One Activation Moment.</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">I led the design and cross-platform integration of the <strong>Amazon Prime × Just Eat Takeaway</strong> partnership — free delivery for Prime members in Germany, Austria, and Spain.</p>
+      <p class="s-body" style="margin-top:16px">I served as the primary design bridge between senior leadership and global stakeholders at Amazon, ensuring brand alignment and a frictionless experience across two very different ecosystems.</p>
+    </div>
+    <div>
+      <p class="s-body" style="border-left:2px solid var(--orange);padding-left:16px;color:rgba(246,243,236,0.65)"><em>The key trade-off: Amazon's single-URL login architecture conflicted with Just Eat's per-market URLs. I made the call to accept the extra country-selection step rather than compromise the security model — and communicated that decision clearly to both sides.</em></p>
+      <div class="stat-grid" style="margin-top:24px;grid-template-columns:1fr 1fr">
+        <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Markets live — Germany, Austria, Spain</div></div>
+        <div class="stat"><span class="stat-num">2</span><div class="stat-lab">Global brands unified under one activation flow</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: AMAZON FLOW VISUALS -->
+<section class="slide" id="s-11">
+  <div class="s-eyebrow">10 · Amazon · Activation Flow Design</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Account linking &amp; <em>benefit activation</em> across markets</h2>
+  <div class="img-pair" style="flex:1">
+    <img src="../assets/AMZ1.png" class="img-fill" style="max-height:52vh" alt="Amazon account linking flow" loading="lazy">
+    <img src="../assets/AMZ2.png" class="img-fill" style="max-height:52vh" alt="Amazon benefit activation screens" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">Live activation experience — Germany, Austria &amp; Spain</div>
+</section>
+
+<!-- SLIDE 12: AMAZON RESULTS -->
+<section class="slide" id="s-12">
+  <div class="s-eyebrow">11 · Results · Amazon &amp; Lieferando</div>
+  <h2 class="s-title">Partnership <em>Delivered</em></h2>
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num">~2<i>M</i></span><div class="stat-lab">Total membership purchases — Amazon/Lieferando cohort</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate among activated Prime members</div></div>
+    <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Markets live and delivering measurable results</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 13: VISUAL LANGUAGE -->
+<section class="slide" id="s-13">
+  <div class="s-eyebrow">12 · Visual Language</div>
+  <h2 class="s-title">A <em>Premium Identity</em> Built on the PIE System</h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">I worked closely with the design systems team to ensure JET+'s new visual language sits within the main JET PIE library — creating a premium, cohesive identity centred around a vibrant orange palette and sophisticated depth.</p>
+      <p class="s-body" style="margin-top:16px">The language is built on dynamic gradients — transitioning from bright oranges to deep, dark tones — and <strong>high-fidelity 3D-rendered iconography</strong> created by the design studio team under my creative direction.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:12px;margin-top:0">
+      <div class="p-card" style="border-color:var(--orange)">
+        <div class="p-card-title">PIE-Native</div>
+        <div class="p-card-body">All components extend the existing JET PIE design system — no divergence, full token compliance.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Dynamic Gradients</div>
+        <div class="p-card-body">Bright oranges to deep dark tones — premium feel, consistent with the JET+ brand tier.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">3D Iconography</div>
+        <div class="p-card-body">High-fidelity rendered icons created by design studio with my creative direction.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: BEHAVIOURAL ECONOMICS -->
+<section class="slide" id="s-14">
+  <div class="s-eyebrow">13 · Behavioural Economics</div>
+  <h2 class="s-title">Design Grounded in <em>Psychological Principles</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,36px)">These principles were embedded into the information architecture, copy, and interaction design to systematically reduce drop-off at every stage of the journey.</p>
+  <div class="principles">
+    <div class="p-card" style="border-color:var(--orange)">
+      <div class="p-card-title">&#9889; Instant Rewards</div>
+      <div class="p-card-body">Free delivery activated immediately upon sign-up. No waiting period — value felt before doubt sets in.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">&#10022; Peak-End Rule</div>
+      <div class="p-card-body">Delight animation at the activation moment to create a memorable positive peak experience.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">&#9888; Loss Aversion</div>
+      <div class="p-card-body">"Don't lose your free delivery, trial expires soon" framing — proven more effective than "save money".</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">&#128101; Bandwagon Effect</div>
+      <div class="p-card-body">Social proof: "Most JET members are saving €X.00" — normalising membership behaviour.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: TRADE-OFFS -->
+<section class="slide" id="s-15">
+  <div class="s-eyebrow">14 · Trade-offs &amp; Key Decisions</div>
+  <h2 class="s-title">Perfect UX, Balanced Against <em>Real Constraints</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">Every design initiative involves trade-offs. Navigating these decisions transparently was critical to building trust with stakeholders.</p>
+  <div class="principles" style="grid-template-columns:1fr 1fr;gap:20px">
+    <div class="p-card">
+      <div class="p-card-title">Subscribe at Checkout vs. Separate Funnel</div>
+      <div class="p-card-body">Embedding in checkout maximised conversion but reduced awareness for less frequent users who never reached checkout. Decision: lead with checkout, expand to marketing channels in Phase 2.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Amazon Activation Flow</div>
+      <div class="p-card-body">Amazon's single login URL vs. Just Eat's separate per-market URLs required an extra country-selection step — a necessary friction point to enable global benefit activation without compromising the security model.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Speed vs. Robustness</div>
+      <div class="p-card-body">Engineering pressure to ship fast vs. my push to test three subscription models first. The two-week research sprint cost time but prevented building the wrong product.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Subscription vs. Bundle</div>
+      <div class="p-card-body">Recurring subscription (predictable revenue) vs. one-time bundle (lower friction, lower commitment). Data from concept testing made the call: bundle won on activation and retention metrics.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: EXPERIMENTATION -->
+<section class="slide" id="s-16">
+  <div class="s-eyebrow">15 · Led by Experimentation</div>
+  <h2 class="s-title">Hypothesis First. <em>Data Decides.</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(16px,2.5vh,28px)">Experiment 1: £10 Credit vs. Unlimited Free Delivery (UFD) — 10K gifts, 50/50 split, 30-day window</p>
+  <div class="exp-grid">
+    <div class="exp-col winner">
+      <div class="exp-label win">£10 Credit — Winner</div>
+      <div class="exp-result">3.83<span style="font-size:0.5em;color:var(--orange)">%</span></div>
+      <div class="exp-sub">Redemption rate (vs 1.49% UFD)</div>
+      <div style="margin-top:16px">
+        <div class="exp-result" style="font-size:clamp(1.2rem,2vw,1.8rem)">3.90<span style="font-size:0.6em;color:var(--orange)">%</span></div>
+        <div class="exp-sub">Incremental order uplift (vs 2.41% UFD)</div>
+      </div>
+      <div style="margin-top:16px">
+        <div class="exp-result" style="font-size:clamp(1.2rem,2vw,1.8rem)">£2.18</div>
+        <div class="exp-sub">CPIO — Cost-Per-Interaction-Outcome (vs £2.54 UFD)</div>
+      </div>
+    </div>
+    <div class="exp-col">
+      <div class="exp-label">UFD — 30 Days</div>
+      <div class="exp-result">1.49<span style="font-size:0.5em;color:var(--gray)">%</span></div>
+      <div class="exp-sub">Redemption rate</div>
+      <div style="margin-top:16px">
+        <div style="margin-top:16px;border-left:2px solid var(--orange);padding-left:16px">
+          <div style="font-size:12px;color:rgba(246,243,236,0.65);line-height:1.6"><em>Strongest uplift with 6+ engaged users: 10.63% with credit vs. 7.72% control. Credit is more cost-efficient at every segment level.</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17: OVERALL IMPACT -->
+<section class="slide" id="s-17">
+  <div class="s-eyebrow">16 · Overall Impact</div>
+  <h2 class="s-title">6 Million Members. <em>Measurable Results.</em></h2>
+  <div class="stat-grid" style="margin-top:clamp(24px,4vh,48px)">
+    <div class="stat"><span class="stat-num">6<i>M</i></span><div class="stat-lab">JET+ memberships across all mechanisms</div></div>
+    <div class="stat"><span class="stat-num"><i>+</i>15<i>%</i></span><div class="stat-lab">Incremental order frequency among members</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate — Amazon/Lieferando cohort</div></div>
+    <div class="stat"><span class="stat-num">3<i>mo</i></span><div class="stat-lab">MVP delivered — web, iOS &amp; Android, fully live</div></div>
+  </div>
+  <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">By leading with instant value and removing friction at every entry point, the initiative successfully converted <strong>transactional users into loyal members</strong> — at scale, across platforms, and under significant commercial and partnership pressure.</p>
+</section>
+
+<!-- SLIDE 18: WHAT'S NEXT -->
+<section class="slide" id="s-18">
+  <div class="s-eyebrow">17 · What's Next</div>
+  <h2 class="s-title">The Roadmap is <em>Data-Driven &amp; AI-Powered</em></h2>
+  <div class="roadmap-grid">
+    <div class="rm-card">
+      <div class="rm-num">01</div>
+      <div class="rm-title">Behavioural Segmentation</div>
+      <div class="rm-desc">Segmenting users by ordering habits to personalise the membership experience — right offer to right archetype.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">02</div>
+      <div class="rm-title">Savings Visibility</div>
+      <div class="rm-desc">Making cumulative savings a core part of the membership identity — reinforcing perceived value with every order.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">03</div>
+      <div class="rm-title">AI-Powered Benefit Add-ons</div>
+      <div class="rm-desc">Dynamic offers tailored to individual user behaviour — moving from one-size-fits-all to genuinely personalised membership.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">04</div>
+      <div class="rm-title">Loyalty Recognition</div>
+      <div class="rm-desc">Ensuring long-term users feel valued — moments of recognition that reinforce the habit loop.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">05</div>
+      <div class="rm-title">Personalised Nudges</div>
+      <div class="rm-desc">Built with Kiro.dev — AI-generated nudges tailored to each behavioural archetype at the right moment.</div>
+    </div>
+    <div class="rm-card" style="border-color:var(--orange);background:rgba(255,105,0,0.05)">
+      <div class="rm-num" style="color:var(--paper)">→</div>
+      <div class="rm-title">The Measure</div>
+      <div class="rm-desc">All initiatives measured against CPIO (Cost-Per-Interaction-Outcome) — the north star metric I introduced.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19: NORTH STAR -->
+<section class="slide" id="s-19" style="justify-content:center;align-items:center;text-align:center">
+  <div class="s-eyebrow" style="justify-content:center">18 · North Star</div>
+  <blockquote class="big-quote" style="text-align:center;max-width:60ch">"Becoming the most rewarding platform — creating an ecosystem where high-value actions are recognised, and being a JET+ member <em>unlocks even more value.</em>"</blockquote>
+  <div class="quote-attr" style="margin-top:32px;font-size:16px;color:var(--paper)">The right reward, to the right customer, at the right time.</div>
+</section>
+
+<!-- SLIDE 20: ARCHETYPES -->
+<section class="slide" id="s-20">
+  <div class="s-eyebrow">19 · Behavioural Archetypes</div>
+  <h2 class="s-title">Four Customers. <em>One System.</em></h2>
+  <div class="arch-grid">
+    <div class="arch-card">
+      <div class="arch-name">Alex</div>
+      <div class="arch-role">The Value-Seeking Pragmatist</div>
+      <div class="arch-desc">Prioritises clear, tangible benefits and an effortless experience. Seeks demonstrable savings — not gamification.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Luke</div>
+      <div class="arch-role">The Quality-Conscious Seeker</div>
+      <div class="arch-desc">Prioritises food quality, service reliability, and a trustworthy relationship with the platform above everything.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Mia</div>
+      <div class="arch-role">The Effortless Expediter</div>
+      <div class="arch-desc">Prioritises simplicity, convenience, and seamless experience. Loyalty should require zero cognitive effort.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Sam</div>
+      <div class="arch-role">The Squeezed Saver</div>
+      <div class="arch-desc">Prioritises financial necessity. Every delivery fee is a decision. Membership must prove its value immediately.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 21: ROADMAP H1 2026 -->
+<section class="slide" id="s-21">
+  <div class="s-eyebrow">20 · 2026 H1 Roadmap</div>
+  <h2 class="s-title">Three Pillars of the <em>Next Phase</em></h2>
+  <div class="roadmap-grid" style="grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vh,48px)">
+    <div class="rm-card" style="border-color:var(--orange);background:rgba(255,105,0,0.05)">
+      <div class="rm-num">1</div>
+      <div class="rm-title">Personalised Experiences</div>
+      <div class="rm-desc">"When I subscribe, I want my membership experience to feel rewarding and motivating, so it's enjoyable for me." — Personalised recommendations, reorder nudges, behavioural segmentation.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">2</div>
+      <div class="rm-title">Recognised &amp; Rewarded</div>
+      <div class="rm-desc">"When I subscribe, I want my loyalty recognised and my experience to include moments of delight, so that I feel valued and return." — Celebration moments, milestone recognition.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">3</div>
+      <div class="rm-title">Tangible &amp; Obvious Value</div>
+      <div class="rm-desc">"When I subscribe, I want to sign up at the moment that suits me so that joining feels seamless and convenient." — Free delivery bundles, savings visibility, AI benefit add-ons.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 22: AI NUDGES -->
+<section class="slide" id="s-22">
+  <div class="s-eyebrow">21 · AI-Powered Personalisation</div>
+  <h2 class="s-title">The Right Nudge, to the <em>Right Customer</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">Built with Kiro.dev — agentic AI development from prototype to production. Personalised nudges tailored to each behavioural archetype, delivered at the right moment in the user journey.</p>
+      <p class="s-body" style="margin-top:16px">Measuring success with <strong>CPIO (Cost-Per-Interaction-Outcome)</strong> — the metric I introduced to the team to make experimentation commercially legible to stakeholders.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:16px;margin-top:0">
+      <div class="p-card" style="border-color:var(--orange);background:rgba(255,105,0,0.06)">
+        <div class="p-card-title">&#128293; Roast me — Sam (Squeezed Saver)</div>
+        <div class="p-card-body" style="color:var(--paper)">"Seriously, Sam? Stop paying the 'convenience tax.' You've spent £15 on delivery this month — save £3.50 on this order with a free 14-day JET+ trial."</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">&#10024; Hype me — Alex (Value-Seeker)</div>
+        <div class="p-card-body">"Alex, did you know? Most JET members save over £20 a month." — Normalising membership through social proof.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 23: REFLECTION -->
+<section class="slide" id="s-23">
+  <div class="s-eyebrow">22 · Reflection</div>
+  <h2 class="s-title">What I'd <em>Do Differently</em> — and What I'd Keep</h2>
+  <div class="reflect-grid">
+    <div class="r-card">
+      <div class="r-title">Cross-Functional Leadership</div>
+      <div class="r-body">A high-fidelity prototype is a negotiation tool. By visualising the end-state early, we forced technical trade-off discussions before they became blockers. I'd do this even earlier next time — prototype before the brief is signed off, not after.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">Strategic Problem Framing</div>
+      <div class="r-body">I mentored my designers to use the Kano Model and Outcome-Driven Innovation (ODI) to identify underserved needs. This shifted focus from feature delivery to genuine value gaps — and produced better briefs. I'd make this standard practice from day one.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">Operational Efficiency</div>
+      <div class="r-body">By integrating agentic AI tools like Kiro.dev, I've shown my team how to bridge the design-to-development gap with spec-driven prototypes. This does more than speed things up — it changes what's possible within a sprint cycle.</div>
+    </div>
+  </div>
+  <p class="s-body" style="margin-top:clamp(20px,3vh,36px);border-left:2px solid var(--orange);padding-left:16px;color:rgba(246,243,236,0.65)"><em>"The biggest lesson: how to align a cross-functional team on a single vision — and not stop at the MVP."</em></p>
+</section>
+
+<!-- SLIDE 24: THANK YOU -->
+<section class="slide thank-slide" id="s-24">
+  <div class="s-eyebrow" style="justify-content:center">Thank you</div>
+  <h2 class="s-title" style="text-align:center;font-size:clamp(2.5rem,5vw,5.5rem)">Mark <em>George</em></h2>
+  <p class="s-body" style="text-align:center;margin-top:12px">Lead Product Designer · Design Leadership</p>
+  <div class="cover-meta" style="justify-content:center;margin-top:40px">
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Email</div>
+      <div class="cover-meta-val">markgeorge1607@gmail.com</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">LinkedIn</div>
+      <div class="cover-meta-val">linkedin.com/in/mark-george-31b89360</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Portfolio</div>
+      <div class="cover-meta-val">markgeorge1607.github.io/markportfolio</div>
+    </div>
+  </div>
+  <div style="margin-top:48px;font-size:12px;color:var(--gray);text-align:center">Press Escape to return to case studies</div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- Navigation UI -->
+<nav class="nav-bar">
+  <button class="nav-btn" id="prevBtn" disabled aria-label="Previous slide">←</button>
+  <span class="slide-counter" id="counter">1 / 24</span>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+</nav>
+
+<script>
+(function(){
+  var total = 24;
+  var current = 0;
+  var slides = document.querySelectorAll('.slide');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var counter = document.getElementById('counter');
+  var bar = document.getElementById('progressBar');
+
+  function update(){
+    counter.textContent = (current+1) + ' / ' + total;
+    bar.style.width = ((current+1)/total*100) + '%';
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total-1;
+  }
+
+  function goTo(n){
+    if(n < 0 || n >= total) return;
+    slides[current].classList.remove('active');
+    slides[current].classList.add(n > current ? 'exit-left' : '');
+    var prev = current;
+    current = n;
+    setTimeout(function(){
+      slides[prev].classList.remove('exit-left');
+      slides[current].classList.add('active');
+      update();
+    }, 20);
+  }
+
+  function next(){ if(current < total-1) goTo(current+1); }
+  function prev(){ if(current > 0) goTo(current-1); }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); next(); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); prev(); }
+    if(e.key === 'Escape'){ window.location.href = 'index.html'; }
+  });
+
+  // Touch swipe
+  var touchX = null;
+  document.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if(touchX === null) return;
+    var dx = touchX - e.changedTouches[0].clientX;
+    if(Math.abs(dx) > 50){ dx > 0 ? next() : prev(); }
+    touchX = null;
+  }, {passive:true});
+
+  update();
+})();
+</script>
+</body>
+</html>
