@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JET+ Loyalty — The Full Story · Mark George</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="present.css">
+</head>
+<body>
+<script src="lock-present.js"></script>
+
+<div class="progress-bar" id="progressBar"></div>
+<a href="index.html" class="home-btn">← All cases</a>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: COVER -->
+<section class="slide cover-slide active" id="s-1">
+  <div style="flex:1;display:flex;align-items:flex-end">
+    <div>
+      <div class="s-eyebrow" style="margin-bottom:32px">Just Eat Takeaway · Loyalty · 2026</div>
+      <h1 class="cover-title">JET+ Loyalty — The Full Story</h1>
+      <p class="cover-title" style="font-style:italic;font-size:clamp(1rem,2vw,1.4rem);font-weight:300;margin-top:12px;margin-bottom:32px">Design Lead &amp; Management</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Role</div>
+          <div class="cover-meta-val">Design Lead &amp; Manager</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Team</div>
+          <div class="cover-meta-val">3 designers, 5 squads</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Scope</div>
+          <div class="cover-meta-val">Web · iOS · Android</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Partners</div>
+          <div class="cover-meta-val">Amazon Prime · Lieferando</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: THE CHALLENGE (context) -->
+<section class="slide" id="s-2">
+  <div class="s-eyebrow">01 · The Challenge</div>
+  <h2 class="s-title">Just Eat had a retention problem. The business needed <em>structural change.</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">Users treated Just Eat as an occasional treat — not a daily habit. Order frequency was inconsistent, the cost of re-acquiring lapsed customers was rising, and every competitor with a paid membership was pulling users away. Paid members at rival platforms were spending <strong>24× more</strong> and ordering 10–30% more than non-members. <strong>13% of lapsed Just Eat customers</strong> had left specifically because a competitor's loyalty programme was more compelling.</p>
+      <p class="s-body" style="margin-top:16px">This wasn't a UX problem to be solved with better UI. It was a business model problem that required a design-led strategic intervention.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card">
+        <div class="p-card-title">24× More Spending</div>
+        <div class="p-card-body">Paid members at rival platforms spending orders of magnitude more than non-members.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">13% Lapsed for Loyalty</div>
+        <div class="p-card-body">Over one in ten lapsed customers cited a competitor's loyalty programme as the reason they left.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Rising Re-acquisition Cost</div>
+        <div class="p-card-body">Getting lapsed users back cost more than retaining them — the economics demanded structural intervention.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: THE CHALLENGE (tensions) -->
+<section class="slide" id="s-3">
+  <div class="s-eyebrow">01 · The Challenge — Key Tensions</div>
+  <h2 class="s-title">Three tensions the team had to <em>hold simultaneously.</em></h2>
+  <div class="principles" style="margin-top:clamp(24px,4vh,48px)">
+    <div class="p-card">
+      <div class="p-card-title">Tension 01 · Time Horizon</div>
+      <div class="p-card-body">Customers want instant gratification. The business needed medium-to-long-term behavioural change. Both had to be true at once.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Tension 02 · Competing Metrics</div>
+      <div class="p-card-body">Retention and order frequency are related but distinct. Optimising for one could undermine the other.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Tension 03 · Value Exchange</div>
+      <div class="p-card-body">Membership had to feel genuinely valuable to users, while remaining commercially sustainable. Neither could be sacrificed.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: THE CHALLENGE (quote + manager lens) -->
+<section class="slide" id="s-4" style="justify-content:center">
+  <div class="s-eyebrow">01 · The Challenge — Research</div>
+  <blockquote class="big-quote">"Consumers primarily switched to competitors because they offered more compelling deals and <em>superior reward programmes.</em>"</blockquote>
+  <div class="quote-attr">JET Customer Research, 2025</div>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(16px,2.5vh,28px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">Before a single wireframe was sketched, I spent two weeks aligning the team around <strong>what problem we were actually solving.</strong> The business brief arrived framed as a feature request — "build a membership product." I reframed it as a retention strategy, mapped it to the three structural tensions, and used that framing to anchor every design decision that followed.</p>
+  </div>
+</section>
+
+<!-- SLIDE 5: MANAGING THE TEAM (intro) -->
+<section class="slide" id="s-5">
+  <div class="s-eyebrow">02 · Managing the Team</div>
+  <h2 class="s-title">Three designers. Five squads. One <em>shared vision</em> that couldn't fragment.</h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">Loyalty cuts across every part of the product — SERP, menu, basket, checkout, accounts. My three designers were each embedded in different product squads, working with different PMs, different engineers, different release cycles.</p>
+      <p class="s-body" style="margin-top:16px">The risk wasn't bad design. The risk was <strong>incoherent design</strong> — three people making individually sensible decisions that added up to a fractured user experience.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card">
+        <div class="p-card-title">SERP → Menu → Basket</div>
+        <div class="p-card-body">Loyalty touchpoints span the entire purchase funnel — inconsistency compounds at every step.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Checkout → Accounts</div>
+        <div class="p-card-body">Post-purchase retention surfaces require the same design language as acquisition moments.</div>
+      </div>
+      <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+        <div class="p-card-title">The Real Risk: Fragmentation</div>
+        <div class="p-card-body">Three individually good decisions that don't add up to one coherent experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: MANAGING THE TEAM (structure) -->
+<section class="slide" id="s-6">
+  <div class="s-eyebrow">02 · Managing the Team — How I Structured It</div>
+  <h2 class="s-title">Alignment as <em>infrastructure,</em> not overhead.</h2>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-bottom:clamp(20px,3vh,32px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">I introduced a <strong>fortnightly design sync</strong> with a fixed agenda: decisions made, decisions pending, and one cross-squad dependency to resolve together. This wasn't a status meeting — it was an alignment mechanism. It let me catch fragmentation early, before it reached dev handover. I also created a shared Figma workspace where all three designers' live work was visible in one place. Not for surveillance — for context. When designer A's checkout flow and designer B's account page needed to connect, they could see each other's work without a meeting.</p>
+  </div>
+  <div class="principles">
+    <div class="p-card">
+      <div class="p-card-title">🗺 Defined the design vision</div>
+      <div class="p-card-body">Set the end-to-end UX/UI direction from discovery through to dev handover — the single thread of intent across every initiative.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">🔁 Fortnightly workflow</div>
+      <div class="p-card-body">Replaced ad-hoc check-ins with a structured two-week rhythm — made sprint delivery predictable and surfaced cross-squad conflicts weeks early.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">🔬 Grounded the roadmap in research</div>
+      <div class="p-card-body">Partnered with researchers and tech leads to shape the 2025/26 loyalty roadmap — every initiative grounded in user evidence.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">🤝 Held the Amazon relationship</div>
+      <div class="p-card-body">Primary design bridge to senior stakeholders at Amazon — protecting design integrity while navigating global partnership trade-offs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: UX STRATEGY -->
+<section class="slide" id="s-7">
+  <div class="s-eyebrow">02 · Managing the Team — UX Strategy</div>
+  <h2 class="s-title">A four-stage discovery framework <em>I designed for the team.</em></h2>
+  <div style="margin-top:clamp(20px,3vh,36px)">
+    <img src="../assets/jetplus-ux-strategy.png" class="img-fill" style="max-height:60vh;object-fit:contain;width:100%" alt="UX strategy framework" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">The UX strategy — four stages, each owned by a different designer, unified under a single LEAN experimentation framework.</div>
+</section>
+
+<!-- SLIDE 8: THE SOLUTION (intro) -->
+<section class="slide" id="s-8">
+  <div class="s-eyebrow">03 · The Solution</div>
+  <h2 class="s-title">A 90-day pass, not a subscription trap — designed around the <em>psychology of commitment.</em></h2>
+  <div class="two-col wide-left">
+    <div>
+      <p class="s-body">Research surfaced a clear pattern: subscription fatigue. Users didn't object to paying for value — they objected to <strong>being locked in.</strong> The standard recurring model felt like a trap. Our answer was a flexible, one-time-payment 90-day pass that made the initial entry feel genuinely risk-free, while the bundle structure rewarded commitment with meaningful savings.</p>
+      <p class="s-body" style="margin-top:16px">By integrating it as a free-trial upsell <strong>directly in the checkout flow,</strong> we captured users at the exact moment of highest engagement — already in a spending mindset, already invested in an order.</p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+        <div class="p-card-title">The Model</div>
+        <div class="p-card-body" style="color:var(--paper)">One-time-payment · 90-day free delivery · Significant upfront savings vs. paying per order</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Entry Point</div>
+        <div class="p-card-body">Free trial upsell at checkout — captured at peak intent, minimal added friction</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">The Pivot</div>
+        <div class="p-card-body">Away from recurring subscription — reducing "lock-in" fear while preserving LTV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: THE SOLUTION (manager lens) -->
+<section class="slide" id="s-9" style="justify-content:center">
+  <div class="s-eyebrow">03 · The Solution — The Strategic Call</div>
+  <h2 class="s-title">Why I challenged <em>the original brief.</em></h2>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">The original brief asked for a standard subscription. I challenged it. I tasked one of my designers with a focused competitive audit and a round of concept testing against three models — standard subscription, one-time bundle, and a free trial — before we committed to any direction. The data came back clearly in favour of the bundle. <strong>Making space for that discovery before locking in the solution</strong> cost us two weeks but saved us from building the wrong product. That's a management decision, not a design one.</p>
+  </div>
+  <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
+    <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Models tested before committing to the bundle</div></div>
+    <div class="stat"><span class="stat-num">2<i>wk</i></span><div class="stat-lab">Discovery sprint that prevented building the wrong product</div></div>
+    <div class="stat"><span class="stat-num">~4<i>M</i></span><div class="stat-lab">Purchases validated the decision</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 10: THE SOLUTION (E2E journey) -->
+<section class="slide" id="s-10">
+  <div class="s-eyebrow">03 · The Solution — Design</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Unified design across <em>web and native.</em></h2>
+  <div class="img-pair" style="flex:1;gap:16px">
+    <img src="../assets/JET+-lanscape1.png" class="img-fill" style="height:100%;max-height:55vh" alt="JET+ Figma design overview" loading="lazy">
+    <img src="../assets/JET+-lanscape2.png" class="img-fill" style="height:100%;max-height:55vh" alt="JET+ checkout upselling design" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">JET+ one-time-payment E2E journey — shared visual language across web, iOS, and Android</div>
+</section>
+
+<!-- SLIDE 11: THE SOLUTION (results) -->
+<section class="slide" id="s-11">
+  <div class="s-eyebrow">03 · The Solution — Results</div>
+  <h2 class="s-title">The numbers from <em>Phase 1.</em></h2>
+  <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
+    <div class="stat"><span class="stat-num">~4<i>M</i></span><div class="stat-lab">Total membership purchases — JET+ one-time-payment</div></div>
+    <div class="stat"><span class="stat-num"><i>+</i>15<i>%</i></span><div class="stat-lab">Incremental order frequency among members</div></div>
+    <div class="stat"><span class="stat-num">9<i>K</i></span><div class="stat-lab">Extra sign-ups driven by savings-awareness feature alone</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 12: AMAZON PARTNERSHIP (intro) -->
+<section class="slide" id="s-12">
+  <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership</div>
+  <h2 class="s-title">Two global brands, three markets, <em>one activation moment.</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">I led the design and cross-platform integration of the Amazon Prime × Just Eat Takeaway partnership — free delivery for Prime members across Germany, Austria, and Spain. As the primary design bridge between JET senior leadership and global stakeholders at Amazon, I was responsible for both the outcome and the relationship.</p>
+      <p class="s-body" style="margin-top:16px">Two global brands, with different design systems, different technical constraints, different timelines, and different definitions of "done." The single-URL login system Amazon required conflicted with Just Eat's multi-market URL architecture — meaning an additional country-selection step was unavoidable. <strong>I made the call to accept that friction rather than compromise the security model.</strong></p>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card">
+        <div class="p-card-title">3 Markets</div>
+        <div class="p-card-body">Germany, Austria, and Spain — each with distinct URL architecture and localisation requirements.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">2 Design Systems</div>
+        <div class="p-card-body">Amazon's global components vs. JET's PIE system — aligned without compromising either brand.</div>
+      </div>
+      <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+        <div class="p-card-title">The Key Trade-off</div>
+        <div class="p-card-body">Accepted one extra country-selection step over compromising the security model. Activation data confirmed the right call.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: AMAZON PARTNERSHIP (manager lens) -->
+<section class="slide" id="s-13" style="justify-content:center">
+  <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Protecting the Team</div>
+  <h2 class="s-title">Holding the <em>external pressure</em> so the team could focus.</h2>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">My designers were under pressure from both sides — Amazon's PMs wanted faster turnaround; internal stakeholders wanted more polish. I kept that pressure at my level. <strong>I acted as the buffer so the team could do focused work</strong> rather than respond to competing demands in real time. I also ran weekly stakeholder syncs with Amazon's team myself, bringing design decisions to those calls prepared with rationale and options — so my designers weren't asked to justify their choices in rooms they hadn't been part of.</p>
+  </div>
+</section>
+
+<!-- SLIDE 14: AMAZON PARTNERSHIP (flow visuals) -->
+<section class="slide" id="s-14">
+  <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Design</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Account linking and <em>benefit activation</em> across markets.</h2>
+  <div class="img-pair" style="flex:1">
+    <img src="../assets/AMZ1.png" class="img-fill" style="max-height:52vh" alt="Amazon account linking flow" loading="lazy">
+    <img src="../assets/AMZ2.png" class="img-fill" style="max-height:52vh" alt="Amazon benefit activation screens" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">Live activation experience — Germany, Austria &amp; Spain</div>
+</section>
+
+<!-- SLIDE 15: AMAZON PARTNERSHIP (results) -->
+<section class="slide" id="s-15">
+  <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Results</div>
+  <h2 class="s-title">Partnership <em>delivered.</em></h2>
+  <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
+    <div class="stat"><span class="stat-num">~2<i>M</i></span><div class="stat-lab">Total membership purchases — Amazon/Lieferando cohort</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate among activated Prime members</div></div>
+    <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Markets live — Germany, Austria, Spain</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 16: BEHAVIOURAL DESIGN (intro + principles) -->
+<section class="slide" id="s-16">
+  <div class="s-eyebrow">05 · Behavioural Design</div>
+  <h2 class="s-title">Membership value isn't just a number — it's <em>how it's framed.</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">We embedded four behavioural economics principles into the IA, copy, and interaction design to systematically reduce drop-off. I introduced these as design principles for the team — a shared framework for making micro-decisions consistently across five different squads.</p>
+  <div class="principles">
+    <div class="p-card" style="border-color:var(--orange)">
+      <div class="p-card-title">⚡ Instant Rewards</div>
+      <div class="p-card-body">Free delivery activated immediately on sign-up. No waiting period. Value before doubt.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">⚠ Loss Aversion</div>
+      <div class="p-card-body">"Don't lose your free delivery — trial expires soon." Framed around what's lost, not what's gained.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">✦ Peak-End Rule</div>
+      <div class="p-card-body">A delight animation at the activation moment — engineered to create a memorable positive peak.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">👥 Bandwagon Effect</div>
+      <div class="p-card-body">Social proof in copy: "Most JET members are saving €X.00 this month."</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17: BEHAVIOURAL DESIGN (manager lens) -->
+<section class="slide" id="s-17" style="justify-content:center">
+  <div class="s-eyebrow">05 · Behavioural Design — Building a Shared Vocabulary</div>
+  <h2 class="s-title">From <em>instinct to framework</em> — how the team made decisions faster.</h2>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">Before this project, "behavioural economics" was something individual designers applied inconsistently, based on personal knowledge. I ran a half-day workshop with the team to codify these four principles as named, documented patterns — each with a rationale and a worked example. <strong>Giving the team a shared vocabulary meant design reviews became faster and more precise.</strong> Instead of debating whether a copy change "felt right," we could ask: "which principle does this serve?" That shift from instinct to framework is what lets a small team make coherent decisions at speed.</p>
+  </div>
+</section>
+
+<!-- SLIDE 18: HARD DECISIONS (intro) -->
+<section class="slide" id="s-18" style="justify-content:center">
+  <div class="s-eyebrow">06 · Hard Decisions</div>
+  <h2 class="s-title">The calls that didn't have <em>a clean answer.</em></h2>
+  <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">Good management isn't avoiding hard calls — it's making them clearly, communicating them honestly, and being accountable for the outcome. These were the three most consequential decisions I made on this project.</p>
+</section>
+
+<!-- SLIDE 19: HARD DECISIONS (3 decisions) -->
+<section class="slide" id="s-19">
+  <div class="s-eyebrow">06 · Hard Decisions — The Three Calls</div>
+  <h2 class="s-title">Made clearly. <em>Communicated honestly.</em></h2>
+  <div class="principles" style="margin-top:clamp(24px,4vh,40px)">
+    <div class="p-card">
+      <div class="p-card-title">01 · Checkout upsell vs. dedicated acquisition funnel</div>
+      <div class="p-card-body">Embedding the JET+ upsell in checkout maximised conversion for frequent users. But it meant <strong>39% of infrequent users never saw the proposition at all.</strong> I chose checkout for the MVP, with a committed plan to address awareness through marketing channels in the next phase.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">02 · Accepting the Amazon country-selection step</div>
+      <div class="p-card-body">Amazon's architecture required a single login URL. Just Eat operates separate URLs per market. The only resolution was an <strong>extra country-selection screen.</strong> I accepted it, documented the rationale clearly, and treated it as a known limitation. Activation data confirmed this was the right call.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">03 · Scoping savings visibility for the MVP</div>
+      <div class="p-card-body">The full savings-transparency vision required accurate, personalised delivery-fee data — technically complex and outside our MVP window. I chose to <strong>launch with free-delivery savings only.</strong> That scoped version still drove 9,000 extra sign-ups and validated the fuller vision.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 20: EXPERIMENTATION (intro) -->
+<section class="slide" id="s-20" style="justify-content:center">
+  <div class="s-eyebrow">07 · Led by Experimentation</div>
+  <h2 class="s-title">Decisions backed by data — a <em>culture of testing</em> the team built together.</h2>
+  <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">One of my goals was to move the team from a "launch and see" mindset to a genuine experiment-led culture. Each initiative had a hypothesis, a measured variant, and a defined primary metric — chosen before work started, not after.</p>
+</section>
+
+<!-- SLIDE 21: EXPERIMENTATION (results) -->
+<section class="slide" id="s-21">
+  <div class="s-eyebrow">07 · Led by Experimentation — Results</div>
+  <h2 class="s-title">Hypothesis first. <em>Data decides.</em></h2>
+  <div class="exp-grid">
+    <div class="exp-col winner">
+      <div class="exp-label win">Experiment 01 — £10 Credit vs. UFD · Winner</div>
+      <div class="exp-result">3.83<span style="font-size:0.5em;color:var(--orange)">%</span></div>
+      <div class="exp-sub">Redemption (vs 1.49% UFD)</div>
+      <div style="margin-top:16px">
+        <div class="exp-result" style="font-size:clamp(1.2rem,2vw,1.8rem)">£2.18</div>
+        <div class="exp-sub">CPIO — more efficient than £2.54 UFD</div>
+      </div>
+      <div style="margin-top:16px">
+        <div class="exp-result" style="font-size:clamp(1.2rem,2vw,1.8rem)">3.90<span style="font-size:0.6em;color:var(--orange)">%</span></div>
+        <div class="exp-sub">Incremental order uplift (vs 2.41% UFD)</div>
+      </div>
+    </div>
+    <div class="exp-col">
+      <div class="exp-label">Experiment 02 — Price Sensitivity (Fake Door)</div>
+      <div class="exp-result">22.8<span style="font-size:0.5em;color:var(--gray)">%</span></div>
+      <div class="exp-sub">Redemption at £2.99 vs 13.7% at £4.99</div>
+      <div style="margin-top:16px">
+        <div class="exp-result" style="font-size:clamp(1.2rem,2vw,1.8rem)">81<span style="font-size:0.5em;color:var(--gray)">%</span></div>
+        <div class="exp-sub">Of credit activated within 1 day of receiving</div>
+      </div>
+      <div style="margin-top:16px;border-left:2px solid var(--line);padding-left:16px">
+        <div style="font-size:12px;color:rgba(21,20,15,0.65);line-height:1.6">~285K exposed, ~36K impressions per variant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 22: EXPERIMENTATION (manager lens) -->
+<section class="slide" id="s-22" style="justify-content:center">
+  <div class="s-eyebrow">07 · Led by Experimentation — Building the Culture</div>
+  <h2 class="s-title">A career-level shift, <em>not just a process improvement.</em></h2>
+  <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">— As Manager</div>
+    <p class="s-body" style="color:rgba(21,20,15,0.72)">These experiments didn't run themselves. I introduced a <strong>hypothesis-first brief template</strong> for every design initiative — no work started without a stated hypothesis and a defined success metric. Initially the team found this constraining; it felt like extra process. Within two months, it became the default way they thought. <strong>Designers who think in hypotheses write better briefs, push back on vague requests more confidently, and advocate for their work in commercial language.</strong> That's a career-level shift, not just a process improvement.</p>
+  </div>
+</section>
+
+<!-- SLIDE 23: OVERALL IMPACT -->
+<section class="slide" id="s-23">
+  <div class="s-eyebrow">08 · Impact</div>
+  <h2 class="s-title">A design-led programme, <em>shifting behaviour at scale.</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">Across both the JET+ one-time-payment model and the Amazon/Lieferando partnership, the combined initiative proved that a well-designed sign-up entry point — grounded in behavioural economics and led with instant value — can meaningfully shift user behaviour at scale.</p>
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num">6<i>M</i></span><div class="stat-lab">JET+ memberships, across all mechanisms</div></div>
+    <div class="stat"><span class="stat-num"><i>+</i>15<i>%</i></span><div class="stat-lab">Incremental order frequency</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate — Prime/Lieferando cohort</div></div>
+    <div class="stat"><span class="stat-num">100<i>%</i></span><div class="stat-lab">Cross-platform — web, iOS, Android</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 24: WHAT'S NEXT (archetypes) -->
+<section class="slide" id="s-24">
+  <div class="s-eyebrow">09 · What's Next</div>
+  <h2 class="s-title">From a live foundation to a <em>personalised, AI-powered</em> north star.</h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">The next phase deepens personalisation, reinforces habit formation, and maximises ROI through intelligent segmentation. It's built on four behavioural archetypes from our discovery research.</p>
+  <div class="arch-grid">
+    <div class="arch-card">
+      <div class="arch-name">Alex</div>
+      <div class="arch-role">The Value-Seeking Pragmatist</div>
+      <div class="arch-desc">Clear, tangible benefits and an effortless experience. Maximise value, minimise hassle.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Luke</div>
+      <div class="arch-role">The Quality-Conscious Seeker</div>
+      <div class="arch-desc">Food quality, reliable service, and a seamless, enjoyable overall experience.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Mia</div>
+      <div class="arch-role">The Effortless Expediter</div>
+      <div class="arch-desc">Simplicity and convenience — value with minimal effort or active engagement.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-name">Sam</div>
+      <div class="arch-role">The Squeezed Saver</div>
+      <div class="arch-desc">Financial necessity. Value is tied to clear, tangible savings that ease real pressure.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 25: WHAT'S NEXT (roadmap) -->
+<section class="slide" id="s-25">
+  <div class="s-eyebrow">09 · What's Next — H1 2026 Roadmap</div>
+  <h2 class="s-title">Four pillars of <em>the next phase.</em></h2>
+  <div class="roadmap-grid" style="grid-template-columns:repeat(4,1fr);margin-top:clamp(24px,4vh,48px)">
+    <div class="rm-card">
+      <div class="rm-num">01</div>
+      <div class="rm-title">AI-powered benefit personalisation</div>
+      <div class="rm-desc">Dynamic offers tailored to individual user behaviour and archetype — built with Kiro.dev.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">02</div>
+      <div class="rm-title">Savings visibility</div>
+      <div class="rm-desc">Making cumulative savings a core part of membership identity — not a hidden footnote.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">03</div>
+      <div class="rm-title">Reorder Rewards</div>
+      <div class="rm-desc">Reinforcing habit through reward mechanics that activate on repeat orders from the same restaurant.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">04</div>
+      <div class="rm-title">Loyalty recognition</div>
+      <div class="rm-desc">Ensuring long-term members feel valued — not taken for granted — as their tenure grows.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 26: WHAT'S NEXT (image + north star) -->
+<section class="slide" id="s-26">
+  <div class="s-eyebrow">09 · What's Next — Vision</div>
+  <h2 class="s-title">The right reward, to the right customer, <em>at the right time.</em></h2>
+  <div style="margin-top:clamp(16px,2.5vh,28px)">
+    <img src="../assets/jetplus-next-phase.png" class="img-fill" style="max-height:45vh;object-fit:contain;width:100%" alt="JET+ next phase vision" loading="lazy">
+  </div>
+  <blockquote class="big-quote" style="font-size:clamp(1rem,2vw,1.6rem);margin-top:clamp(16px,2.5vh,28px)">"The right reward, to the right customer, <em>at the right time.</em>"</blockquote>
+  <div class="quote-attr">JET+ North Star</div>
+</section>
+
+<!-- SLIDE 27: REFLECTION (intro) -->
+<section class="slide" id="s-27" style="justify-content:center">
+  <div class="s-eyebrow">10 · Reflection</div>
+  <h2 class="s-title">What managing this project <em>taught me</em> about leading designers.</h2>
+  <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">I came into this project as a strong IC who'd been given management responsibility. I left it as a manager who understood the difference. Here's what shifted.</p>
+</section>
+
+<!-- SLIDE 28: REFLECTION (4 cards) -->
+<section class="slide" id="s-28">
+  <div class="s-eyebrow">10 · Reflection — What Shifted</div>
+  <h2 class="s-title">Four things I <em>now know</em> about design leadership.</h2>
+  <div class="reflect-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="r-card">
+      <div class="r-title">On framing · The problem you set is the problem you get</div>
+      <div class="r-body">My most impactful act wasn't a design decision — it was reframing a feature brief as a retention strategy. <strong>How a team frames the problem determines what solutions are even in scope.</strong> A manager's job is to protect that framing from getting collapsed back into a delivery task.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">On autonomy · Alignment enables autonomy — it doesn't replace it</div>
+      <div class="r-body">I managed three designers across five squads. The better approach was <strong>investing in shared frameworks</strong> — the behavioural principles, the hypothesis template, the shared Figma workspace — so designers could make good decisions independently.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">On stakeholders · Protect the team's focus; hold the external noise</div>
+      <div class="r-body">In a high-pressure partnership environment, <strong>my job was to be a stable interface between the team's focused work and the chaos outside it.</strong> That meant absorbing pressure, making decisions at my level, and bringing calm into the team — not urgency.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">On craft · Prototypes are negotiation tools, not deliverables</div>
+      <div class="r-body">I mentored the team to treat hi-fi prototypes as a way to force technical trade-off conversations early. <strong>The Amazon single-URL constraint was surfaced six weeks early because we had a prototype in front of their engineers.</strong> That's a strategy lesson delivered through craft.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 29: COMBINED IMPACT -->
+<section class="slide" id="s-29">
+  <div class="s-eyebrow">Summary</div>
+  <h2 class="s-title"><em>6 million members.</em> Three designers. Two partnerships. Three months.</h2>
+  <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
+    <div class="stat"><span class="stat-num">6<i>M</i></span><div class="stat-lab">JET+ memberships across all mechanisms</div></div>
+    <div class="stat"><span class="stat-num"><i>+</i>15<i>%</i></span><div class="stat-lab">Incremental order frequency</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate — Amazon/Lieferando cohort</div></div>
+    <div class="stat"><span class="stat-num">3<i>mo</i></span><div class="stat-lab">MVP delivered — web, iOS &amp; Android, fully live</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 30: THANK YOU -->
+<section class="slide thank-slide" id="s-30">
+  <div class="s-eyebrow" style="justify-content:center">Thank you</div>
+  <h2 class="s-title" style="text-align:center;font-size:clamp(2.5rem,5vw,5.5rem)">Mark <em>George</em></h2>
+  <p class="s-body" style="text-align:center;margin-top:12px">Lead Product Designer · Design Leadership</p>
+  <div class="cover-meta" style="justify-content:center;margin-top:40px">
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Email</div>
+      <div class="cover-meta-val">markgeorge1607@gmail.com</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">LinkedIn</div>
+      <div class="cover-meta-val">linkedin.com/in/mark-george-31b89360</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Portfolio</div>
+      <div class="cover-meta-val">markgeorge1607.github.io/markportfolio</div>
+    </div>
+  </div>
+  <div style="margin-top:48px;font-size:12px;color:var(--gray);text-align:center">Press Escape to return to case studies</div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- Navigation UI -->
+<nav class="nav-bar">
+  <button class="nav-btn" id="prevBtn" disabled aria-label="Previous slide">←</button>
+  <span class="slide-counter" id="counter">1 / 30</span>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = 30;
+  var current = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var counter = document.getElementById('counter');
+  var bar = document.getElementById('progressBar');
+
+  function show(n){
+    slides[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+    bar.style.width = ((current + 1) / total * 100) + '%';
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === total - 1);
+  }
+
+  prevBtn.addEventListener('click', function(){ if(current > 0) show(current - 1); });
+  nextBtn.addEventListener('click', function(){ if(current < total - 1) show(current + 1); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); if(current < total - 1) show(current + 1); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); if(current > 0) show(current - 1); }
+    if(e.key === 'Escape'){ window.location.href = 'index.html'; }
+  });
+
+  var touchX = null;
+  document.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if(touchX === null) return;
+    var dx = touchX - e.changedTouches[0].clientX;
+    if(dx > 50 && current < total - 1) show(current + 1);
+    if(dx < -50 && current > 0) show(current - 1);
+    touchX = null;
+  }, {passive:true});
+
+  // init
+  counter.textContent = '1 / ' + total;
+  bar.style.width = (1 / total * 100) + '%';
+  prevBtn.disabled = true;
+})();
+</script>
+</body>
+</html>
