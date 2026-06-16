@@ -559,15 +559,15 @@
 
   function goTo(n){
     if(n < 0 || n >= total) return;
-    slides[current].classList.remove('active');
-    slides[current].classList.add(n > current ? 'exit-left' : '');
-    var prev = current;
+    var from = current;
     current = n;
+    slides[from].classList.remove('active');
+    slides[from].classList.add('exit-left');
     setTimeout(function(){
-      slides[prev].classList.remove('exit-left');
+      slides[from].classList.remove('exit-left');
       slides[current].classList.add('active');
       update();
-    }, 20);
+    }, 400);
   }
 
   function next(){ if(current < total-1) goTo(current+1); }
