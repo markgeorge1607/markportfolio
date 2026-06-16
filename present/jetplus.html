@@ -561,13 +561,13 @@
     if(n < 0 || n >= total) return;
     var from = current;
     current = n;
+    update(); // update buttons + counter immediately
     slides[from].classList.remove('active');
     slides[from].classList.add('exit-left');
     setTimeout(function(){
       slides[from].classList.remove('exit-left');
       slides[current].classList.add('active');
-      update();
-    }, 400);
+    }, 50);
   }
 
   function next(){ if(current < total-1) goTo(current+1); }
