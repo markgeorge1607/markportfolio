@@ -231,36 +231,9 @@
         <p class="s-body" style="font-size:clamp(0.8rem,1vw,0.9rem);color:rgba(21,20,15,0.6)">Upselling radio card — checkout delivery options. The <code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">dc__radio-card--selected</code> state uses <code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">border-selected-brand</code> token (<code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">#f36805</code>) from the PIE system.</p>
       </div>
     </div>
-    <!-- Live component demo -->
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:4px">Live component render</div>
-      <!-- Unselected state -->
-      <div style="background:#fff;border:1.5px solid #D8D3C6;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:'Hanken Grotesk',sans-serif;">
-        <div style="width:20px;height:20px;border-radius:50%;border:2px solid #D8D3C6;flex-shrink:0"></div>
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:600;color:#15140F;margin-bottom:2px">Delivery fee</div>
-          <div style="font-size:13px;color:#8C887B">Standard delivery · 30–45 min</div>
-        </div>
-        <div style="font-size:14px;font-weight:600;color:#15140F">£2.99</div>
-      </div>
-      <!-- Selected state -->
-      <div style="background:#fff;border:2px solid #f36805;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:'Hanken Grotesk',sans-serif;box-shadow:0 0 0 3px rgba(243,104,5,0.08)">
-        <div style="width:20px;height:20px;border-radius:50%;border:2px solid #f36805;flex-shrink:0;display:flex;align-items:center;justify-content:center">
-          <div style="width:10px;height:10px;border-radius:50%;background:#f36805"></div>
-        </div>
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:600;color:#15140F;margin-bottom:2px">Free Delivery for 90 Days</div>
-          <div style="font-size:13px;color:#8C887B">with Just Eat+ · T&amp;Cs apply</div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:14px;font-weight:700;color:#f36805">£5.99</div>
-          <div style="font-size:11px;color:#8C887B;text-decoration:line-through">£2.99/order</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;margin-top:4px">
-        <div style="width:8px;height:8px;border-radius:50%;background:#f36805;flex-shrink:0"></div>
-        <div style="font-size:11px;color:var(--gray);letter-spacing:.04em"><code style="font-size:0.95em">.dc__radio-card--selected</code> — border-color: <code style="font-size:0.95em">#f36805</code> (border-selected-brand)</div>
-      </div>
+    <!-- Live component library iframe -->
+    <div style="position:relative;height:clamp(300px,55vh,520px);border-radius:8px;overflow:hidden;border:1px solid var(--line)">
+      <iframe src="jet-component-library.html" style="width:100%;height:100%;border:none;" title="JET+ Component Library"></iframe>
     </div>
   </div>
 </section>
