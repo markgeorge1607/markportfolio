@@ -1827,6 +1827,12 @@
       }
     }
 
+    /* ─── Iframe / embedded compact mode ────────────────────────────── */
+    body.in-iframe .canvas { padding: 24px 28px; }
+    body.in-iframe .variant-grid { gap: 20px; margin-bottom: 36px; }
+    body.in-iframe .section-title { margin-bottom: 14px; }
+    body.in-iframe .page-header { padding: 20px 28px; }
+
   </style>
 </head>
 <body>
@@ -4684,12 +4690,20 @@
     } catch(e) {}
   }
 
-  // Restore sidebar state on load
+  // Restore sidebar state on load — auto-collapse + compact mode when embedded in an iframe
   try {
-    if (localStorage.getItem('sidebarCollapsed') === 'true') {
+    var inIframe = (window.self !== window.top);
+    if (inIframe) {
+      document.getElementById('sidebar').classList.add('is-collapsed');
+      document.body.classList.add('in-iframe');
+    } else if (localStorage.getItem('sidebarCollapsed') === 'true') {
       document.getElementById('sidebar').classList.add('is-collapsed');
     }
-  } catch(e) {}
+  } catch(e) {
+    // If cross-origin check throws, assume iframe
+    document.getElementById('sidebar').classList.add('is-collapsed');
+    document.body.classList.add('in-iframe');
+  }
 
   /* ── Scroll-spy: keep sidebar active state in sync ─────────────── */
   const navSections = ['tag','button','callout','braze-banner','delivery','unlock-card'];
