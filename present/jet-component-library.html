@@ -85,12 +85,12 @@
       font-family: var(--font-primary);
       background: #F5F5F0;
       color: var(--jet-dark);
-      min-height: 100vh;
-      overflow-x: hidden;
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* ─── Sidebar ────────────────────────────────────────────────────── */
-    .layout { display: flex; min-height: 100vh; overflow: hidden; }
+    .layout { display: flex; height: 100vh; overflow: hidden; }
 
     .sidebar {
       width: 260px;
@@ -99,10 +99,8 @@
       border-right: 1px solid var(--jet-border);
       display: flex;
       flex-direction: column;
-      position: sticky;
-      top: 0;
       height: 100vh;
-      overflow-y: auto !important;
+      overflow-y: auto;
       overflow-x: hidden;
       transition: width 0.25s ease, min-width 0.25s ease;
       flex-shrink: 0;
@@ -113,7 +111,7 @@
     .sidebar.is-collapsed {
       width: 52px;
       min-width: 52px;
-      overflow-y: hidden !important;
+      overflow-y: hidden;
     }
 
     .sidebar.is-collapsed .sidebar-logo h1,
@@ -307,7 +305,7 @@
 
 
     /* ─── Main Content ───────────────────────────────────────────────── */
-    .main { flex: 1; overflow-x: hidden; }
+    .main { flex: 1; overflow-y: auto; overflow-x: hidden; height: 100vh; }
 
     /* ─── version-tag (shared across all page headers) ─────────────── */
     .version-tag {
@@ -4708,9 +4706,10 @@
   }
 
   /* ── Scroll-spy: keep sidebar active state in sync ─────────────── */
+  const mainEl = document.querySelector('.main');
   const navSections = ['tag','button','callout','braze-banner','delivery','unlock-card'];
   function updateActiveNav() {
-    const scrollY = window.scrollY + 120;
+    const scrollY = (mainEl ? mainEl.scrollTop : window.scrollY) + 120;
     let current = navSections[0];
     navSections.forEach(id => {
       const el = document.getElementById(id);
@@ -4720,8 +4719,20 @@
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
   }
+  if (mainEl) mainEl.addEventListener('scroll', updateActiveNav, { passive: true });
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
+
+  // Intercept sidebar anchor clicks to scroll .main instead of the window
+  document.querySelectorAll('.sidebar-item[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target && mainEl) {
+        e.preventDefault();
+        mainEl.scrollTo({ top: target.offsetTop - 24, behavior: 'smooth' });
+      }
+    });
+  });
 
   function switchTab(btn, targetId) {
     const area = btn.closest('.code-area');
