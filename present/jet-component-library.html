@@ -86,10 +86,11 @@
       background: #F5F5F0;
       color: var(--jet-dark);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* ─── Sidebar ────────────────────────────────────────────────────── */
-    .layout { display: flex; min-height: 100vh; }
+    .layout { display: flex; min-height: 100vh; overflow: hidden; }
 
     .sidebar {
       width: 260px;
@@ -101,17 +102,18 @@
       position: sticky;
       top: 0;
       height: 100vh;
-      overflow-y: auto;
+      overflow-y: auto !important;
       overflow-x: hidden;
       transition: width 0.25s ease, min-width 0.25s ease;
       flex-shrink: 0;
+      overscroll-behavior: contain;
     }
 
     /* Collapsed state */
     .sidebar.is-collapsed {
       width: 52px;
       min-width: 52px;
-      overflow-y: hidden;
+      overflow-y: hidden !important;
     }
 
     .sidebar.is-collapsed .sidebar-logo h1,
