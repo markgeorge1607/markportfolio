@@ -218,8 +218,55 @@
   <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">JET+ one-time-payment E2E journey — shared visual language across web, iOS, and Android</div>
 </section>
 
-<!-- SLIDE 11: THE SOLUTION (results) -->
+<!-- SLIDE 11: THE SOLUTION (design system) -->
 <section class="slide" id="s-11">
+  <div class="s-eyebrow">03 · The Solution — Design System &amp; Component Library</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.8vw,3rem);margin-bottom:clamp(14px,2vh,22px)">Built on PIE — JET's design system — with a <em>JET+ premium layer.</em></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:start;flex:1">
+    <div>
+      <p class="s-body" style="margin-bottom:clamp(14px,2vh,20px)">I worked closely with the design systems team to ensure all JET+ components extended the existing <strong>PIE library</strong> — no divergence, full token compliance. The JET+ premium layer introduced a vibrant orange palette, dynamic gradients, and 3D iconography, while staying fully within the component architecture.</p>
+      <p class="s-body" style="margin-bottom:clamp(14px,2vh,20px)">Every checkout touchpoint used a shared component library — ensuring the upselling experience felt <strong>consistent and trustworthy</strong> across web, iOS, and Android.</p>
+      <div style="border-left:2px solid var(--orange);padding-left:clamp(14px,1.8vw,20px);margin-top:clamp(14px,2vh,22px)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">— Component example</div>
+        <p class="s-body" style="font-size:clamp(0.8rem,1vw,0.9rem);color:rgba(21,20,15,0.6)">Upselling radio card — checkout delivery options. The <code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">dc__radio-card--selected</code> state uses <code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">border-selected-brand</code> token (<code style="background:rgba(21,20,15,0.06);padding:2px 6px;border-radius:3px;font-size:0.85em">#f36805</code>) from the PIE system.</p>
+      </div>
+    </div>
+    <!-- Live component demo -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:4px">Live component render</div>
+      <!-- Unselected state -->
+      <div style="background:#fff;border:1.5px solid #D8D3C6;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:'Hanken Grotesk',sans-serif;">
+        <div style="width:20px;height:20px;border-radius:50%;border:2px solid #D8D3C6;flex-shrink:0"></div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#15140F;margin-bottom:2px">Delivery fee</div>
+          <div style="font-size:13px;color:#8C887B">Standard delivery · 30–45 min</div>
+        </div>
+        <div style="font-size:14px;font-weight:600;color:#15140F">£2.99</div>
+      </div>
+      <!-- Selected state -->
+      <div style="background:#fff;border:2px solid #f36805;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:'Hanken Grotesk',sans-serif;box-shadow:0 0 0 3px rgba(243,104,5,0.08)">
+        <div style="width:20px;height:20px;border-radius:50%;border:2px solid #f36805;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+          <div style="width:10px;height:10px;border-radius:50%;background:#f36805"></div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:#15140F;margin-bottom:2px">Free Delivery for 90 Days</div>
+          <div style="font-size:13px;color:#8C887B">with Just Eat+ · T&amp;Cs apply</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:14px;font-weight:700;color:#f36805">£5.99</div>
+          <div style="font-size:11px;color:#8C887B;text-decoration:line-through">£2.99/order</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:4px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#f36805;flex-shrink:0"></div>
+        <div style="font-size:11px;color:var(--gray);letter-spacing:.04em"><code style="font-size:0.95em">.dc__radio-card--selected</code> — border-color: <code style="font-size:0.95em">#f36805</code> (border-selected-brand)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: THE SOLUTION (results) -->
+<section class="slide" id="s-13">
   <div class="s-eyebrow">03 · The Solution — Results</div>
   <h2 class="s-title">The numbers from <em>Phase 1.</em></h2>
   <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
@@ -230,7 +277,7 @@
 </section>
 
 <!-- SLIDE 12: AMAZON PARTNERSHIP (intro) -->
-<section class="slide" id="s-12">
+<section class="slide" id="s-13">
   <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership</div>
   <h2 class="s-title">Two global brands, three markets, <em>one activation moment.</em></h2>
   <div class="two-col">
@@ -256,7 +303,7 @@
 </section>
 
 <!-- SLIDE 13: AMAZON PARTNERSHIP (manager lens) -->
-<section class="slide" id="s-13" style="justify-content:center">
+<section class="slide" id="s-14" style="justify-content:center">
   <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Protecting the Team</div>
   <h2 class="s-title">Holding the <em>external pressure</em> so the team could focus.</h2>
   <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
@@ -266,7 +313,7 @@
 </section>
 
 <!-- SLIDE 14: AMAZON PARTNERSHIP (flow visuals) -->
-<section class="slide" id="s-14">
+<section class="slide" id="s-15">
   <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Design</div>
   <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Account linking and <em>benefit activation</em> across markets.</h2>
   <div class="img-pair" style="flex:1">
@@ -277,7 +324,7 @@
 </section>
 
 <!-- SLIDE 15: AMAZON PARTNERSHIP (results) -->
-<section class="slide" id="s-15">
+<section class="slide" id="s-16">
   <div class="s-eyebrow">04 · The Amazon &amp; Lieferando Partnership — Results</div>
   <h2 class="s-title">Partnership <em>delivered.</em></h2>
   <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
@@ -288,7 +335,7 @@
 </section>
 
 <!-- SLIDE 16: BEHAVIOURAL DESIGN (intro + principles) -->
-<section class="slide" id="s-16">
+<section class="slide" id="s-17">
   <div class="s-eyebrow">05 · Behavioural Design</div>
   <h2 class="s-title">Membership value isn't just a number — it's <em>how it's framed.</em></h2>
   <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">We embedded four behavioural economics principles into the IA, copy, and interaction design to systematically reduce drop-off. I introduced these as design principles for the team — a shared framework for making micro-decisions consistently across five different squads.</p>
@@ -313,7 +360,7 @@
 </section>
 
 <!-- SLIDE 17: BEHAVIOURAL DESIGN (manager lens) -->
-<section class="slide" id="s-17" style="justify-content:center">
+<section class="slide" id="s-18" style="justify-content:center">
   <div class="s-eyebrow">05 · Behavioural Design — Building a Shared Vocabulary</div>
   <h2 class="s-title">From <em>instinct to framework</em> — how the team made decisions faster.</h2>
   <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
@@ -323,14 +370,14 @@
 </section>
 
 <!-- SLIDE 18: HARD DECISIONS (intro) -->
-<section class="slide" id="s-18" style="justify-content:center">
+<section class="slide" id="s-19" style="justify-content:center">
   <div class="s-eyebrow">06 · Hard Decisions</div>
   <h2 class="s-title">The calls that didn't have <em>a clean answer.</em></h2>
   <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">Good management isn't avoiding hard calls — it's making them clearly, communicating them honestly, and being accountable for the outcome. These were the three most consequential decisions I made on this project.</p>
 </section>
 
 <!-- SLIDE 19: HARD DECISIONS (3 decisions) -->
-<section class="slide" id="s-19">
+<section class="slide" id="s-20">
   <div class="s-eyebrow">06 · Hard Decisions — The Three Calls</div>
   <h2 class="s-title">Made clearly. <em>Communicated honestly.</em></h2>
   <div class="principles" style="margin-top:clamp(24px,4vh,40px)">
@@ -350,14 +397,14 @@
 </section>
 
 <!-- SLIDE 20: EXPERIMENTATION (intro) -->
-<section class="slide" id="s-20" style="justify-content:center">
+<section class="slide" id="s-21" style="justify-content:center">
   <div class="s-eyebrow">07 · Led by Experimentation</div>
   <h2 class="s-title">Decisions backed by data — a <em>culture of testing</em> the team built together.</h2>
   <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">One of my goals was to move the team from a "launch and see" mindset to a genuine experiment-led culture. Each initiative had a hypothesis, a measured variant, and a defined primary metric — chosen before work started, not after.</p>
 </section>
 
 <!-- SLIDE 21: EXPERIMENTATION (results) -->
-<section class="slide" id="s-21">
+<section class="slide" id="s-22">
   <div class="s-eyebrow">07 · Led by Experimentation — Results</div>
   <h2 class="s-title">Hypothesis first. <em>Data decides.</em></h2>
   <div class="exp-grid">
@@ -390,7 +437,7 @@
 </section>
 
 <!-- SLIDE 22: EXPERIMENTATION (manager lens) -->
-<section class="slide" id="s-22" style="justify-content:center">
+<section class="slide" id="s-23" style="justify-content:center">
   <div class="s-eyebrow">07 · Led by Experimentation — Building the Culture</div>
   <h2 class="s-title">A career-level shift, <em>not just a process improvement.</em></h2>
   <div style="border-left:2px solid var(--orange);padding-left:clamp(16px,2vw,24px);margin-top:clamp(24px,4vh,40px)">
@@ -400,7 +447,7 @@
 </section>
 
 <!-- SLIDE 23: OVERALL IMPACT -->
-<section class="slide" id="s-23">
+<section class="slide" id="s-24">
   <div class="s-eyebrow">08 · Impact</div>
   <h2 class="s-title">A design-led programme, <em>shifting behaviour at scale.</em></h2>
   <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">Across both the JET+ one-time-payment model and the Amazon/Lieferando partnership, the combined initiative proved that a well-designed sign-up entry point — grounded in behavioural economics and led with instant value — can meaningfully shift user behaviour at scale.</p>
@@ -413,7 +460,7 @@
 </section>
 
 <!-- SLIDE 24: WHAT'S NEXT (archetypes) -->
-<section class="slide" id="s-24">
+<section class="slide" id="s-25">
   <div class="s-eyebrow">09 · What's Next</div>
   <h2 class="s-title">From a live foundation to a <em>personalised, AI-powered</em> north star.</h2>
   <p class="s-body" style="margin-bottom:clamp(20px,3vh,32px)">The next phase deepens personalisation, reinforces habit formation, and maximises ROI through intelligent segmentation. It's built on four behavioural archetypes from our discovery research.</p>
@@ -442,7 +489,7 @@
 </section>
 
 <!-- SLIDE 25: WHAT'S NEXT (roadmap) -->
-<section class="slide" id="s-25">
+<section class="slide" id="s-26">
   <div class="s-eyebrow">09 · What's Next — H1 2026 Roadmap</div>
   <h2 class="s-title">Four pillars of <em>the next phase.</em></h2>
   <div class="roadmap-grid" style="grid-template-columns:repeat(4,1fr);margin-top:clamp(24px,4vh,48px)">
@@ -470,7 +517,7 @@
 </section>
 
 <!-- SLIDE 26: WHAT'S NEXT (image + north star) -->
-<section class="slide" id="s-26">
+<section class="slide" id="s-27">
   <div class="s-eyebrow">09 · What's Next — Vision</div>
   <h2 class="s-title">The right reward, to the right customer, <em>at the right time.</em></h2>
   <div style="margin-top:clamp(16px,2.5vh,28px)">
@@ -481,14 +528,14 @@
 </section>
 
 <!-- SLIDE 27: REFLECTION (intro) -->
-<section class="slide" id="s-27" style="justify-content:center">
+<section class="slide" id="s-28" style="justify-content:center">
   <div class="s-eyebrow">10 · Reflection</div>
   <h2 class="s-title">What managing this project <em>taught me</em> about leading designers.</h2>
   <p class="s-body" style="margin-top:clamp(24px,4vh,40px);max-width:70ch">I came into this project as a strong IC who'd been given management responsibility. I left it as a manager who understood the difference. Here's what shifted.</p>
 </section>
 
 <!-- SLIDE 28: REFLECTION (4 cards) -->
-<section class="slide" id="s-28">
+<section class="slide" id="s-29">
   <div class="s-eyebrow">10 · Reflection — What Shifted</div>
   <h2 class="s-title">Four things I <em>now know</em> about design leadership.</h2>
   <div class="reflect-grid" style="grid-template-columns:repeat(2,1fr)">
@@ -512,7 +559,7 @@
 </section>
 
 <!-- SLIDE 29: COMBINED IMPACT -->
-<section class="slide" id="s-29">
+<section class="slide" id="s-30">
   <div class="s-eyebrow">Summary</div>
   <h2 class="s-title"><em>6 million members.</em> Three designers. Two partnerships. Three months.</h2>
   <div class="stat-grid" style="margin-top:clamp(32px,5vh,56px)">
@@ -524,7 +571,7 @@
 </section>
 
 <!-- SLIDE 30: THANK YOU -->
-<section class="slide thank-slide" id="s-30">
+<section class="slide thank-slide" id="s-31">
   <div class="s-eyebrow" style="justify-content:center">Thank you</div>
   <h2 class="s-title" style="text-align:center;font-size:clamp(2.5rem,5vw,5.5rem)">Mark <em>George</em></h2>
   <p class="s-body" style="text-align:center;margin-top:12px">Lead Product Designer · Design Leadership</p>
@@ -557,7 +604,7 @@
 <script>
 (function(){
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var total = 30;
+  var total = 31;
   var current = 0;
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
