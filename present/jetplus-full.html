@@ -589,6 +589,7 @@
   <button class="nav-btn" id="prevBtn" disabled aria-label="Previous slide">←</button>
   <span class="slide-counter" id="counter">1 / 30</span>
   <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+  <button class="nav-btn" id="fsBtn" aria-label="Toggle fullscreen" style="margin-left:12px;font-size:16px;" title="Fullscreen (F)">⛶</button>
 </nav>
 
 <script>
@@ -634,6 +635,30 @@
   counter.textContent = '1 / ' + total;
   bar.style.width = (1 / total * 100) + '%';
   prevBtn.disabled = true;
+
+  // Fullscreen toggle
+  var fsBtn = document.getElementById('fsBtn');
+  function updateFsBtn() {
+    fsBtn.textContent = document.fullscreenElement ? '✕' : '⛶';
+    fsBtn.title = document.fullscreenElement ? 'Exit fullscreen (F)' : 'Fullscreen (F)';
+  }
+  fsBtn.addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+  document.addEventListener('fullscreenchange', updateFsBtn);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
 })();
 </script>
 </body>
