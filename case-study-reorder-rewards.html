@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mark George — Reorder Rewards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="case-study.css" />
+<style>
+  /* ── Insight callout (left-border quote block) ── */
+  .callout{
+    border-left:3px solid var(--accent);
+    padding:clamp(20px,3vh,30px) 0 clamp(20px,3vh,30px) clamp(24px,3vw,40px);
+    margin:clamp(34px,5vh,52px) 0;
+  }
+  .callout-label{
+    font-size:10.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);
+    margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .callout-label::before{content:'';display:inline-block;width:14px;height:1px;background:var(--accent)}
+  .callout-text{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.05rem,1.4vw,1.22rem);
+    line-height:1.65;color:var(--ink);margin:0;
+  }
+  .callout-text b{color:var(--ink);font-weight:500}
+  .callout-text em{font-style:italic;color:var(--gray)}
+
+  /* ── Boxed worked/gap finding panels ── */
+  .finding{border-radius:4px;padding:clamp(20px,2.6vw,26px) clamp(20px,2.8vw,28px)}
+  .finding+.finding{margin-top:16px}
+  .finding.worked{background:var(--paper-2);border-left:3px solid var(--ink)}
+  .finding.gap{background:var(--paper-2);border-left:3px solid var(--accent)}
+  .finding-lab{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .finding.worked .finding-lab{color:var(--ink-soft)}
+  .finding.gap .finding-lab{color:var(--accent)}
+  .finding-lab i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;font-size:10px;line-height:1;flex:none}
+  .finding.worked .finding-lab i{background:var(--ink);color:var(--paper)}
+  .finding.gap .finding-lab i{background:var(--accent);color:var(--paper)}
+  .finding .pain-list{gap:12px}
+  .finding.worked .pain-list li::before{background:var(--ink)}
+  .finding.gap .pain-list li::before{background:var(--accent)}
+
+  /* ── Bulleted pain / findings list ── */
+  .pain-head{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  .pain-list{list-style:none;display:grid;gap:14px}
+  .pain-list li{
+    position:relative;padding-left:20px;
+    font-size:clamp(.98rem,1.2vw,1.07rem);line-height:1.55;color:var(--ink-soft);
+  }
+  .pain-list li::before{
+    content:'';position:absolute;left:0;top:.55em;
+    width:5px;height:5px;border-radius:50%;background:var(--accent);
+  }
+  .pain-list li b{color:var(--ink);font-weight:600}
+  .sub-block+.sub-block{margin-top:clamp(30px,4vh,44px)}
+
+  /* ── Retention line chart ── */
+  .chart-fig{margin:clamp(34px,5vh,52px) 0 0;padding:0}
+  .chart-head{margin-bottom:clamp(20px,3vh,28px)}
+  .chart-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,1.7vw,1.4rem);color:var(--ink);letter-spacing:-.01em}
+  .chart-sub{font-size:clamp(.92rem,1.1vw,1rem);color:var(--gray);margin-top:6px}
+  .retention-chart{width:100%;height:auto;display:block;overflow:visible}
+  .retention-chart .grid line{stroke:var(--line);stroke-width:1}
+  .retention-chart .axis-lab text{fill:var(--gray);font-family:var(--grotesk);font-size:15px}
+  .retention-chart .axis-lab.x text{font-size:14px;letter-spacing:.01em}
+  .retention-chart .line{fill:none;stroke-width:3}
+  .retention-chart .line.je{stroke:var(--ink)}
+  .retention-chart .line.lta{stroke:var(--accent)}
+  .retention-chart .dot.je{fill:var(--ink)}
+  .retention-chart .dot.lta{fill:var(--accent)}
+  .retention-chart .pt-lab{font-family:var(--serif);font-weight:600;font-size:19px}
+  .retention-chart .pt-lab.je{fill:var(--ink)}
+  .retention-chart .pt-lab.lta{fill:var(--accent)}
+  .chart-legend{display:flex;gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-top:22px}
+  .lg-item{display:flex;align-items:center;gap:9px;font-size:.92rem;color:var(--ink-soft)}
+  .lg-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .lg-dot.je{background:var(--ink)}
+  .lg-dot.lta{background:var(--accent)}
+
+  /* ── Compact stat / funnel table ── */
+  .stat-table{margin-top:clamp(30px,4vh,44px);border-top:1.5px solid var(--ink)}
+  .stat-row{display:grid;grid-template-columns:1fr 100px 100px;gap:12px;padding:16px 4px;border-bottom:1px solid var(--line);align-items:center}
+  .stat-row.head{color:var(--gray);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding-bottom:12px}
+  .stat-row .st-lab{font-size:clamp(.95rem,1.15vw,1.05rem);color:var(--ink-soft)}
+  .stat-row .st-val{font-family:var(--serif);font-size:clamp(1.15rem,1.6vw,1.4rem);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+  .stat-row .st-val.hi{color:var(--accent)}
+
+  /* ── Side info card ── */
+  .side-card{background:var(--paper-2);border-radius:4px;padding:clamp(26px,3.5vw,38px)}
+  .side-card h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.15rem,1.6vw,1.35rem);letter-spacing:-.01em;color:var(--ink);margin-bottom:20px}
+  .side-card .pain-list li{color:var(--ink-soft)}
+
+  /* ── Sub-heading used inside split columns ── */
+  .split h4{font-size:clamp(1.1rem,1.6vw,1.32rem);font-weight:500;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
+  .split .split-tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+</style>
+</head>
+<body>
+<script src="lock.js"></script>
+<header id="hdr"><a id="top"></a>
+  <div class="wrap bar">
+    <a href="index.html" class="mark">Mark<span>.</span> George</a>
+    <nav class="links">
+      <a href="selected-work.html" class="active">Selected Work</a>
+      <a href="index.html#leadership">Leadership</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="curriculum-vitae.html">CV</a>
+      <a href="agency-work.html">Agency</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap crumb">
+    <a href="selected-work.html"><span>←</span> Selected Work</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="cs-head wrap">
+    <div class="eyebrow fx"><span>Case 07</span><span class="sep"></span><span class="role">Lead Product Designer · Loyalty &amp; Retention</span><span class="sep"></span><span>Just Eat Takeaway</span><span class="sep"></span><span>2026</span></div>
+    <h1 class="cs-title fx">Reorder <em>Rewards</em></h1>
+    <p class="cs-dek fx">Our loyalty stamp card worked everywhere — except our marketplace markets, where 9 in 10 customers never reached a reward. I led design on a <b>partner-funded mechanic</b> that replaced it, taking the idea from a cross-functional workshop to a live experiment worth <b>€927K in incremental order value</b> across 3 markets.</p>
+
+    <div class="credits">
+      <div class="credit fx"><div class="c-lab">My role</div><div class="c-val">Lead Designer — <em>end-to-end</em></div></div>
+      <div class="credit fx"><div class="c-lab">Team</div><div class="c-val">3 designers, cross-functional</div></div>
+      <div class="credit fx"><div class="c-lab">Markets</div><div class="c-val">3 L-Takeaway markets - DE, AT, ES</div></div>
+      <div class="credit fx"><div class="c-lab">Timeline</div><div class="c-val">Jan 2026 – March 2026</div></div>
+    </div>
+  </section>
+
+  <section class="cs-hero wrap">
+    <div class="fx">
+      <img src="Images/reorder-hero.png" alt="Reorder Rewards live across the marketplace ordering funnel — SERP discovery, checkout, menu and order confirmation" style="width:100%;height:auto;display:block;border-radius:4px" loading="lazy" />
+      <div class="cs-cap">Reorder Rewards · live across the marketplace ordering funnel</div>
+    </div>
+  </section>
+
+  <!-- KEY NUMBERS -->
+  <section class="chapter wrap" style="padding-top:0">
+    <div class="outcome-grid" style="margin-top:0">
+      <div class="ometric fx"><span class="o-num">13<i>%</i></span><span class="o-lab">Lapsed customers who'd left for a competitor's paid tier — up 4pts YoY</span></div>
+      <div class="ometric fx"><span class="o-num">10<i>%</i></span><span class="o-lab">Automatic reward on the next order — capped, partner-funded</span></div>
+      <div class="ometric fx"><span class="o-num">34,860</span><span class="o-lab">Incremental orders generated by the experiment</span></div>
+      <div class="ometric fx"><span class="o-num">€927<i>K</i></span><span class="o-lab">Incremental order value — no discount budget behind it</span></div>
+    </div>
+  </section>
+
+  <!-- 01: THE MARKET -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">01</span> The Market</div>
+    <h2 class="ch-h fx">Users treated Just Eat as a <em>treat, not a habit.</em></h2>
+    <div class="prose measure fx">
+      <p>Order frequency in our marketplace markets was inconsistent, and the cost of re-acquiring lapsed customers was rising. Paid members at rival platforms spent <b>2–4× more</b> and ordered 10–30% more — while showing exactly the cross-category behaviours we wanted, like grocery and retail penetration. <b>13% of our lapsed customers</b> had left specifically for a competitor's paid loyalty programme, up 4 points year on year. Every major rival had launched a paid tier between 2017 and 2021. We had none.</p>
+      <p>That framing mattered: a campaign is a cost line that resets every quarter. A mechanic is an asset that compounds — so this needed a structural intervention, not a louder marketing ask.</p>
+    </div>
+    <div class="triad">
+      <div class="tcard fx">
+        <div class="t-idx">Tension 01</div>
+        <div class="t-name">Time Horizon</div>
+        <div class="t-desc">Instant gratification for the customer, against medium-to-long-term behavioural change for the business.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Tension 02</div>
+        <div class="t-name">Competing Metrics</div>
+        <div class="t-desc">Retention and order frequency as dual — and sometimes opposing — measures of success.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Tension 03</div>
+        <div class="t-name">Value Exchange</div>
+        <div class="t-desc">Real customer value, against the business's need for the programme to pay for itself.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pull wrap">
+    <blockquote class="fx">"Consumers primarily switched to competitor products because they offered more compelling deals and <em>superior reward programmes.</em>"</blockquote>
+    <div class="attr fx">Just Eat customer research</div>
+  </section>
+
+  <!-- 02: THE COMPETITIVE POSITION -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">02</span> The Competitive Position</div>
+    <h2 class="ch-h fx">The only major marketplace <em>without a paid tier.</em></h2>
+    <div class="prose measure fx">
+      <p>Asked why they switched, customers were clear: nearly two-thirds of it was down to benefit mechanics we could design our way into — not headline price.</p>
+    </div>
+    <div class="outcome-grid" style="grid-template-columns:1fr 1fr;max-width:520px">
+      <div class="ometric fx"><span class="o-num">62.2<i>%</i></span><span class="o-lab">Benefits — mechanics we could design</span></div>
+      <div class="ometric fx"><span class="o-num">37.8<i>%</i></span><span class="o-lab">Price — discount we'd have to fund</span></div>
+    </div>
+
+    <div class="split" style="margin-top:clamp(40px,6vh,64px)">
+      <div class="fx">
+        <div class="pain-head">Top benefit drivers</div>
+        <ul class="pain-list">
+          <li><b>Free delivery</b> — 9.1%, the #1 driver of switching</li>
+          <li><b>Fees</b> — 9.0%</li>
+          <li><b>Enhanced delivery</b> — 8.9%</li>
+          <li><b>Cashback</b> — 7.4%</li>
+          <li><b>Discounts &amp; freebies</b> — 6.5%</li>
+          <li><b>Stamps &amp; gamification</b> — the weakest driver of the six</li>
+        </ul>
+      </div>
+      <div class="fx">
+        <div class="pain-head">Where we stood vs. rivals</div>
+        <ul class="pain-list">
+          <li><b>Paid loyalty programme</b> — 5 of 6 rivals had one. We didn't.</li>
+          <li><b>Unlimited free delivery</b> — 5 of 6 rivals offered it. We didn't.</li>
+          <li><b>Personalised benefits</b> — 4 of 6 rivals offered it. We didn't.</li>
+          <li><b>Member-only offers</b> — 0 of 6 rivals offered it. Neither did we.</li>
+          <li><b>Stamps &amp; gamification</b> — we were the only one of the six who did. On the one mechanic that wasn't working.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout fx" style="margin-top:clamp(34px,5vh,52px)">
+      <div class="callout-label">The commercial problem</div>
+      <p class="callout-text">Matching competitors on discount would have been a <b>funded, repeatable cost</b> — unsustainable at the business's current margins, and one that would have eaten straight into revenue. Beating them on mechanics was a design problem instead — <em>a cheaper one to win.</em></p>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(48px,7vh,80px)">Two tiers, one <em>free of subscription revenue.</em></h2>
+    <div class="split">
+      <div class="prose fx">
+        <div class="col-lab">Paid tier — JET+</div>
+        <p>A subscription membership. The benefit is funded by us and recovered through subscription revenue.</p>
+      </div>
+      <div class="prose fx">
+        <div class="col-lab">Free tier — Reorder Rewards</div>
+        <p>No subscription. The benefit is funded by partners — the tier that had to carry marketplace markets, and this case study.</p>
+      </div>
+    </div>
+    <div class="prose measure fx" style="margin-top:clamp(30px,4vh,44px)">
+      <p>Which is the whole constraint: with no subscription revenue behind it, the free tier couldn't buy loyalty. <b>The mechanic had to earn it.</b> Three design principles followed from that:</p>
+    </div>
+    <div class="triad">
+      <div class="tcard fx">
+        <div class="t-idx">Principle 01</div>
+        <div class="t-name"><em>Instant</em> rewards</div>
+        <div class="t-desc">Drive habit formation, anchored in behavioural economics.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Principle 02</div>
+        <div class="t-name">Transparent savings</div>
+        <div class="t-desc">Show users exactly where their money goes.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Principle 03</div>
+        <div class="t-name">Frictionless onboarding</div>
+        <div class="t-desc">Reduce cognitive load at every step of the journey.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03: MY ROLE -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">03</span> My Role</div>
+    <h2 class="ch-h fx">Leading design across a <em>multi-team programme.</em></h2>
+    <div class="prose measure fx">
+      <p>I was the lead designer on Reorder Rewards end-to-end — from the original ideation session through to launch — directing a team of three designers while working horizontally across Commercial, Accounts, Loyalty, Research and Engineering.</p>
+    </div>
+    <div class="roles">
+      <div class="role-item fx"><div class="r-t">Team leadership</div><div class="r-d">Directed 3 designers; set direction, gave critique, unblocked delivery.</div></div>
+      <div class="role-item fx"><div class="r-t">Stakeholder management</div><div class="r-d">Aligned Commercial, Accounts, Loyalty and Engineering across markets.</div></div>
+      <div class="role-item fx"><div class="r-t">Research leadership</div><div class="r-d">Ran customer &amp; partner research in partnership with the Accounts team.</div></div>
+      <div class="role-item fx"><div class="r-t">Survey design</div><div class="r-d">Built a UK-wide restaurant partner survey on stamp cards and the new concept.</div></div>
+    </div>
+    <div class="outcome-grid">
+      <div class="ometric fx"><span class="o-num">14</span><span class="o-lab">L-Takeaway markets in scope</span></div>
+      <div class="ometric fx"><span class="o-num">5</span><span class="o-lab">Teams aligned — Commercial · Accounts · Loyalty · Eng · Research</span></div>
+      <div class="ometric fx"><span class="o-num">3</span><span class="o-lab">Designers directed</span></div>
+      <div class="ometric fx"><span class="o-num"><i>0→1</i></span><span class="o-lab">Concept to shipped experiment</span></div>
+    </div>
+  </section>
+
+  <!-- 04: THE EVIDENCE -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">04</span> The Evidence</div>
+    <h2 class="ch-h fx">Our loyalty stamp card was <em>quietly broken.</em></h2>
+    <div class="prose measure fx">
+      <p>In marketplace markets, the stamp card programme looked healthy on the surface — but underneath, both partners and customers were disengaging.</p>
+    </div>
+    <div class="split" style="margin-top:clamp(30px,4vh,44px);margin-bottom:clamp(30px,4vh,44px)">
+      <div class="fx">
+        <div class="pain-head">Partner pain</div>
+        <ul class="pain-list">
+          <li>Low awareness — <b>some partners forgot they were even enrolled.</b></li>
+          <li>Stamps took so long to accumulate that engagement faded.</li>
+          <li>A large one-off payout landed on a customer's 6th order.</li>
+          <li>Some partners cancelled orders to avoid paying it.</li>
+        </ul>
+      </div>
+      <div class="fx">
+        <div class="pain-head">Customer pain</div>
+        <ul class="pain-list">
+          <li>Manual application at checkout — <b>easy to forget.</b></li>
+          <li>Low visibility of progress toward a reward.</li>
+          <li>Long collection journeys rarely completed before expiry.</li>
+          <li>Reward felt disconnected from the moment of ordering.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-block prose measure fx">
+      <p>Order and stamp-card data across all 3 markets, from January 2026 to March 2026, showed exactly where it broke — and that the same mechanic worked fine elsewhere.</p>
+    </div>
+    <div class="outcome-grid">
+      <div class="ometric fx"><span class="o-num">~79<i>%</i></span><span class="o-lab">Just Eat (marketplace-native) end-to-end utilisation — 96% completion × 82% redemption</span></div>
+      <div class="ometric fx"><span class="o-num">~10<i>%</i></span><span class="o-lab">L-Takeaway end-to-end utilisation — 20% completion × 49% redemption</span></div>
+      <div class="ometric fx"><span class="o-num">5.18<i>×</i></span><span class="o-lab">UK Tier-3 redeemer orders/month, vs 1.73× for non-SC users</span></div>
+    </div>
+    <figure class="chart-fig fx">
+      <div class="chart-head">
+        <div class="chart-title">Out of 100 customers enrolled in the SC programme…</div>
+        <div class="chart-sub">Just Eat retains 79. L-Takeaway retains 10. The gap opens at collection and widens at redemption.</div>
+      </div>
+      <svg viewBox="0 0 900 400" class="retention-chart" role="img" aria-label="Line chart: Just Eat marketplace retains 79 of 100 enrolled customers, L-Takeaway retains 10. Just Eat goes 100, 96, 79 across enrolled, collected and redeemed stages. L-Takeaway goes 100, 20, 10.">
+        <!-- gridlines + y labels -->
+        <g class="grid">
+          <line x1="70" y1="320" x2="860" y2="320"></line>
+          <line x1="70" y1="270" x2="860" y2="270"></line>
+          <line x1="70" y1="220" x2="860" y2="220"></line>
+          <line x1="70" y1="170" x2="860" y2="170"></line>
+          <line x1="70" y1="120" x2="860" y2="120"></line>
+          <line x1="70" y1="70"  x2="860" y2="70"></line>
+          <line x1="70" y1="20"  x2="860" y2="20"></line>
+        </g>
+        <g class="axis-lab">
+          <text x="56" y="324" text-anchor="end">0</text>
+          <text x="56" y="274" text-anchor="end">20</text>
+          <text x="56" y="224" text-anchor="end">40</text>
+          <text x="56" y="174" text-anchor="end">60</text>
+          <text x="56" y="124" text-anchor="end">80</text>
+          <text x="56" y="74"  text-anchor="end">100</text>
+          <text x="56" y="24"  text-anchor="end">120</text>
+        </g>
+        <g class="axis-lab x">
+          <text x="140" y="352" text-anchor="middle">Enrolled</text>
+          <text x="480" y="352" text-anchor="middle">Collected a stamp</text>
+          <text x="800" y="352" text-anchor="middle">Reached a reward</text>
+        </g>
+
+        <!-- Just Eat line: 100, 96, 79 -->
+        <polyline points="140,70 480,80 800,122.5" class="line je"></polyline>
+        <circle cx="140" cy="70" r="6" class="dot je"></circle>
+        <circle cx="480" cy="80" r="6" class="dot je"></circle>
+        <circle cx="800" cy="122.5" r="6" class="dot je"></circle>
+        <text x="140" y="52" text-anchor="middle" class="pt-lab je">100</text>
+        <text x="480" y="62" text-anchor="middle" class="pt-lab je">96</text>
+        <text x="800" y="104.5" text-anchor="middle" class="pt-lab je">79</text>
+
+        <!-- L-Takeaway line: 100, 20, 10 -->
+        <polyline points="140,70 480,270 800,295" class="line lta"></polyline>
+        <circle cx="140" cy="70" r="6" class="dot lta"></circle>
+        <circle cx="480" cy="270" r="6" class="dot lta"></circle>
+        <circle cx="800" cy="295" r="6" class="dot lta"></circle>
+        <text x="480" y="298" text-anchor="middle" class="pt-lab lta">20</text>
+        <text x="800" y="323" text-anchor="middle" class="pt-lab lta">10</text>
+      </svg>
+      <div class="chart-legend">
+        <span class="lg-item"><i class="lg-dot je"></i>Just Eat (marketplace) — retains 79</span>
+        <span class="lg-item"><i class="lg-dot lta"></i>L-Takeaway — retains 10</span>
+      </div>
+    </figure>
+    <div class="prose measure fx" style="margin-top:clamp(24px,3vh,36px)">
+      <p>The gap opens at collection and widens at redemption — and it's three separate, independent problems, not one fixable bug. Fixing checkout friction alone wouldn't close it; only removing the manual steps entirely would.</p>
+    </div>
+    <div class="triad">
+      <div class="tcard fx">
+        <div class="t-idx">Problem 01 · Earning it</div>
+        <div class="t-name">80–85% of L-TA cards lapse</div>
+        <div class="t-desc">15–22% L-TA completion vs 94–98% at Just Eat. A 5-stamp journey rarely completes before expiry at L-Takeaway's order cadence — no checkout fix closes this gap.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Problem 02 · Claiming it</div>
+        <div class="t-name">99% never apply their reward</div>
+        <div class="t-desc">0.3–0.7% L-TA apply at first eligible order, vs 85–88% at Just Eat. Delivered as an email voucher code, it's friction, not disengagement.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Problem 03 · Ordering sooner</div>
+        <div class="t-name">Pull-forward effect 6× weaker</div>
+        <div class="t-desc">5–23% order sooner when a reward's available, vs 30–37% at Just Eat. 1 in 200 redeem same day — the reward isn't visible when the decision gets made.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05: THE CONCEPT & THE MODEL -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">05</span> The Concept &amp; The Model</div>
+    <h2 class="ch-h fx">From data to an idea <em>worth testing.</em></h2>
+    <div class="moves">
+      <div class="move fx">
+        <div class="m-idx">01</div>
+        <div><div class="m-t">Quantitative signal</div><div class="m-d">Order and stamp-card data across 14 markets surfaced the three problems above.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">02</div>
+        <div><div class="m-t">Cross-functional ideation</div><div class="m-d">I ran a session with Commercial, Loyalty and Design — this is where Reorder Rewards was born.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">03</div>
+        <div><div class="m-t">Partner survey, UK-wide</div><div class="m-d">Built with the Accounts team to validate stamp-card pain points and gauge reaction to the new concept.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">04</div>
+        <div><div class="m-t">Customer &amp; partner research</div><div class="m-d">Moderated sessions testing comprehension, appeal and go-to-market concerns for the new mechanic.</div></div>
+      </div>
+    </div>
+
+    <div class="callout fx">
+      <div class="callout-label">Where the idea came from</div>
+      <p class="callout-text">Reorder Rewards wasn't a design-team idea handed down — it came out of a cross-collaborative ideation session with Commercial, Loyalty stakeholders and Design, working directly off the data on where the stamp card failed. <b>My role in that room was to translate the data into design principles the group could ideate against</b> — <em>automatic, visible, instant.</em></p>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(50px,7vh,84px)">10% back, automatically — <em>no stamps, no code.</em></h2>
+    <div class="split" style="align-items:center">
+      <div class="prose fx">
+        <p>Reorder Rewards applies 10% automatically to a customer's next order — replacing a six-order collection journey and a manual voucher code with one thing: value on the very next order, not the sixth.</p>
+      </div>
+      <figure class="figure fx" style="padding:0;margin:0;max-width:420px;margin-left:auto">
+        <img src="Images/mechanic.png" alt="Reorder Rewards mechanic — Order at Restaurant Lorenzo, reward earned, then spend the £3 Reorder Reward within 30 days" style="width:100%;border-radius:4px;display:block" loading="lazy" />
+      </figure>
+    </div>
+    <div class="triad">
+      <div class="tcard fx">
+        <div class="t-idx">01</div>
+        <div class="t-name"><em>Instant</em></div>
+        <div class="t-desc">Value is felt on the very next order, not the sixth.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">02</div>
+        <div class="t-name">Automatic</div>
+        <div class="t-desc">Applied at checkout — nothing for the customer to do.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">03</div>
+        <div class="t-name">Low barrier</div>
+        <div class="t-desc">No upfront fees for partners; a 3-month minimum commitment.</div>
+      </div>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(50px,7vh,84px)">Who funds it, and who gains — <em>the part I had to defend to Commercial.</em></h2>
+    <div class="triad">
+      <div class="tcard fx">
+        <div class="t-idx">Funded by</div>
+        <div class="t-name">Partners, not Just Eat</div>
+        <div class="t-desc">Partners fund the capped 10% reward, predictable per order, with no upfront fee and a 3-month minimum. Just Eat funds the surface — placement, messaging, the mechanic — not the discount.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">The marketplace gains</div>
+        <div class="t-name">Commission we wouldn't have had</div>
+        <div class="t-desc">34,860 incremental orders at a €26.6 average, a defensible answer to competitor paid tiers with no recurring discount budget, and a retention lever that works in markets where we don't own delivery.</div>
+      </div>
+      <div class="tcard fx">
+        <div class="t-idx">Partners gain</div>
+        <div class="t-name">A known cost per return</div>
+        <div class="t-desc">A capped, per-order cost instead of a large one-off payout on the sixth order — removing the incentive that had partners cancelling orders — plus reporting on rewards given, redeemed and repeat customers.</div>
+      </div>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(50px,7vh,84px)">Tested with both audiences <em>before a line of code.</em></h2>
+    <div class="prose measure fx">
+      <p>Moderated sessions with partners and customers, plus the UK-wide partner survey built with the Accounts team.</p>
+    </div>
+    <div class="split">
+      <div class="fx">
+        <div class="split-tag">Partners</div>
+        <h4>Valued it — but needed clarity</h4>
+        <div class="sub-block">
+          <div class="finding worked">
+            <div class="finding-lab"><i>✓</i>What worked</div>
+            <ul class="pain-list">
+              <li><b>Instant, automatic reward</b> — no action needed from the customer</li>
+              <li><b>Visibility &amp; speed</b> — accelerates reordering, lifts order volume</li>
+              <li><b>Low barrier to join</b> — no upfront fee, 3-month minimum</li>
+            </ul>
+          </div>
+          <div class="finding gap">
+            <div class="finding-lab"><i>×</i>What didn't</div>
+            <ul class="pain-list">
+              <li><b>Reward mechanism misread</b> — 10% read as flat 10% off, not a capped reward</li>
+              <li><b>Stacking rules unclear</b> — a blocker for partners already running deals</li>
+              <li><b>Performance metrics unclear</b> — valued, but the relationship between them wasn't obvious</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="fx">
+        <div class="split-tag">Customers</div>
+        <h4>Understood it — and wanted proof</h4>
+        <div class="sub-block">
+          <div class="finding worked">
+            <div class="finding-lab"><i>✓</i>What worked</div>
+            <ul class="pain-list">
+              <li><b>Instant value</b> — 10% back felt more tangible than a stamp card</li>
+              <li><b>Automatic application</b> — removes the anxiety of forgetting a code</li>
+              <li><b>A reason to return</b> — especially for frequent, multi-partner orderers</li>
+            </ul>
+          </div>
+          <div class="finding gap">
+            <div class="finding-lab"><i>×</i>What didn't</div>
+            <ul class="pain-list">
+              <li><b>Value missing at decision points</b> — not visible at search or menu, where the choice is made</li>
+              <li><b>No confirmation when earned</b> — hard to tell what was being earned vs. redeemed</li>
+              <li><b>Weak pull for infrequent users</b> — 10% felt small next to flat promos; 30-day expiry created FOMO</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prose measure fx" style="margin-top:clamp(30px,4vh,44px)">
+      <p>Both audiences converged on the same thing: <b>the mechanic worked, but its value wasn't legible or visible early enough.</b> That told us where to spend design effort first. We tested the name too — "Reorder" beat "Repeat," and "Rewards" beat "Credit," which read as debt in Germany.</p>
+    </div>
+  </section>
+
+  <!-- 06: DESIGN & DELIVERY -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">06</span> Design &amp; Delivery</div>
+    <h2 class="ch-h fx">Turning research into flows partners and <em>customers could trust.</em></h2>
+    <div class="moves">
+      <div class="move fx">
+        <div class="m-idx">01</div>
+        <div><div class="m-t">Phased rollout across markets</div><div class="m-d">Released market by market rather than all 3 at once, so partner comprehension and reward behaviour could be checked against a live market before widening.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">02</div>
+        <div><div class="m-t">Making the mechanism legible</div><div class="m-d">Addressed the #1 partner and customer confusion — reward vs. discount — by illustrating earning vs. redeeming as a diagram, rather than explaining it in copy.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">03</div>
+        <div><div class="m-t">Surfacing value earlier</div><div class="m-d">Moved reward visibility to search results and menu, closer to the ordering decision, in response to the "missing value at decision points" finding.</div></div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">04</div>
+        <div><div class="m-t">GTM considerations</div><div class="m-d">Partners wanted clear, high-awareness customer communication since programme success depends on it; chains needed compelling proof points to secure buy-in.</div></div>
+      </div>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(50px,7vh,84px)">Visibility across <em>core funnel.</em></h2>
+    <div class="figure quad fx" style="margin-top:clamp(30px,4vh,44px)">
+      <figure class="figure" style="padding:0">
+        <img src="Images/Core1.png" alt="Reorder Rewards visible in search results" loading="lazy" />
+        <figcaption class="fig-cap"><b>Search results</b> — the reward is visible before the choice is made.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Core2.png" alt="Reorder Rewards visible on the restaurant menu" loading="lazy" />
+        <figcaption class="fig-cap"><b>Menu</b> — value carried through to the ordering moment.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Core3.png" alt="Reorder Rewards visible at checkout" loading="lazy" />
+        <figcaption class="fig-cap"><b>Checkout</b> — applied automatically, nothing to redeem.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Core4.png" alt="Reorder Rewards visible on the order confirmation screen" loading="lazy" />
+        <figcaption class="fig-cap"><b>Confirmation</b> — the reward earned is confirmed straight away.</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(50px,7vh,84px)">The Rewards <em>Hub.</em></h2>
+    <div class="figure trio fx" style="margin-top:clamp(30px,4vh,44px)">
+      <figure class="figure" style="padding:0">
+        <img src="Images/HUb1.png" alt="The Rewards Hub — a dedicated section within the app where users can access their Reorder Rewards amongst other benefits" loading="lazy" />
+        <figcaption class="fig-cap"><b>Rewards Hub</b> — a dedicated section within the app for all Reorder Rewards.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/HUb2.png" alt="Onboard in context — a contextual banner explains the core benefit of Reorder Rewards" loading="lazy" />
+        <figcaption class="fig-cap"><b>Onboard in context</b> — a contextual banner explains the core benefit.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/HUb3.png" alt="Draw attention early — a bottom sheet on the menu page explains how Reorder Rewards works in a 3-step flow" loading="lazy" />
+        <figcaption class="fig-cap"><b>Draw attention early</b> — how it works, surfaced before the order is placed.</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(56px,8vh,90px)">Event-based <em>Rewards.</em></h2>
+    <div class="figure trio fx" style="margin-top:clamp(30px,4vh,44px)">
+      <figure class="figure" style="padding:0">
+        <img src="Images/Event1.png" alt="Postlaunch — event-based Reorder Rewards tied to a FIFA promotion" loading="lazy" />
+        <figcaption class="fig-cap"><b>Event-based rewards</b> — layering a limited-time boost onto a partner promotion.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Event2.png" alt="Postlaunch — partner-based Reorder Rewards across grocery and restaurant partners" loading="lazy" />
+        <figcaption class="fig-cap"><b>Partner-based rewards</b> — scaled across grocery and restaurant partners.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Event3.png" alt="Three micro-animation options explored for the Reorder Rewards coin — side-to-front rotation at two speeds, and a side rotation" loading="lazy" />
+        <figcaption class="fig-cap"><b>Micro-animation options</b> — explored for the reward coin, to bring the mechanic to life.</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(56px,8vh,90px)">Partner-based <em>Rewards.</em></h2>
+    <div class="figure trio fx" style="margin-top:clamp(30px,4vh,44px)">
+      <figure class="figure" style="padding:0">
+        <img src="Images/Partner1.png" alt="Partner-based Reorder Rewards, first example" loading="lazy" />
+        <figcaption class="fig-cap"><b>Partner-based rewards</b> — scaled across grocery and restaurant partners.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Partner2.png" alt="Partner-based Reorder Rewards, second example" loading="lazy" />
+        <figcaption class="fig-cap"><b>Partner-based rewards</b> — scaled across grocery and restaurant partners.</figcaption>
+      </figure>
+      <figure class="figure" style="padding:0">
+        <img src="Images/Partner3.png" alt="Partner-based Reorder Rewards, third example" loading="lazy" />
+        <figcaption class="fig-cap"><b>Partner-based rewards</b> — scaled across grocery and restaurant partners.</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(56px,8vh,90px)">What we fixed before launch — <em>and what we didn't.</em></h2>
+    <div class="prose measure fx">
+      <p>Research surfaced six problems across partners and customers. Two blocked launch. Four were sequenced behind it.</p>
+    </div>
+    <div class="moves">
+      <div class="move fx">
+        <div class="m-idx">01</div>
+        <div>
+          <div class="m-t">The mechanism was being misread</div>
+          <div class="m-d">10% read as a flat 10% off the next order, not a capped reward — partners were signing up on a wrong understanding. I illustrated earning vs. redeeming as a diagram, rather than explaining it in copy. <b>Cost:</b> more complexity in the breakdown, accepted, because a partner who misunderstands the deal churns.</div>
+        </div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">02</div>
+        <div>
+          <div class="m-t">Value was invisible where the decision is made</div>
+          <div class="m-d">The reward wasn't visible at search results or menu — only at checkout, after the choice had already been made. I moved reward visibility forward to search and menu. <b>Cost:</b> more surfaces to maintain, and a harder engineering conversation.</div>
+        </div>
+      </div>
+    </div>
+    <div class="side-card fx" style="margin-top:clamp(30px,4vh,44px);max-width:640px">
+      <h3>Sequenced behind launch</h3>
+      <ul class="pain-list">
+        <li><b>Stacking rules for chains</b> — needed a commercial answer before a design one.</li>
+        <li><b>Earned-reward confirmation</b> — real, but it didn't stop anyone ordering.</li>
+        <li><b>Weak pull for infrequent users</b> — a pricing question, not a design one.</li>
+        <li><b>Partner performance metrics</b> — a reporting change, not a launch blocker.</li>
+      </ul>
+    </div>
+    <div class="prose measure fx" style="margin-top:clamp(30px,4vh,44px)">
+      <p><em>The call I owned was the sequencing:</em> which problems blocked launch and which could wait. Shipping with four known issues open was a deliberate choice.</p>
+    </div>
+  </section>
+
+  <!-- 07: IMPACT & REFLECTION -->
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">07</span> Impact &amp; Reflection</div>
+    <h2 class="ch-h fx">The feature moved <em>every metric that mattered.</em></h2>
+    <div class="prose measure fx">
+      <p>Reorder Rewards live in marketplace (L-Takeaway) markets:</p>
+    </div>
+    <div class="outcome-grid">
+      <div class="ometric fx"><span class="o-num">+28<i>%</i></span><span class="o-lab">Increase in click-through rate</span></div>
+      <div class="ometric fx"><span class="o-num">+3.7<i>%</i></span><span class="o-lab">Increase in Reorder Rewards clicks converting to orders</span></div>
+      <div class="ometric fx"><span class="o-num">34,860</span><span class="o-lab">Incremental orders generated</span></div>
+      <div class="ometric fx"><span class="o-num">~€927<i>K</i></span><span class="o-lab">Incremental order value, at a €26.6 AOV</span></div>
+    </div>
+    <div class="prose measure fx" style="margin-top:clamp(30px,4vh,44px)">
+      <p><em>These results map back to the three problems found in discovery</em> — automatic application closed the redemption gap, and earlier visibility got people ordering sooner.</p>
+    </div>
+
+    <h2 class="ch-h fx" style="margin-top:clamp(56px,8vh,90px)">What this project taught me about <em>leading design.</em></h2>
+    <div class="split" style="align-items:start">
+      <div class="moves fx" style="margin-top:0">
+        <div class="move">
+          <div class="m-idx">01</div>
+          <div><div class="m-t">Start from evidence, not opinion</div><div class="m-d">The strongest ideas came from putting hard data in front of a cross-functional room, not from a design brief alone.</div></div>
+        </div>
+        <div class="move">
+          <div class="m-idx">02</div>
+          <div><div class="m-t">Design leadership is stakeholder leadership</div><div class="m-d">Getting Commercial, Accounts and Loyalty aligned took as much craft as the interface did.</div></div>
+        </div>
+        <div class="move">
+          <div class="m-idx">03</div>
+          <div><div class="m-t">Research two audiences, not one</div><div class="m-d">Partner and customer needs pulled in different directions — the job was finding where they overlapped.</div></div>
+        </div>
+        <div class="move">
+          <div class="m-idx">04</div>
+          <div><div class="m-t">Ship the smallest thing that fixes the cause</div><div class="m-d">Automatic application beat a more elaborate redesign because it removed root causes, not symptoms.</div></div>
+        </div>
+      </div>
+      <div class="side-card fx">
+        <h3>What's next for the programme</h3>
+        <ul class="pain-list">
+          <li>Roll out clearer stacking rules for chain partners</li>
+          <li>Show earned-reward confirmation moments</li>
+          <li>Surface value at SERP &amp; menu across all markets</li>
+          <li>Strengthen the offer for infrequent customers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap nextnav">
+    <a href="case-study-framing-complexity.html">
+      <div>
+        <div class="nn-lab">Next case</div>
+        <div class="nn-t">Framing Complexity</div>
+      </div>
+      <div class="nn-arrow">→</div>
+    </a>
+  </nav>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Mark George — Product Design Leadership</span>
+    <span style="display:flex;gap:26px;align-items:center"><a href="https://linkedin.com/in/mark-george-31b89360" target="_blank" rel="noopener">LinkedIn</a><a href="selected-work.html">Selected Work</a><a href="index.html#contact">Contact</a><a href="curriculum-vitae.html">CV</a></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><span>↑</span></button>
+
+<script src="image-slot.js"></script>
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>12)},{passive:true});
+  const toTop=document.getElementById('toTop');
+  function toggleTop(){toTop.classList.toggle('show',scrollY>innerHeight*0.6)}
+  addEventListener('scroll',toggleTop,{passive:true});toggleTop();
+  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  function play(el){if(!el||el.classList.contains('shown'))return;el.classList.add('shown','playing');setTimeout(()=>el.classList.remove('playing'),1000);}
+  const fxEls=[...document.querySelectorAll('.fx,.draw')];
+  function check(){
+    const vh=innerHeight;
+    fxEls.forEach(el=>{
+      if(el.classList.contains('shown'))return;
+      const r=el.getBoundingClientRect();
+      if(r.top<vh*0.92 && r.bottom>0) play(el);
+    });
+  }
+  addEventListener('scroll',check,{passive:true});
+  addEventListener('resize',check);
+  setTimeout(check,60);setTimeout(check,500);setTimeout(check,1400);
+</script>
+<script src="nav.js"></script>
+</body>
+</html>
