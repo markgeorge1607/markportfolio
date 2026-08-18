@@ -893,25 +893,25 @@
       <div style="padding:40px;">
         <div class="decision-row">
           <div class="k">Problem</div>
-          <div class="v">A Prime member's single global session doesn't know which Just Eat market they belong to — Germany and Austria each run on separate login stacks.</div>
+          <div class="v">When a Prime member lands on Just Eat's activation page, the system has no way of knowing if they're in Germany or Austria — both markets run on completely separate login systems.</div>
         </div>
         <div class="decision-row">
           <div class="k">Options weighed</div>
           <div class="v">
             <div class="options-row">
-              <span class="opt">Force a single global session, accept the security compromise</span>
-              <span class="opt">Silently auto‑detect market from IP/locale, risk wrong‑market activation</span>
-              <span class="opt chosen">Add one explicit country‑selection step</span>
+              <span class="opt">Merge into one shared login session — simpler, but introduces a security vulnerability we'd have to knowingly accept</span>
+              <span class="opt">Auto-detect the market from their IP or browser — faster, but risks silently activating the wrong country's benefit</span>
+              <span class="opt chosen">✓ Ask the user to pick their market — one extra tap, zero ambiguity</span>
             </div>
           </div>
         </div>
         <div class="decision-row">
           <div class="k">Decision</div>
-          <div class="v">I chose the <b>extra step</b> over the shortcut. Silent detection would occasionally activate the wrong market's benefit with no way for the user to notice until checkout — a support‑ticket generator dressed up as convenience.</div>
+          <div class="v">I chose to ask the user directly. Auto-detection sounds slicker, but when it guesses wrong — and it does — the user ends up in the wrong market's flow with no way to notice until they hit checkout. That's a support ticket dressed up as a shortcut.</div>
         </div>
         <div class="decision-row" style="border-bottom:none;">
           <div class="k">Trade-off accepted</div>
-          <div class="v">One additional screen in the happy path, in exchange for a login flow that never guesses on the user's behalf. I communicated that cost explicitly to both Amazon's and Just Eat's stakeholders before it shipped — not after someone noticed the extra tap in a usability read‑out.</div>
+          <div class="v">One extra screen in the happy path — a small ask that removes a whole category of silent errors. I flagged this to stakeholders on both sides before it shipped, because it's better to explain a deliberate decision than to defend an unexpected one.</div>
         </div>
       </div>
       <!-- Right: phone mockup inside the card -->
