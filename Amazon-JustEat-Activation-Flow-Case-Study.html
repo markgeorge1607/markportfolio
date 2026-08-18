@@ -156,12 +156,12 @@
     font-size:19px; color:var(--text-mid); max-width:56ch; margin-bottom:48px;
   }
   .hero-meta{
-    display:flex; flex-direction:column; gap:16px; max-width:340px;
+    display:flex; flex-direction:column; gap:0;
   }
-  .hero-meta div{display:grid; grid-template-columns:110px 1fr; align-items:baseline; gap:12px; padding:10px 0; border-top:1px solid var(--line);}
+  .hero-meta div{display:flex; align-items:center; gap:16px; padding:7px 0; border-top:1px solid var(--line); white-space:nowrap;}
   .hero-meta div:first-child{border-top:none; padding-top:0;}
-  .hero-meta .k{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-low);}
-  .hero-meta .v{font-size:13px; color:var(--text-hi); line-height:1.4;}
+  .hero-meta .k{font-family:var(--font-mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-low); width:90px; flex-shrink:0;}
+  .hero-meta .v{font-size:13px; color:var(--text-hi);}
 
   .scroll-cue{
     position:absolute; bottom:36px; left:32px; display:flex; align-items:center; gap:10px;
@@ -481,7 +481,7 @@
       <h1 class="reveal in">Amazon Prime × Just Eat<br><em>Designing a cross-platform partnership experience that activated 2M+ Prime members across 2 markets</em></h1>
 
       <div class="hero-meta reveal in">
-        <div><div class="k">Role</div><div class="v">Design Lead, Amazon &amp; Lieferando partnership</div></div>
+        <div><div class="k">Role</div><div class="v">Design Lead · Amazon &amp; Lieferando</div></div>
         <div><div class="k">Markets</div><div class="v">Germany · Austria</div></div>
         <div><div class="k">Platforms</div><div class="v">Web, iOS &amp; Android</div></div>
         <div><div class="k">Outcome</div><div class="v">~2M activations · 60% reorder rate</div></div>
