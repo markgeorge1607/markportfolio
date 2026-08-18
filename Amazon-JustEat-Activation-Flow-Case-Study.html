@@ -424,6 +424,11 @@
 
   .flow-yes-dim { font-family: var(--font-body); font-size: 9px; font-weight: 700; fill: #4a5060; text-anchor: middle; }
   .flow-no-hot { font-family: var(--font-body); font-size: 9px; font-weight: 700; fill: #ff7a1a; text-anchor: middle; }
+
+/* Accordion */
+.accord-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.open .accord-body { max-height: 600px; }
+.open .accord-chevron { transform: rotate(180deg); }
 </style>
 </head>
 <body>
@@ -525,12 +530,31 @@
       <div style="background:var(--surface-1); border:1px solid var(--line); border-radius:var(--r-lg); padding:28px;">
         <div style="font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--jet); margin-bottom:20px; font-weight:600;">UX Design Team</div>
         <!-- Mark -->
-        <div style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--surface-2); border-radius:var(--r-md); border:1px solid var(--line); margin-bottom:12px;">
-          <img src="assets/mark-profile.jpg" alt="Mark George" style="width:40px; height:40px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--line);">
-          <div>
-            <div style="font-size:13px; font-weight:700; color:var(--text-hi);">Mark George</div>
-            <div style="font-size:11px; color:var(--jet); letter-spacing:.04em;">Lead Product Designer</div>
-            <div style="font-size:10px; color:var(--text-low); margin-top:2px; letter-spacing:.03em;">4 years in Loyalty space</div>
+        <div style="background:var(--surface-2); border-radius:var(--r-md); border:1px solid var(--line); margin-bottom:12px; overflow:hidden;">
+          <button onclick="this.parentElement.classList.toggle('open')" style="width:100%; display:flex; align-items:center; gap:14px; padding:14px 16px; background:none; border:none; cursor:pointer; text-align:left;">
+            <img src="assets/mark-profile.jpg" alt="Mark George" style="width:40px; height:40px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--line);">
+            <div style="flex:1;">
+              <div style="font-size:13px; font-weight:700; color:var(--text-hi);">Mark George</div>
+              <div style="font-size:11px; color:var(--jet); letter-spacing:.04em;">Lead Product Designer</div>
+              <div style="font-size:10px; color:var(--text-low); margin-top:2px; letter-spacing:.03em;">4 years in Loyalty space</div>
+            </div>
+            <svg class="accord-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-low); flex-shrink:0; transition:transform .25s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="accord-body" style="max-height:0; overflow:hidden; transition:max-height .35s ease;">
+            <div style="border-top:1px solid var(--line); padding:4px 0 8px;">
+              <div style="display:grid; grid-template-columns:140px 1fr; font-size:11px; line-height:1.6;">
+                <div style="padding:10px 16px; color:var(--text-low); letter-spacing:.06em; text-transform:uppercase; font-size:9.5px; font-weight:600; border-bottom:1px solid var(--line);">Architecture</div>
+                <div style="padding:10px 16px; color:var(--text-mid); border-bottom:1px solid var(--line);">Defined the end-to-end activation architecture — from Amazon platform handoff through the JET web flow and into the native app experience.</div>
+                <div style="padding:10px 16px; color:var(--text-low); letter-spacing:.06em; text-transform:uppercase; font-size:9.5px; font-weight:600; border-bottom:1px solid var(--line);">Risk &amp; Edge-case Design</div>
+                <div style="padding:10px 16px; color:var(--text-mid); border-bottom:1px solid var(--line);">Identified and solved critical risks including guest account data loss, country URL conflicts, and benefit clarity — adding guardrails that prevented user drop-off and data issues.</div>
+                <div style="padding:10px 16px; color:var(--text-low); letter-spacing:.06em; text-transform:uppercase; font-size:9.5px; font-weight:600; border-bottom:1px solid var(--line);">Cross-functional Leadership</div>
+                <div style="padding:10px 16px; color:var(--text-mid); border-bottom:1px solid var(--line);">Primary design liaison between JET product, engineering, and Amazon's global dev team. Translated technical constraints into UX decisions that protected the partnership timeline.</div>
+                <div style="padding:10px 16px; color:var(--text-low); letter-spacing:.06em; text-transform:uppercase; font-size:9.5px; font-weight:600; border-bottom:1px solid var(--line);">Strategic Tradeoffs</div>
+                <div style="padding:10px 16px; color:var(--text-mid); border-bottom:1px solid var(--line);">Made opinionated decisions under pressure — including introducing a country-selector screen to resolve a market URL conflict, accepting friction in exchange for project delivery.</div>
+                <div style="padding:10px 16px; color:var(--text-low); letter-spacing:.06em; text-transform:uppercase; font-size:9.5px; font-weight:600;">Visual &amp; Interaction Design</div>
+                <div style="padding:10px 16px; color:var(--text-mid);">Designed all multi-state UI components for activation, post-activation signposting, and deactivation — aligning to both Amazon Prime and JET brand guidelines simultaneously.</div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Other designers - no names/faces -->
@@ -597,29 +621,7 @@
     </div>
 
     <!-- My Role Cards -->
-    <h3 class="reveal" style="margin-top:48px; margin-bottom:0; font-size:18px; font-weight:600; color:var(--text-mid); letter-spacing:0.05em; text-transform:uppercase;">My Responsibilities</h3>
-    <div class="decision-card reveal" style="margin-top:16px;">
-      <div class="decision-row">
-        <div class="k">Architecture</div>
-        <div class="v">Defined the end-to-end activation architecture — from Amazon platform handoff through the JET web flow and into the native app experience.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Risk &amp; Edge-case Design</div>
-        <div class="v">Identified and solved critical risks including guest account data loss, country URL conflicts, and benefit clarity — adding guardrails that prevented user drop-off and data issues.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Cross-functional Leadership</div>
-        <div class="v">Primary design liaison between JET product, engineering, and Amazon's global dev team. Translated technical constraints into UX decisions that protected the partnership timeline.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Strategic Tradeoffs</div>
-        <div class="v">Made opinionated decisions under pressure — including introducing a country-selector screen to resolve a market URL conflict, accepting friction in exchange for project delivery.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Visual &amp; Interaction Design</div>
-        <div class="v">Designed all multi-state UI components for activation, post-activation signposting, and deactivation — aligning to both Amazon Prime and JET brand guidelines simultaneously.</div>
-      </div>
-    </div>
+
 
   </div>
 </section>
