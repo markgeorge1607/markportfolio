@@ -888,6 +888,7 @@
       <h2>Amazon's login met Just Eat's markets. Something had to give.</h2>
       <p>Amazon authenticates through one global URL. Just Eat authenticates per market. There was no version of this flow where both architectures won — so the job was choosing <em>which</em> one bent, on purpose, and being able to defend it in a room with both companies in it.</p>
     </div>
+    <div style="display:grid; grid-template-columns:1fr 340px; gap:48px; align-items:start;">
     <div class="decision-card reveal">
       <div class="decision-row">
         <div class="k">Problem</div>
@@ -912,6 +913,17 @@
         <div class="v">One additional screen in the happy path, in exchange for a login flow that never guesses on the user's behalf. I communicated that cost explicitly to both Amazon's and Just Eat's stakeholders before it shipped — not after someone noticed the extra tap in a usability read‑out.</div>
       </div>
     </div>
+    <!-- Country selection phone mockup -->
+    <div class="reveal" style="position:sticky; top:120px;">
+      <div class="phone" style="max-width:260px; margin:0 auto; border-radius:36px; border:1px solid var(--line); background:var(--surface-1); padding:10px; aspect-ratio:9/19.5; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,.7);">
+        <img src="https://markgeorge1607.github.io/markportfolio/Images/country-selection-DE.png"
+             alt="Country selection screen"
+             style="width:100%; height:100%; object-fit:cover; border-radius:28px;"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-radius:28px;font-family:var(--font-mono);font-size:11px;color:var(--text-mid);text-align:center;padding:20px;'>Country selection — DE</div>'">
+      </div>
+      <p style="text-align:center; margin-top:16px; font-family:var(--font-mono); font-size:11px; color:var(--text-low); letter-spacing:.04em;">The added screen — country selection</p>
+    </div>
+    </div><!-- end grid -->
   </div>
 </section>
 
