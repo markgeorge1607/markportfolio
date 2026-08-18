@@ -888,42 +888,43 @@
       <h2>Amazon's authentication vs Just Eat's</h2>
       <p>Amazon uses a single global URL for authentication, while Just Eat authenticates separately for every local market. Since we couldn't satisfy both technical architectures simultaneously, our job was to make a deliberate choice on which platform needed to adapt—and stand behind that trade-off in front of stakeholders from both companies purpose, and being able to defend it in a room with both companies in it.</p>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 340px; gap:48px; align-items:start;">
-    <div class="decision-card reveal">
-      <div class="decision-row">
-        <div class="k">Problem</div>
-        <div class="v">A Prime member's single global session doesn't know which Just Eat market they belong to — Germany and Austria each run on separate login stacks.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Options weighed</div>
-        <div class="v">
-          <div class="options-row">
-            <span class="opt">Force a single global session, accept the security compromise</span>
-            <span class="opt">Silently auto‑detect market from IP/locale, risk wrong‑market activation</span>
-            <span class="opt chosen">Add one explicit country‑selection step</span>
+    <div class="decision-card reveal" style="display:grid; grid-template-columns:1fr 220px; align-items:start; padding:0; overflow:hidden;">
+      <!-- Left: decision rows -->
+      <div>
+        <div class="decision-row">
+          <div class="k">Problem</div>
+          <div class="v">A Prime member's single global session doesn't know which Just Eat market they belong to — Germany and Austria each run on separate login stacks.</div>
+        </div>
+        <div class="decision-row">
+          <div class="k">Options weighed</div>
+          <div class="v">
+            <div class="options-row">
+              <span class="opt">Force a single global session, accept the security compromise</span>
+              <span class="opt">Silently auto‑detect market from IP/locale, risk wrong‑market activation</span>
+              <span class="opt chosen">Add one explicit country‑selection step</span>
+            </div>
           </div>
         </div>
+        <div class="decision-row">
+          <div class="k">Decision</div>
+          <div class="v">I chose the <b>extra step</b> over the shortcut. Silent detection would occasionally activate the wrong market's benefit with no way for the user to notice until checkout — a support‑ticket generator dressed up as convenience.</div>
+        </div>
+        <div class="decision-row" style="border-bottom:none;">
+          <div class="k">Trade-off accepted</div>
+          <div class="v">One additional screen in the happy path, in exchange for a login flow that never guesses on the user's behalf. I communicated that cost explicitly to both Amazon's and Just Eat's stakeholders before it shipped — not after someone noticed the extra tap in a usability read‑out.</div>
+        </div>
       </div>
-      <div class="decision-row">
-        <div class="k">Decision</div>
-        <div class="v">I chose the <b>extra step</b> over the shortcut. Silent detection would occasionally activate the wrong market's benefit with no way for the user to notice until checkout — a support‑ticket generator dressed up as convenience.</div>
-      </div>
-      <div class="decision-row">
-        <div class="k">Trade-off accepted</div>
-        <div class="v">One additional screen in the happy path, in exchange for a login flow that never guesses on the user's behalf. I communicated that cost explicitly to both Amazon's and Just Eat's stakeholders before it shipped — not after someone noticed the extra tap in a usability read‑out.</div>
+      <!-- Right: phone mockup inside the card -->
+      <div style="border-left:1px solid var(--line); padding:28px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
+        <div style="width:100%; border-radius:28px; border:1px solid var(--line); background:var(--surface-2); padding:8px; aspect-ratio:9/19.5; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,.6);">
+          <img src="https://markgeorge1607.github.io/markportfolio/Images/country-selection-DE.png"
+               alt="Country selection screen"
+               style="width:100%; height:100%; object-fit:cover; border-radius:22px;"
+               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--surface-1);border-radius:22px;font-family:var(--font-mono);font-size:10px;color:var(--text-mid);text-align:center;padding:16px;&quot;>Country selection — DE</div>'">
+        </div>
+        <p style="margin-top:14px; font-family:var(--font-mono); font-size:10px; color:var(--text-low); letter-spacing:.04em; text-align:center;">The added screen</p>
       </div>
     </div>
-    <!-- Country selection phone mockup -->
-    <div class="reveal" style="position:sticky; top:120px;">
-      <div class="phone" style="max-width:260px; margin:0 auto; border-radius:36px; border:1px solid var(--line); background:var(--surface-1); padding:10px; aspect-ratio:9/19.5; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,.7);">
-        <img src="https://markgeorge1607.github.io/markportfolio/Images/country-selection-DE.png"
-             alt="Country selection screen"
-             style="width:100%; height:100%; object-fit:cover; border-radius:28px;"
-             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-radius:28px;font-family:var(--font-mono);font-size:11px;color:var(--text-mid);text-align:center;padding:20px;'>Country selection — DE</div>'">
-      </div>
-      <p style="text-align:center; margin-top:16px; font-family:var(--font-mono); font-size:11px; color:var(--text-low); letter-spacing:.04em;">The added screen — country selection</p>
-    </div>
-    </div><!-- end grid -->
   </div>
 </section>
 
