@@ -1054,9 +1054,9 @@
           <text x="594" y="328" class="flow-yes-dim">YES</text>
           <text x="720" y="328" class="flow-yes-dim">YES</text>
           <!-- NO labels -->
-          <text x="196" y="412" class="flow-no-hot">NO</text>
-          <text x="336" y="412" class="flow-no-hot">NO</text>
-          <text x="636" y="412" class="flow-no-hot">NO</text>
+          <text x="196" y="412" class="flow-yes-dim">NO</text>
+          <text x="336" y="412" class="flow-yes-dim">NO</text>
+          <text x="636" y="412" class="flow-yes-dim">NO</text>
 
           <!-- ARROW MARKERS -->
           <defs>
@@ -1158,17 +1158,17 @@
 
           <!-- OFF-PATH NODES (NO branches) -->
           <!-- Existing Amazon rejection (NO from Eligible) -->
-          <rect x="160" y="430" width="104" height="56" rx="8" fill="#2d1a0e" stroke="#ff7a1a" stroke-width="1.5"/>
-          <text x="212" y="452" class="flow-node-label">Amazon</text>
-          <text x="212" y="466" class="flow-node-label">rejection journey</text>
+          <rect x="160" y="430" width="104" height="56" rx="8" fill="#1b1f26" stroke="#333" stroke-width="1.5"/>
+          <text x="212" y="452" class="flow-node-label flow-dim">Amazon</text>
+          <text x="212" y="466" class="flow-node-label flow-dim">rejection journey</text>
 
           <!-- Existing Amazon activation (NO from PrePay) -->
-          <rect x="300" y="430" width="104" height="56" rx="8" fill="#2d1a0e" stroke="#ff7a1a" stroke-width="1.5"/>
-          <text x="352" y="452" class="flow-node-label">Amazon</text>
-          <text x="352" y="466" class="flow-node-label">activation journey</text>
+          <rect x="300" y="430" width="104" height="56" rx="8" fill="#1b1f26" stroke="#333" stroke-width="1.5"/>
+          <text x="352" y="452" class="flow-node-label flow-dim">Amazon</text>
+          <text x="352" y="466" class="flow-node-label flow-dim">activation journey</text>
 
           <!-- Back to homepage/Amazon Prime (NO from Continue) -->
-          <rect x="600" y="430" width="104" height="56" rx="8" fill="#2d1a0e" stroke="#ff7a1a" stroke-width="1.5"/>
+          <rect x="600" y="430" width="104" height="56" rx="8" fill="#1b1f26" stroke="#333" stroke-width="1.5"/>
           <text x="652" y="452" class="flow-node-label">Back to</text>
           <text x="652" y="466" class="flow-node-label">homepage</text>
 
@@ -1215,28 +1215,28 @@
   <div class="wrap">
     <div class="eyebrow reveal">What I'd change next</div>
     <div class="head reveal">
-      <h2>Shipping it taught me where the seams still show</h2>
-      <p>A few of these were conscious phase‑1 trade‑offs at the time. With activation volume behind us now, they read differently — as the next brief, not as mistakes.</p>
+      <h2>What I'd do differently</h2>
+      <p>These aren't regrets — most were deliberate calls made under a tight timeline. But with real activation data behind us, a few things would be worth revisiting.</p>
     </div>
     <div class="learn-list">
       <div class="learn-item reveal">
         <div class="ln">01</div>
-        <div><h4>Replace the generic error state with account‑specific diagnostics</h4><p>"Something went wrong, it's not you, it's us" was a deliberate phase‑1 simplification, flagged as such on the original board. With real activation and failure data now available, it's worth the investment to tell a user <em>which</em> of the ten branches they actually hit.</p></div>
+        <div><h4>Give users a clearer reason when activation fails</h4><p>We shipped a simple "something went wrong" error to keep scope manageable. Now that we have real failure data, it's worth going back and telling users specifically what happened — and what they can do about it — rather than leaving them to guess.</p></div>
       </div>
       <div class="learn-item reveal">
         <div class="ln">02</div>
-        <div><h4>Unify Just Eat's per‑market login screens</h4><p>This flow was built to absorb that fragmentation rather than fix it — the right call under a three‑month deadline, but it means every future partner integration inherits the same legacy debt until One App/Web lands.</p></div>
+        <div><h4>Consolidate the login experience across markets</h4><p>Germany and Austria had different legacy login screens, so we designed the flow to work around that inconsistency rather than fix it. The right call at the time — but it means every future partner integration starts from the same fragmented base unless the underlying system gets unified.</p></div>
       </div>
       <div class="learn-item reveal">
         <div class="ln">03</div>
-        <div><h4>Soften the guest‑account warning into a merge, not a hard stop</h4><p>The current pattern asks a guest user to accept data loss before continuing. A lighter merge flow — keep the guest basket, add the real account — would likely convert more of the DE/AT guest population, who hit this branch often.</p></div>
+        <div><h4>Make the guest account step feel less like a warning</h4><p>Guest users currently have to acknowledge that their data won't carry over before they can continue. A gentler approach — carry the basket forward and link the account after — would reduce friction at a step where a meaningful chunk of users drop off.</p></div>
       </div>
       <div class="learn-item reveal">
         <div class="ln">04</div>
-        <div><h4>Track every branch, not just the main flow</h4><p>We set up analytics on the main activation path but didn't measure the edge cases with the same rigour. I know exactly what each error state and fallback branch does — but I can't tell you how often users hit them or how much each one costs in drop-off. If I did this again, I'd ship that tracking on day one, so the post-launch review is built on data rather than estimates.</p></div>
+        <div><h4>Instrument every path from day one, not just the happy path</h4><p>We tracked the main activation flow carefully but didn't apply the same rigour to the edge case branches. I can describe every fallback state in detail — I just can't tell you how often real users hit them. Next time, that tracking goes in before launch so the post-release review is grounded in data, not estimates.</p></div>
       </div>
     </div>
-    <p class="honest-note reveal">The honest version: I can describe every edge case in detail, but I can't rank them by impact. That's the gap I'd close first given more time — not more design, just better visibility into what's already there.</p>
+    <p class="honest-note reveal">Honest reflection: the design held up well at scale — but I'd know that with more confidence if we'd measured the full picture from the start, not just the parts we expected to matter.</p>
   </div>
 </section>
 
