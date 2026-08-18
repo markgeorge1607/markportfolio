@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Prime × Just Eat — Activation Flow — Mark George</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="present.css">
+</head>
+<body>
+<script src="lock-present.js"></script>
+
+<div class="progress-bar" id="progressBar"></div>
+<a href="index.html" class="home-btn">← All cases</a>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: COVER -->
+<section class="slide cover-slide active" id="s-1">
+  <img src="../assets/AMZ2.png" alt="" aria-hidden="true" style="position:absolute;right:0;bottom:0;height:100%;width:55%;object-fit:contain;object-position:right bottom;z-index:0;pointer-events:none;opacity:0.7;">
+  <div style="flex:1;display:flex;align-items:flex-end;position:relative;z-index:1;">
+    <div>
+      <div class="s-eyebrow" style="margin-bottom:32px">Just Eat × Amazon Prime · Activation Flow · 2026</div>
+      <h1 class="cover-title">Two Brands. One Login.<br><em>Twenty Ways It Could Break.</em></h1>
+      <p class="cover-title" style="font-style:italic;font-size:clamp(1rem,2vw,1.4rem);font-weight:300;margin-top:12px;margin-bottom:32px">Design Lead, Amazon &amp; Lieferando Partnership</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Role</div>
+          <div class="cover-meta-val">Design Lead, Amazon &amp; Lieferando</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Markets</div>
+          <div class="cover-meta-val">Germany · Austria</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Platforms</div>
+          <div class="cover-meta-val">Web · iOS · Android</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Outcome</div>
+          <div class="cover-meta-val">~2M activations · 60% reorder rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: THE BRIEF -->
+<section class="slide" id="s-2">
+  <div class="s-eyebrow">01 · The Brief</div>
+  <h2 class="s-title">A One-Line User Story with a <em>Business Model Behind It</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">The trigger wasn't a design brief. It was a support ticket pattern: Just Eat+ members who were <strong>also Amazon Prime members</strong>, paying twice for the same delivery benefit without realising it.</p>
+      <p class="s-body" style="margin-top:16px">That one line implied the whole brief: two authentication systems, two loyalty ledgers, and a refund policy question that had to be answered before a single screen got designed.</p>
+      <p class="s-body" style="margin-top:16px">Underneath it sat the real shape of the project — two global brands, three markets, and one activation moment that had to work identically whether someone arrived from Amazon's app, Amazon's website, or a Just Eat account they'd had for six years.</p>
+    </div>
+    <div>
+      <blockquote style="border-left:2px solid var(--orange);padding-left:20px;font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.5;color:var(--paper);margin-bottom:20px">"As a Just Eat+ member and an Amazon Prime member, I want to switch to my free Prime delivery benefit — and I want to be clear on the refund policy so I can make an informed decision."</blockquote>
+      <div style="font-size:12px;color:var(--gray);letter-spacing:.05em">Field note that started the account‑linking initiative</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: THREE TENSIONS -->
+<section class="slide" id="s-3">
+  <div class="s-eyebrow">01 · The Brief — Tensions</div>
+  <h2 class="s-title">Three Problems <em>Hiding Inside</em> One User Story</h2>
+  <div class="principles" style="grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vh,48px)">
+    <div class="p-card">
+      <div class="p-card-title">Tension 01 · Two Identity Systems, One Moment</div>
+      <div class="p-card-body">Amazon's single‑URL global login met Just Eat's per‑market URL structure — built for a different era of the product, never designed to hand off mid‑session to a partner.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Tension 02 · Three Markets, One Flow</div>
+      <div class="p-card-body">Germany, Austria and Spain each had their own login quirks and legacy screens. One activation flow had to absorb that inconsistency without the user ever seeing the seams.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Tension 03 · Generosity vs. Exploitation</div>
+      <div class="p-card-body">The benefit had to be trivially easy to claim once — and impossible to claim twice, across guest sessions, duplicate accounts and cross‑app identities.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: THE TRADE-OFF -->
+<section class="slide" id="s-4">
+  <div class="s-eyebrow">02 · The Trade-off</div>
+  <h2 class="s-title">Amazon's Login Met Just Eat's Markets. <em>Something Had to Give.</em></h2>
+  <div class="two-col wide-left">
+    <div>
+      <p class="s-body">Amazon authenticates through one global URL. Just Eat authenticates per market. There was no version of this flow where both architectures won — so the job was choosing <em>which</em> one bent, on purpose, and being able to defend it in a room with both companies in it.</p>
+      <div style="margin-top:clamp(20px,3vh,36px);border:1px solid var(--line);border-radius:6px;padding:24px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:16px">Decision Log</div>
+        <div style="margin-bottom:14px">
+          <div style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);margin-bottom:4px">Problem</div>
+          <div style="font-size:clamp(12px,1.1vw,14px);color:rgba(21,20,15,0.72);line-height:1.5">A Prime member's single global session doesn't know which Just Eat market they belong to — Germany, Austria and Spain each run on separate login stacks.</div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);margin-bottom:4px">Decision</div>
+          <div style="font-size:clamp(12px,1.1vw,14px);color:rgba(21,20,15,0.72);line-height:1.5">Add one explicit <strong style="color:var(--paper)">country‑selection step</strong> over silent auto‑detect — a support‑ticket generator dressed up as convenience.</div>
+        </div>
+      </div>
+    </div>
+    <div class="principles" style="grid-template-columns:1fr;gap:14px;margin-top:0">
+      <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+        <div class="p-card-title">Trade-off Accepted</div>
+        <div class="p-card-body" style="color:var(--paper)">One additional screen in the happy path, in exchange for a login flow that never guesses on the user's behalf.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">How It Was Communicated</div>
+        <div class="p-card-body">I communicated that cost explicitly to both Amazon's and Just Eat's stakeholders before it shipped — not after someone noticed the extra tap in a usability read‑out.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: THE FLOW — 4 SCREENS -->
+<section class="slide" id="s-5">
+  <div class="s-eyebrow">03 · The Flow, As Shipped</div>
+  <h2 class="s-title">Four Screens, <em>One Uninterrupted Handoff</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,36px)">The 80% case, tuned until it felt inevitable. It's also the version that hides everything that comes after.</p>
+  <div class="principles" style="grid-template-columns:repeat(4,1fr)">
+    <div class="p-card">
+      <div class="p-card-title">Screen 01 — Country Selection</div>
+      <div class="p-card-body">The extra step, traded deliberately for a secure login — never a silent guess.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Screen 02 — Sign In</div>
+      <div class="p-card-body">Amazon credentials carry the user across — no second account to create.</div>
+    </div>
+    <div class="p-card" style="border-color:var(--orange)">
+      <div class="p-card-title">Screen 03 — Activate</div>
+      <div class="p-card-body">The benefit is named and confirmed before it's applied — nothing happens by default.</div>
+    </div>
+    <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+      <div class="p-card-title">Screen 04 — Activated</div>
+      <div class="p-card-body">Linked and live — the moment the whole flow was built to protect.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: VISUALS -->
+<section class="slide" id="s-6">
+  <div class="s-eyebrow">03 · The Flow — Screens</div>
+  <h2 class="s-title" style="font-size:clamp(1.4rem,2.5vw,2.5rem);margin-bottom:clamp(16px,2vh,24px)">Account linking &amp; <em>benefit activation</em> across markets</h2>
+  <div class="img-pair" style="flex:1">
+    <img src="../assets/AMZ1.png" class="img-fill" style="max-height:52vh" alt="Amazon account linking flow" loading="lazy">
+    <img src="../assets/AMZ2.png" class="img-fill" style="max-height:52vh" alt="Amazon benefit activation screens" loading="lazy">
+  </div>
+  <div style="font-size:11px;letter-spacing:.08em;color:var(--gray);margin-top:12px">Live activation experience — Germany, Austria &amp; Spain</div>
+</section>
+
+<!-- SLIDE 7: THE REAL COMPLEXITY -->
+<section class="slide" id="s-7">
+  <div class="s-eyebrow">04 · Where It Actually Gets Hard</div>
+  <h2 class="s-title">The Happy Path is 4 Screens. <em>The Real Flow is 20+ Decisions.</em></h2>
+  <div class="two-col">
+    <div>
+      <p class="s-body">Most portfolios stop at the four screens above. The Figma file underneath them runs across two stages, three surfaces — Amazon web, Just Eat web, and the Just Eat app — and roughly ten branches where the "obvious" answer was actually a judgment call.</p>
+    </div>
+    <div class="stat-grid" style="margin-top:0;grid-template-columns:1fr 1fr">
+      <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Surfaces to keep consistent — Amazon web, JET web, JET app</div></div>
+      <div class="stat"><span class="stat-num">14</span><div class="stat-lab">Distinct steps mapped, happy path to edge case</div></div>
+      <div class="stat"><span class="stat-num"><i>~</i>10</span><div class="stat-lab">Edge-case branches given an explicit, deliberate answer</div></div>
+      <div class="stat"><span class="stat-num">3</span><div class="stat-lab">Markets the same logic had to hold across without forking</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: STAGES 1 & 2 -->
+<section class="slide" id="s-8">
+  <div class="s-eyebrow">04 · Flow Stages 1 &amp; 2</div>
+  <h2 class="s-title">Account Linking → <em>Benefit Activation</em></h2>
+  <div class="principles" style="grid-template-columns:1fr 1fr;margin-top:clamp(24px,4vh,48px)">
+    <div class="p-card" style="border-color:var(--orange)">
+      <div class="p-card-title">Stage 1 — Account Linking (Steps 1–6)</div>
+      <div class="p-card-body" style="color:var(--paper);margin-bottom:12px">Amazon credentials are verified and the user's market identity is confirmed. The country‑selector happens here — the deliberate extra step before hand-off.</div>
+      <div style="height:1px;background:var(--line);margin:12px 0"></div>
+      <div class="p-card-body">Each step was mapped across Amazon web, JET web and native app lanes — the same logic, three surfaces, no forking.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Stage 2 — Benefit Activation (Steps 7–11)</div>
+      <div class="p-card-body" style="color:var(--paper);margin-bottom:12px">The benefit is named, scoped and confirmed before it's applied. Nothing activates by default — every user gets one explicit confirmation moment.</div>
+      <div style="height:1px;background:var(--line);margin:12px 0"></div>
+      <div class="p-card-body">Duplicate‑activation prevention is enforced here. Cross-app identities, guest sessions and duplicate accounts all resolve in this stage — not in a post-activation support queue.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: STAGE 3 — EDGE CASES -->
+<section class="slide" id="s-9">
+  <div class="s-eyebrow">04 · Flow Stage 3</div>
+  <h2 class="s-title">Returning to the App — <em>Where the Edge Cases Live</em></h2>
+  <div class="principles" style="grid-template-columns:repeat(3,1fr);margin-top:clamp(24px,4vh,48px)">
+    <div class="p-card">
+      <div class="p-card-title">Step 12 — Is the App Installed &amp; Signed In?</div>
+      <div class="p-card-body">
+        <strong style="color:var(--paper)">Yes:</strong> Straight to account‑match check.<br><br>
+        <strong style="color:var(--paper)">No:</strong> App Store / Play Store, then native login.<br><br>
+        <em style="color:var(--orange)">Edge case:</em> Users without the app are sent to install it — a deliberate bet on native CX over avoiding one extra hop.
+      </div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Step 13 — Same Account as Activated?</div>
+      <div class="p-card-body">
+        <strong style="color:var(--paper)">Yes:</strong> Falls straight through to success state.<br><br>
+        <strong style="color:var(--paper)">No:</strong> Guest-in-app or different logged-in account — both warned before a re-auth is forced.<br><br>
+        <em style="color:var(--orange)">Edge case:</em> Activate on web with one identity, open the app signed into another. Tested for — not discovered in production.
+      </div>
+    </div>
+    <div class="p-card" style="border-color:var(--orange);background:rgba(126,58,46,0.06)">
+      <div class="p-card-title">Step 14 — Benefits Unlocked</div>
+      <div class="p-card-body" style="color:var(--paper)">An in‑app banner, not a full‑screen takeover — the user is dropped straight back into browsing restaurants, benefit already live.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: LEADING THROUGH IT -->
+<section class="slide" id="s-10">
+  <div class="s-eyebrow">05 · Leading Through It</div>
+  <blockquote class="big-quote">"Three designers were embedded across five squads. Every one of them was under pressure from <em>both sides of the partnership</em> at once."</blockquote>
+  <div class="reflect-grid" style="margin-top:clamp(24px,4vh,48px)">
+    <div class="r-card">
+      <div class="r-title">I Took the Pressure, Not My Team</div>
+      <div class="r-body">Amazon's PMs wanted faster turnaround; internal stakeholders wanted more polish. I ran the weekly Amazon stakeholder syncs myself, bringing decisions with rationale and options — so my designers weren't defending their work in rooms they hadn't been part of.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">Coherence Over Individual Correctness</div>
+      <div class="r-body">Each designer's decisions were locally sensible. The risk was an experience that fragmented across squads. A fortnightly sync — decisions made, decisions pending, one dependency to resolve — kept the seams from showing.</div>
+    </div>
+    <div class="r-card">
+      <div class="r-title">Protecting the Security Model Was a Design Call</div>
+      <div class="r-body">The country‑selector trade‑off wasn't handed down by engineering — it was a design decision I made and then had to sell to both companies, in writing, before it shipped.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: OUTCOMES -->
+<section class="slide" id="s-11">
+  <div class="s-eyebrow">06 · Outcomes</div>
+  <h2 class="s-title">The Edge Cases Are Why <em>The Numbers Held</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(20px,3vh,36px)">None of this shows up in a highlight reel of four screens. It shows up in what didn't happen: no duplicate‑activation abuse wave, no wrong‑market support spike, no fragmented experience across three markets with three different login legacies.</p>
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num"><i>~</i>2<i>M</i></span><div class="stat-lab">Total activations across the Amazon/Lieferando benefit</div></div>
+    <div class="stat"><span class="stat-num">60<i>%</i></span><div class="stat-lab">Reorder rate among activated Prime members</div></div>
+    <div class="stat"><span class="stat-num">2</span><div class="stat-lab">Markets — Germany, Austria</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 12: LEARNINGS -->
+<section class="slide" id="s-12">
+  <div class="s-eyebrow">07 · What I'd Change Next</div>
+  <h2 class="s-title">Shipping It Taught Me <em>Where the Seams Still Show</em></h2>
+  <p class="s-body" style="margin-bottom:clamp(16px,2.5vh,28px)">A few of these were conscious phase-1 trade-offs. With activation volume behind us, they read differently — as the next brief, not as mistakes.</p>
+  <div class="roadmap-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="rm-card">
+      <div class="rm-num">01</div>
+      <div class="rm-title">Replace Generic Errors with Account-Specific Diagnostics</div>
+      <div class="rm-desc">With real failure data now available, it's worth telling a user which branch they actually hit — not "something went wrong."</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">02</div>
+      <div class="rm-title">Unify Just Eat's Per-Market Login Screens</div>
+      <div class="rm-desc">This flow absorbed the fragmentation rather than fixing it — the right call under a three-month deadline, but every future partner integration inherits the same legacy debt.</div>
+    </div>
+    <div class="rm-card">
+      <div class="rm-num">03</div>
+      <div class="rm-title">Soften the Guest-Account Warning into a Merge</div>
+      <div class="rm-desc">A lighter merge flow — keep the basket, add the real account — would likely convert more of the DE/AT guest population, who hit this branch often.</div>
+    </div>
+    <div class="rm-card" style="border-color:var(--orange);background:rgba(126,58,46,0.05)">
+      <div class="rm-num" style="color:var(--paper)">04</div>
+      <div class="rm-title">Instrument Every Decision Node, Not Just the Happy Path</div>
+      <div class="rm-desc">Next time, funnel instrumentation ships with v1 — so "what I'd change" is a dashboard, not a guess.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: REFLECTION -->
+<section class="slide" id="s-13" style="justify-content:center">
+  <div class="s-eyebrow" style="justify-content:center">07 · Reflection</div>
+  <blockquote class="big-quote" style="max-width:72ch">"I can tell you with confidence what each edge case <em>does.</em> I can't yet tell you which one costs the most conversions, because we didn't instrument the edges as tightly as the happy path. That gap is exactly what I'd fix first with another three months."</blockquote>
+  <div class="quote-attr" style="margin-top:24px">Shipping is not the finish line — it's when the real measurement begins.</div>
+</section>
+
+<!-- SLIDE 14: THANK YOU -->
+<section class="slide thank-slide" id="s-14">
+  <div class="s-eyebrow" style="justify-content:center">Thank you</div>
+  <h2 class="s-title" style="text-align:center;font-size:clamp(2.5rem,5vw,5.5rem)">Mark <em>George</em></h2>
+  <p class="s-body" style="text-align:center;margin-top:12px">Lead Product Designer · Design Leadership</p>
+  <div class="cover-meta" style="justify-content:center;margin-top:40px">
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Email</div>
+      <div class="cover-meta-val">markgeorge1607@gmail.com</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">LinkedIn</div>
+      <div class="cover-meta-val">linkedin.com/in/mark-george-31b89360</div>
+    </div>
+    <div class="cover-meta-item" style="text-align:center">
+      <div class="cover-meta-label">Portfolio</div>
+      <div class="cover-meta-val">markgeorge1607.github.io/markportfolio</div>
+    </div>
+  </div>
+  <div style="margin-top:48px;font-size:12px;color:var(--gray);text-align:center">Press Escape to return to case studies</div>
+</section>
+
+</div><!-- /deck -->
+
+<nav class="nav-bar">
+  <button class="nav-btn" id="prevBtn" disabled aria-label="Previous slide">←</button>
+  <span class="slide-counter" id="counter">1 / 14</span>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var current = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var counter = document.getElementById('counter');
+  var bar = document.getElementById('progressBar');
+
+  function show(n){
+    slides[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+    bar.style.width = ((current + 1) / total * 100) + '%';
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === total - 1);
+  }
+
+  prevBtn.addEventListener('click', function(){ if(current > 0) show(current - 1); });
+  nextBtn.addEventListener('click', function(){ if(current < total - 1) show(current + 1); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); if(current < total - 1) show(current + 1); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); if(current > 0) show(current - 1); }
+    if(e.key === 'Escape'){ window.location.href = 'index.html'; }
+  });
+
+  var touchX = null;
+  document.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if(touchX === null) return;
+    var dx = touchX - e.changedTouches[0].clientX;
+    if(dx > 50 && current < total - 1) show(current + 1);
+    if(dx < -50 && current > 0) show(current - 1);
+    touchX = null;
+  }, {passive:true});
+
+  counter.textContent = '1 / ' + total;
+  bar.style.width = (1 / total * 100) + '%';
+  prevBtn.disabled = true;
+})();
+</script>
+</body>
+</html>
