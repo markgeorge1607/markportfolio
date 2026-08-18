@@ -884,6 +884,44 @@
           <text x="28" y="52" class="flow-start-label">PrePaid customer</text>
           <text x="28" y="64" class="flow-start-label">links Amazon account</text>
 
+        
+          <!-- ═══ API CALL INDICATORS ═══ -->
+
+          <g class="api-badge" data-tip="1. Amazon OAuth — Amazon initiates the OAuth 2.0 handoff, passing a signed token and the user's Prime membership status to Just Eat">
+            <rect x="107" y="26" width="44" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="129" y="36" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">1 · OAuth</text>
+          </g>
+
+          <g class="api-badge" data-tip="2. Amazon Eligibility — Just Eat validates the Amazon token server-side with Amazon's Partner API to confirm the membership is active and unclaimed">
+            <rect x="573" y="26" width="56" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="601" y="36" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">2 · Eligibility</text>
+          </g>
+
+          <g class="api-badge" data-tip="3. Market Resolution — Fetches available markets (DE/AT) and sets the session context, routing the user to the correct Lieferando login stack">
+            <rect x="741" y="26" width="40" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="761" y="36" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">3 · Market</text>
+          </g>
+
+          <g class="api-badge" data-tip="4. JET Auth — Authenticates the user against the selected market's login stack, returning a scoped Just Eat session token">
+            <rect x="897" y="26" width="48" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="921" y="36" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">4 · JET Auth</text>
+          </g>
+
+          <g class="api-badge" data-tip="5. Eligibility Check — Checks whether the authenticated JET account is eligible to receive the Prime benefit (not already activated, account in good standing)">
+            <rect x="196" y="286" width="32" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="212" y="296" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">5 · Check</text>
+          </g>
+
+          <g class="api-badge" data-tip="6. Subscription Status — Checks whether the user holds an active JET+ PrePaid subscription. A NO here routes directly to activation; a YES triggers the cancellation branch">
+            <rect x="334" y="286" width="36" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="352" y="296" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">6 · Subs</text>
+          </g>
+
+          <g class="api-badge" data-tip="7. Benefit Activation — Links the Amazon Prime entitlement to the JET account on the correct market. Amazon's partner API is called server-side to mark the benefit as claimed and prevent double-activation">
+            <rect x="920" y="212" width="44" height="13" rx="3" fill="#1b1f26" stroke="#ff7a1a" stroke-width="0.8" style="cursor:pointer"/>
+            <text x="942" y="222" font-family="monospace" font-size="7" font-weight="700" fill="#ff7a1a" text-anchor="middle" style="cursor:pointer">7 · Activate</text>
+          </g>
+
         </svg>
       </div>
     </div>
