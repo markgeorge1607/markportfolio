@@ -144,12 +144,21 @@
   .section-note{font-size:13px;color:var(--gray);max-width:30ch;text-align:right}
   .work{padding-top:clamp(60px,9vh,110px);padding-bottom:clamp(60px,9vh,110px);padding-left:clamp(28px,10vw,240px);padding-right:clamp(28px,10vw,240px)}
   .rows{margin-top:30px;border-top:1px solid var(--line)}
+  .work-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .work-tab{font:inherit;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:100px;padding:9px 18px;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+  .work-tab:hover{border-color:var(--ink);color:var(--ink)}
+  .work-tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .work-tab:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   .row{
-    display:grid;grid-template-columns:54px 1fr auto auto;align-items:center;gap:28px;
+    display:grid;grid-template-columns:54px auto 1fr auto auto;align-items:center;gap:28px;
     padding:30px 8px;border-bottom:1px solid var(--line);
     position:relative;cursor:pointer;
     transition:padding-left .4s cubic-bezier(.2,.7,.2,1), background .4s;
   }
+  .row[hidden]{display:none}
+  .row .thumb{width:clamp(64px,6.5vw,92px);aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--paper-2);box-shadow:0 1px 0 var(--line)}
+  .row .thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .row:hover .thumb img{transform:scale(1.05)}
   .row .num{font-family:var(--serif);font-size:15px;color:var(--gray);font-variant-numeric:tabular-nums}
   .row .title{font-size:clamp(1.4rem,2.6vw,2.1rem);font-weight:500;letter-spacing:-.015em;color:var(--ink);transition:color .35s}
   .row .title small{display:block;font-family:var(--grotesk);font-weight:400;font-size:14px;letter-spacing:0;color:var(--gray);margin-top:7px}
@@ -232,8 +241,9 @@
     .hero-aside{border-top:1px solid var(--line);padding-top:28px;margin-top:0}
     .ledger-label,.lrow,.ledger-status{text-align:left}
     .ledger-status{justify-content:flex-start}
-    .row{grid-template-columns:38px 1fr;gap:16px}
-    .row .role,.row .year{display:none}
+    .row{grid-template-columns:64px 1fr;gap:18px}
+    .row .num,.row .role,.row .year{display:none}
+    .row .thumb{width:64px}
     .statement{max-width:100%;overflow-wrap:break-word}
     .about-grid{grid-template-columns:1fr;gap:24px}
     .section-head{flex-direction:column;gap:6px}
@@ -319,36 +329,101 @@ PRODUCT DESIGN LEADERSHIP</div>
 
   <section class="work wrap" id="work">
     <div class="section-head fx">
-      <span class="section-label">PRODUCT DESIGN — 2025–2026</span>
-      <a class="section-note" href="selected-work.html" style="transition:color .3s">View all product design →</a>
+      <span class="section-label">PRODUCT DESIGN</span>
+      <a class="section-note" id="workAll" href="selected-work.html#product-design" style="transition:color .3s">View all product design →</a>
     </div>
-    <div class="rows">
-      <a class="row fx" href="case-study-reorder-rewards.html">
+    <div class="work-tabs fx" role="tablist" aria-label="Filter work">
+      <button class="work-tab" role="tab" aria-selected="true" aria-controls="workRows" data-group="product" data-href="selected-work.html#product-design" data-note="View all product design →">Product</button>
+      <button class="work-tab" role="tab" aria-selected="false" aria-controls="workRows" data-group="strategic" data-href="selected-work.html#strategic-design" data-note="View all strategic design →" tabindex="-1">Strategic</button>
+      <button class="work-tab" role="tab" aria-selected="false" aria-controls="workRows" data-group="agency" data-href="selected-work.html#agency" data-note="View all agency work →" tabindex="-1">Agency</button>
+    </div>
+    <div class="rows" id="workRows" role="tabpanel">
+      <a class="row fx" href="case-study-reorder-rewards.html" data-group="product">
         <span class="num">01</span>
+        <span class="thumb"><img src="Images/thumbs/reorder.jpg" alt="" loading="lazy" /></span>
         <span class="title">Reorder Rewards<small>Replaced a stamp card with an automatic, partner-funded reward</small></span>
         <span class="role">Lead Product Designer</span>
         <span class="year">2026</span>
         <span class="arrow">→</span>
       </a>
-      <a class="row fx" href="case-study-jet-plus-loyalty.html">
+      <a class="row fx" href="case-study-klaio.html" data-group="product">
         <span class="num">02</span>
-        <span class="title">JET+ Loyalty Ecosystem<small>Turned transactional behaviour into 6M+ loyal memberships</small></span>
-        <span class="role">Lead Product Designer</span>
-        <span class="year">2026</span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="row fx" href="case-study-klaio.html">
-        <span class="num">03</span>
+        <span class="thumb"><img src="Images/thumbs/klaio.jpg" alt="" loading="lazy" /></span>
         <span class="title">Klaio.io<small>Shopify payouts explained in plain English — a solo build</small></span>
         <span class="role">Founder · Solo build</span>
         <span class="year">2026</span>
         <span class="arrow">→</span>
       </a>
-      <a class="row fx" href="case-study-smart-dish-search.html">
-        <span class="num">04</span>
+      <a class="row fx" href="case-study-smart-dish-search.html" data-group="product">
+        <span class="num">03</span>
+        <span class="thumb"><img src="Images/thumbs/dish-search.jpg" alt="" loading="lazy" /></span>
         <span class="title">Smart Dish Search<small>Reframed search from “match a dish” to “understand a craving”</small></span>
         <span class="role">UX Lead</span>
         <span class="year">2025</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="case-study-jet-plus-loyalty.html" data-group="strategic" hidden>
+        <span class="num">01</span>
+        <span class="thumb"><img src="Images/thumbs/jetplus.jpg" alt="" loading="lazy" /></span>
+        <span class="title">JET+ Loyalty Ecosystem<small>Turned transactional behaviour into 6M+ loyal memberships</small></span>
+        <span class="role">Lead Product Designer</span>
+        <span class="year">2026</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="case-study-just-eat-dine-in.html" data-group="strategic" hidden>
+        <span class="num">02</span>
+        <span class="thumb"><img src="Images/thumbs/dine-in.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Just Eat Dine-In<small>A new dine-in proposition, from MVP to live in 11 weeks</small></span>
+        <span class="role">UX Lead</span>
+        <span class="year">2021</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="case-study-fog-and-assumption-mapping.html" data-group="strategic" hidden>
+        <span class="num">03</span>
+        <span class="thumb"><img src="Images/thumbs/fog.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Facts Over Guesses<small>Separating what we know from what we’re hoping</small></span>
+        <span class="role">Design Practice</span>
+        <span class="year">2024</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="case-study-framing-complexity.html" data-group="strategic" hidden>
+        <span class="num">04</span>
+        <span class="thumb"><img src="Images/thumbs/framing.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Framing Complexity<small>Embedded problem framing as a discipline across the org</small></span>
+        <span class="role">Design Practice</span>
+        <span class="year">2024</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="agency-jkr.html" data-group="agency" hidden>
+        <span class="num">01</span>
+        <span class="thumb"><img src="Images/thumbs/jkr.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Jones Knowles Ritchie<small>Responsive website redesign</small></span>
+        <span class="role">Lead Designer</span>
+        <span class="year">2014</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="agency-dewars.html" data-group="agency" hidden>
+        <span class="num">02</span>
+        <span class="thumb"><img src="Images/thumbs/dewars.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Dewar’s Whisky<small>Live True campaign</small></span>
+        <span class="role">Lead Designer</span>
+        <span class="year">2014</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="agency-barclays.html" data-group="agency" hidden>
+        <span class="num">03</span>
+        <span class="thumb"><img src="Images/thumbs/barclays.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Barclays LifeSkills<small>Responsive website</small></span>
+        <span class="role">Lead Designer</span>
+        <span class="year">2015</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="row fx" href="agency-audi.html" data-group="agency" hidden>
+        <span class="num">04</span>
+        <span class="thumb"><img src="Images/thumbs/audi.jpg" alt="" loading="lazy" /></span>
+        <span class="title">Audi e-tron Explorer<small>iPad app · experiential</small></span>
+        <span class="role">Lead Designer</span>
+        <span class="year">2014</span>
         <span class="arrow">→</span>
       </a>
     </div>
@@ -491,6 +566,32 @@ PRODUCT DESIGN LEADERSHIP</div>
   addEventListener('scroll',check,{passive:true});
   addEventListener('resize',check);
   setTimeout(check,60);setTimeout(check,500);setTimeout(check,1400);
+</script>
+<script>
+  // work index tabs: filter rows by group, replay the row reveal
+  (function(){
+    const tabs=[...document.querySelectorAll('.work-tab')];
+    const rows=[...document.querySelectorAll('#workRows .row')];
+    const all=document.getElementById('workAll');
+    function select(tab,focus){
+      tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
+      all.href=tab.dataset.href;all.textContent=tab.dataset.note;
+      let n=0;
+      rows.forEach(r=>{
+        const show=r.dataset.group===tab.dataset.group;
+        r.hidden=!show;
+        if(show){r.classList.remove('shown','playing');const el=r;setTimeout(()=>play(el),40+n++*70)}
+      });
+      if(focus)tab.focus();
+    }
+    tabs.forEach((t,i)=>{
+      t.addEventListener('click',()=>select(t));
+      t.addEventListener('keydown',e=>{
+        const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+        if(d){e.preventDefault();select(tabs[(i+d+tabs.length)%tabs.length],true)}
+      });
+    });
+  })();
 </script>
 <script src="nav.js"></script>
 </body>
