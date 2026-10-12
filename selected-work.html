@@ -106,6 +106,15 @@
   .e-cap{margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:right}
   .entry:hover .e-title{color:var(--accent)}
 
+  /* ---------- jump buttons (match CV) ---------- */
+  .group-head:first-child{padding-top:clamp(40px,6vh,64px)}
+  .mh-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .mh-btn{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.04em;color:var(--ink);border:1px solid var(--ink);border-radius:100px;padding:11px 20px;transition:background .3s,color .3s,gap .3s}
+  .mh-btn span{transition:transform .3s}
+  .mh-btn:hover{background:var(--ink);color:var(--paper);gap:15px}
+  .mh-btn.ghost{border-color:var(--line);color:var(--ink-soft)}
+  .mh-btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
+
   /* ---------- sub-category heading ---------- */
   .group-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:clamp(70px,11vh,130px);padding-bottom:18px;border-bottom:1.5px solid var(--ink);scroll-margin-top:96px}
 
@@ -221,12 +230,23 @@
     <div class="eyebrow fx"><span class="rule"></span>Product Design — 2025–2026</div>
     <div class="mh-grid">
       <h1 class="mh-title fx">Growth &amp;<br/><em>loyalty,</em> led.</h1>
-      <p class="mh-note fx">A short record of programmes I’ve led end-to-end — the framing, the team decisions, and the <b>business results that followed.</b> Each entry opens into the full story of <em>how the work got made.</em></p>
+      <div>
+        <p class="mh-note fx">A short record of programmes I’ve led end-to-end — the framing, the team decisions, and the <b>business results that followed.</b> Each entry opens into the full story of <em>how the work got made.</em></p>
+        <div class="mh-actions fx">
+          <a class="mh-btn" href="#product-design">Product Design <span>↓</span></a>
+          <a class="mh-btn ghost" href="#strategic-design">Strategic Design <span>↓</span></a>
+        </div>
+      </div>
     </div>
     <div class="mh-rule draw"></div>
   </section>
 
   <section class="entries wrap">
+
+    <div class="group-head fx" id="product-design">
+      <span class="section-label">Product Design</span>
+      <span class="section-note">Shipped products, end-to-end, with the numbers that followed.</span>
+    </div>
 
     <article class="entry">
       <div class="e-num fx">01</div>
