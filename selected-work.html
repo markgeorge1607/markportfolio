@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mark George — Selected Work</title>
+<title>Mark George — Product Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -106,6 +106,9 @@
   .e-cap{margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:right}
   .entry:hover .e-title{color:var(--accent)}
 
+  /* ---------- sub-category heading ---------- */
+  .group-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:clamp(70px,11vh,130px);padding-bottom:18px;border-bottom:1.5px solid var(--ink);scroll-margin-top:96px}
+
   /* ---------- secondary list ---------- */
   .also{padding-top:clamp(50px,8vh,96px);padding-bottom:clamp(20px,4vh,40px)}
   .also-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:8px}
@@ -200,12 +203,12 @@
   <div class="wrap bar">
     <a href="index.html" class="mark">Mark<span>.</span> George</a>
     <nav class="links">
-      <a href="selected-work.html" class="active">Selected Work</a>
+      <a href="selected-work.html" class="active">Product Design</a>
+      <a href="agency-work.html">Agency</a>
       <a href="index.html#leadership">Leadership</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
       <a href="curriculum-vitae.html">CV</a>
-      <a href="agency-work.html">Agency</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -215,7 +218,7 @@
 
 <main>
   <section class="masthead wrap">
-    <div class="eyebrow fx"><span class="rule"></span>Selected Work — 2025–2026</div>
+    <div class="eyebrow fx"><span class="rule"></span>Product Design — 2025–2026</div>
     <div class="mh-grid">
       <h1 class="mh-title fx">Growth &amp;<br/><em>loyalty,</em> led.</h1>
       <p class="mh-note fx">A short record of programmes I’ve led end-to-end — the framing, the team decisions, and the <b>business results that followed.</b> Each entry opens into the full story of <em>how the work got made.</em></p>
@@ -247,25 +250,6 @@
     <article class="entry">
       <div class="e-num fx">02</div>
       <div class="e-body">
-        <div class="e-kicker fx"><span class="role">Lead Product Designer · Loyalty</span><span class="sep"></span><span>Cross-platform</span><span class="sep"></span><span>2026</span></div>
-        <h2 class="e-title fx">JET+ Loyalty Ecosystem</h2>
-        <p class="e-intro fx">Transforming transactional behaviour into loyal memberships. As loyalty design lead, I shipped a <b>90-day membership pass</b> (built to beat subscription fatigue), spearheaded the <b>Amazon Prime partnership</b> across three markets, and led design end-to-end on web, iOS and Android. <b>A case study about strategy, behavioural economics, and leading a cross-functional machine</b> at scale.</p>
-        <div class="e-metrics fx">
-          <div class="e-metric"><span class="m-num">6<i>M</i></span><span class="m-lab">JET+<br/>memberships</span></div>
-          <div class="e-metric"><span class="m-num"><i>+</i>15<i>%</i></span><span class="m-lab">Order<br/>frequency</span></div>
-          <div class="e-metric"><span class="m-num">100<i>%</i></span><span class="m-lab">Cross-<br/>platform</span></div>
-        </div>
-        <a class="e-read fx" href="case-study-jet-plus-loyalty.html">Read the case study <span>→</span></a>
-      </div>
-      <div class="e-media fx">
-        <image-slot id="sw-jetplus" shape="rounded" radius="4" placeholder="Drop a JET+ membership image"></image-slot>
-        <div class="e-cap">Loyalty · Just Eat Takeaway</div>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="e-num fx">03</div>
-      <div class="e-body">
         <div class="e-kicker fx"><span class="role">Founder · Solo build</span><span class="sep"></span><span>SaaS</span><span class="sep"></span><span>2026</span></div>
         <h2 class="e-title fx">Klaio.io</h2>
         <p class="e-intro fx">A solo-founder SaaS that explains a Shopify payout <em>in plain English.</em> I took it from problem discovery to a live waitlist in under 8 weeks, without Figma — <b>pivoting from a broad three-integration dashboard to one sharp, shippable beachhead,</b> and building it with Claude as engineering partner. <b>A case study about product strategy, ruthless scoping, and shipping solo.</b></p>
@@ -283,7 +267,7 @@
     </article>
 
     <article class="entry">
-      <div class="e-num fx">04</div>
+      <div class="e-num fx">03</div>
       <div class="e-body">
         <div class="e-kicker fx"><span class="role">UX Lead · End-to-end</span><span class="sep"></span><span>Consumer Search</span><span class="sep"></span><span>2025</span></div>
         <h2 class="e-title fx">Smart Dish Search</h2>
@@ -301,27 +285,51 @@
       </div>
     </article>
 
+    <div class="group-head fx" id="strategic-design">
+      <span class="section-label">Strategic Design</span>
+      <span class="section-note">Propositions, ecosystems and the practices behind them.</span>
+    </div>
+
     <article class="entry">
-      <div class="e-num fx">05</div>
+      <div class="e-num fx">01</div>
       <div class="e-body">
-        <div class="e-kicker fx"><span class="role">Introduced &amp; embedded</span><span class="sep"></span><span>Design Practice</span><span class="sep"></span><span>2024</span></div>
-        <h2 class="e-title fx">Framing Complexity</h2>
-        <p class="e-intro fx">Most teams rush to solutions. I embedded <b>Problem Framing</b> as a discipline across the design org — borrowing the Design Sprint Academy’s method, building reusable templates, and having senior designers teach it on. <b>This one’s about changing how a team thinks,</b> not shipping a single screen: spending the thinking <em>where it actually moves the outcome.</em></p>
+        <div class="e-kicker fx"><span class="role">Lead Product Designer · Loyalty</span><span class="sep"></span><span>Cross-platform</span><span class="sep"></span><span>2026</span></div>
+        <h2 class="e-title fx">JET+ Loyalty Ecosystem</h2>
+        <p class="e-intro fx">Transforming transactional behaviour into loyal memberships. As loyalty design lead, I shipped a <b>90-day membership pass</b> (built to beat subscription fatigue), spearheaded the <b>Amazon Prime partnership</b> across three markets, and led design end-to-end on web, iOS and Android. <b>A case study about strategy, behavioural economics, and leading a cross-functional machine</b> at scale.</p>
         <div class="e-metrics fx">
-          <div class="e-metric"><span class="m-num">3</span><span class="m-lab">Problem types<br/>named</span></div>
-          <div class="e-metric"><span class="m-num">2</span><span class="m-lab">Reusable<br/>formats</span></div>
-          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">Org-wide<br/>practice</span></div>
+          <div class="e-metric"><span class="m-num">6<i>M</i></span><span class="m-lab">JET+<br/>memberships</span></div>
+          <div class="e-metric"><span class="m-num"><i>+</i>15<i>%</i></span><span class="m-lab">Order<br/>frequency</span></div>
+          <div class="e-metric"><span class="m-num">100<i>%</i></span><span class="m-lab">Cross-<br/>platform</span></div>
         </div>
-        <a class="e-read fx" href="case-study-framing-complexity.html">Read the case study <span>→</span></a>
+        <a class="e-read fx" href="case-study-jet-plus-loyalty.html">Read the case study <span>→</span></a>
       </div>
       <div class="e-media fx">
-        <image-slot id="sw-framing" shape="rounded" radius="4" placeholder="Drop a Problem Framing workshop image"></image-slot>
-        <div class="e-cap">Design Practice · JET</div>
+        <image-slot id="sw-jetplus" shape="rounded" radius="4" placeholder="Drop a JET+ membership image"></image-slot>
+        <div class="e-cap">Loyalty · Just Eat Takeaway</div>
       </div>
     </article>
 
     <article class="entry">
-      <div class="e-num fx">06</div>
+      <div class="e-num fx">02</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">UX Lead · End-to-end</span><span class="sep"></span><span>0→1 Product</span><span class="sep"></span><span>2021</span></div>
+        <h2 class="e-title fx">Just Eat Dine-In</h2>
+        <p class="e-intro fx">As the UK reopened from lockdown, I led a small team to pioneer a <b>new dine-in proposition</b> — from a pressure-tested MVP <b>shipped in 11 weeks</b> to a Phase 2 vision built on real customer behaviour. <b>A case study about leading under a hard deadline,</b> facilitating cross-pillar teams, and <em>standing up for the customer.</em></p>
+        <div class="e-metrics fx">
+          <div class="e-metric"><span class="m-num">11<i>wk</i></span><span class="m-lab">To live<br/>MVP</span></div>
+          <div class="e-metric"><span class="m-num"><i>↑</i></span><span class="m-lab">Week-one<br/>orders</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">New<br/>proposition</span></div>
+        </div>
+        <a class="e-read fx" href="case-study-just-eat-dine-in.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <image-slot id="sw-dinein" shape="rounded" radius="4" placeholder="Drop a Just Eat Dine-In image"></image-slot>
+        <div class="e-cap">Customer Discovery · Just Eat</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">03</div>
       <div class="e-body">
         <div class="e-kicker fx"><span class="role">Introduced &amp; embedded</span><span class="sep"></span><span>Design Practice</span><span class="sep"></span><span>2024</span></div>
         <h2 class="e-title fx">Facts Over Guesses</h2>
@@ -340,21 +348,21 @@
     </article>
 
     <article class="entry">
-      <div class="e-num fx">07</div>
+      <div class="e-num fx">04</div>
       <div class="e-body">
-        <div class="e-kicker fx"><span class="role">UX Lead · End-to-end</span><span class="sep"></span><span>0→1 Product</span><span class="sep"></span><span>2021</span></div>
-        <h2 class="e-title fx">Just Eat Dine-In</h2>
-        <p class="e-intro fx">As the UK reopened from lockdown, I led a small team to pioneer a <b>new dine-in proposition</b> — from a pressure-tested MVP <b>shipped in 11 weeks</b> to a Phase 2 vision built on real customer behaviour. <b>A case study about leading under a hard deadline,</b> facilitating cross-pillar teams, and <em>standing up for the customer.</em></p>
+        <div class="e-kicker fx"><span class="role">Introduced &amp; embedded</span><span class="sep"></span><span>Design Practice</span><span class="sep"></span><span>2024</span></div>
+        <h2 class="e-title fx">Framing Complexity</h2>
+        <p class="e-intro fx">Most teams rush to solutions. I embedded <b>Problem Framing</b> as a discipline across the design org — borrowing the Design Sprint Academy’s method, building reusable templates, and having senior designers teach it on. <b>This one’s about changing how a team thinks,</b> not shipping a single screen: spending the thinking <em>where it actually moves the outcome.</em></p>
         <div class="e-metrics fx">
-          <div class="e-metric"><span class="m-num">11<i>wk</i></span><span class="m-lab">To live<br/>MVP</span></div>
-          <div class="e-metric"><span class="m-num"><i>↑</i></span><span class="m-lab">Week-one<br/>orders</span></div>
-          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">New<br/>proposition</span></div>
+          <div class="e-metric"><span class="m-num">3</span><span class="m-lab">Problem types<br/>named</span></div>
+          <div class="e-metric"><span class="m-num">2</span><span class="m-lab">Reusable<br/>formats</span></div>
+          <div class="e-metric"><span class="m-num"><i>0→1</i></span><span class="m-lab">Org-wide<br/>practice</span></div>
         </div>
-        <a class="e-read fx" href="case-study-just-eat-dine-in.html">Read the case study <span>→</span></a>
+        <a class="e-read fx" href="case-study-framing-complexity.html">Read the case study <span>→</span></a>
       </div>
       <div class="e-media fx">
-        <image-slot id="sw-dinein" shape="rounded" radius="4" placeholder="Drop a Just Eat Dine-In image"></image-slot>
-        <div class="e-cap">Customer Discovery · Just Eat</div>
+        <image-slot id="sw-framing" shape="rounded" radius="4" placeholder="Drop a Problem Framing workshop image"></image-slot>
+        <div class="e-cap">Design Practice · JET</div>
       </div>
     </article>
 
