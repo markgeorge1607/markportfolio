@@ -73,7 +73,6 @@
   .mh-note{font-family:var(--serif);font-weight:300;font-size:clamp(1.18rem,1.7vw,1.5rem);line-height:1.5;letter-spacing:-.008em;color:var(--ink-soft);text-wrap:pretty}
   .mh-note b{font-weight:500;color:var(--ink)}
   .mh-note em{font-style:italic;color:var(--accent)}
-  .mh-rule{height:1.5px;background:var(--ink);margin-top:clamp(38px,6vh,64px)}
 
   /* ---------- entries ---------- */
   .entries{padding-bottom:clamp(40px,7vh,80px);padding-left:clamp(28px,10vw,240px);padding-right:clamp(28px,10vw,240px)}
@@ -116,7 +115,7 @@
   .mh-btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
 
   /* ---------- sub-category heading ---------- */
-  .group-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:clamp(70px,11vh,130px);padding-bottom:18px;border-bottom:1.5px solid var(--ink);scroll-margin-top:96px}
+  .group-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:clamp(70px,11vh,130px);padding-bottom:4px;scroll-margin-top:96px}
 
   /* ---------- secondary list ---------- */
   .also{padding-top:clamp(50px,8vh,96px);padding-bottom:clamp(20px,4vh,40px)}
@@ -213,7 +212,6 @@
     <a href="index.html" class="mark">Mark<span>.</span> George</a>
     <nav class="links">
       <a href="selected-work.html" class="active">Product Design</a>
-      <a href="agency-work.html">Agency</a>
       <a href="index.html#leadership">Leadership</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
@@ -235,10 +233,10 @@
         <div class="mh-actions fx">
           <a class="mh-btn" href="#product-design">Product Design <span>↓</span></a>
           <a class="mh-btn ghost" href="#strategic-design">Strategic Design <span>↓</span></a>
+          <a class="mh-btn ghost" href="#agency">Agency Work <span>↓</span></a>
         </div>
       </div>
     </div>
-    <div class="mh-rule draw"></div>
   </section>
 
   <section class="entries wrap">
@@ -383,6 +381,67 @@
       <div class="e-media fx">
         <image-slot id="sw-framing" shape="rounded" radius="4" placeholder="Drop a Problem Framing workshop image"></image-slot>
         <div class="e-cap">Design Practice · JET</div>
+      </div>
+    </article>
+
+    <div class="group-head fx" id="agency">
+      <span class="section-label">Agency Work</span>
+      <span class="section-note">Client projects from my time at Dare, a digital agency in London.</span>
+    </div>
+
+    <article class="entry">
+      <div class="e-num fx">01</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Lead Designer · Agency</span><span class="sep"></span><span>Web Design · Brand</span><span class="sep"></span><span>2014</span></div>
+        <h2 class="e-title fx">Jones Knowles Ritchie</h2>
+        <p class="e-intro fx">Responsive Website Redesign</p>
+        <a class="e-read fx" href="agency-jkr.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <img src="assets/jkr-1.png" alt="Jones Knowles Ritchie website redesign" loading="lazy" />
+        <div class="e-cap">Web Design · Brand · Agency · 2014</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">02</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Lead Designer · Agency</span><span class="sep"></span><span>Campaign · Web Design</span><span class="sep"></span><span>2014</span></div>
+        <h2 class="e-title fx">Dewar's Whisky</h2>
+        <p class="e-intro fx">Live True Campaign</p>
+        <a class="e-read fx" href="agency-dewars.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <img src="assets/dewars-1.png" alt="Dewar's Live True campaign website" loading="lazy" />
+        <div class="e-cap">Campaign · Web Design · Agency · 2014</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">03</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Lead Designer · Agency</span><span class="sep"></span><span>Web Design · Brand</span><span class="sep"></span><span>2015</span></div>
+        <h2 class="e-title fx">Barclays LifeSkills</h2>
+        <p class="e-intro fx">Responsive Website</p>
+        <a class="e-read fx" href="agency-barclays.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <img src="assets/barclays-1.png" alt="Barclays LifeSkills responsive website" loading="lazy" />
+        <div class="e-cap">Web Design · Brand · Agency · 2015</div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="e-num fx">04</div>
+      <div class="e-body">
+        <div class="e-kicker fx"><span class="role">Lead Designer · Agency</span><span class="sep"></span><span>App Design · AR</span><span class="sep"></span><span>2014</span></div>
+        <h2 class="e-title fx">Audi e-tron Explorer</h2>
+        <p class="e-intro fx">iPad App · Experiential</p>
+        <a class="e-read fx" href="agency-audi.html">Read the case study <span>→</span></a>
+      </div>
+      <div class="e-media fx">
+        <img src="assets/audi-1.png" alt="Audi e-tron Explorer iPad app" loading="lazy" />
+        <div class="e-cap">App Design · AR · Agency · 2014</div>
       </div>
     </article>
 
