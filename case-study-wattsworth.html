@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mark George — Wattsworth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="case-study.css" />
+<style>
+  .cs-hero img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 1px 0 var(--line)}
+  .figure.side{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:start}
+  .figure.side img{display:block;width:100%;height:auto;border:1px solid var(--line);background:var(--paper-2);border-radius:4px}
+  @media(max-width:820px){.figure.side{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="lock.js"></script>
+<header id="hdr"><a id="top"></a>
+  <div class="wrap bar">
+    <a href="index.html" class="mark">Mark<span>.</span> George</a>
+    <nav class="links">
+      <a href="selected-work.html" class="active">Product Design</a>
+      <a href="index.html#leadership">Leadership</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="curriculum-vitae.html">CV</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap crumb">
+    <a href="selected-work.html"><span>←</span> Product Design</a>
+  </div>
+
+  <section class="cs-head wrap">
+    <div class="eyebrow fx"><span>Case 09</span><span class="sep"></span><span class="role">Founder · Solo build</span><span class="sep"></span><span>Home energy · AI</span><span class="sep"></span><span>2026</span></div>
+    <h1 class="cs-title fx">Watts<em>worth</em></h1>
+    <p class="cs-dek fx">A home battery that runs itself, and explains itself. I designed and built a hosted service that re-plans a solar battery every 30 minutes against live prices, the weather and the household’s habits, then <b>reports back in plain English</b>, like a butler who <em>never oversells his work.</em></p>
+
+    <div class="credits">
+      <div class="credit fx"><div class="c-lab">My role</div><div class="c-val">Founder: research, design &amp; <em>build</em></div></div>
+      <div class="credit fx"><div class="c-lab">Team</div><div class="c-val">Solo, with Claude as engineering partner</div></div>
+      <div class="credit fx"><div class="c-lab">Led</div><div class="c-val">Discovery, brand, design system, conversational UI</div></div>
+      <div class="credit fx"><div class="c-lab">Status</div><div class="c-val">Live on a real home since September 2026</div></div>
+    </div>
+  </section>
+
+  <section class="cs-hero wrap">
+    <div class="fx">
+      <img src="assets/wattsworth/app-home.jpg" alt="Three Wattsworth app screens: Home with a plain-English morning summary and today's savings, the week's savings breakdown with battery level and tariff, and This Evening's Arrangements describing tonight's plan." />
+      <div class="cs-cap">Home, savings and “This evening’s arrangements”, running on real data</div>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">01</span> The Problem</div>
+    <h2 class="ch-h fx">People buy a home battery to save money, then leave it on a timer they <em>set once.</em></h2>
+    <div class="prose measure fx">
+      <p>With solar panels, a battery and a tariff where the price changes every half hour, the saving comes from timing: charge when power is cheap or clean, run the house from the battery when it’s dear, sell back at the evening peak. Doing that by hand means <b>checking prices every day and re-setting timers in an app.</b> Almost nobody keeps it up.</p>
+      <p>The tools that do it for you assume a technical owner. The inverter’s own scheduler plans one day at a time and has to be resubmitted every midnight. The capable optimisers need a self-hosted smart-home server. And none of them tell you, in words a normal person would use, <b>what they did with your battery and whether it paid.</b></p>
+    </div>
+  </section>
+
+  <section class="pull wrap">
+    <blockquote class="fx">“Most people set it once and leave it, and lose money as a result.”</blockquote>
+    <div class="attr fx">The problem, as I wrote it on day one</div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">02</span> The Discovery</div>
+    <h2 class="ch-h fx">Before designing a screen, I mapped what the battery would <em>let me do</em> and where the market left people stranded.</h2>
+    <div class="prose measure fx">
+      <p>I started with the constraints. I read the FoxESS Cloud API end to end to learn what could actually be controlled (timed charge, discharge and sell segments, plus a minimum battery level), and its limits: about <b>1,440 calls per inverter per day</b>, and writes that take up to a minute to land. That shaped everything that followed: plan often, write rarely.</p>
+      <p>Then I audited every product doing this job, down to a full dossier on the closest competitor. The gaps were consistent:</p>
+    </div>
+    <div class="roles">
+      <div class="role-item fx"><div class="r-t">The best tools need a server at home</div><div class="r-d">Predbat, pv_opt and EMHASS are deep, but they run on Home Assistant, a self-hosted hub most battery owners don’t have.</div></div>
+      <div class="role-item fx"><div class="r-t">The only alternative runs on your phone</div><div class="r-d">The one no-hub competitor computes on the customer’s phone or PC, so automation fails when the device sleeps. Its release notes were mostly reliability fixes.</div></div>
+      <div class="role-item fx"><div class="r-t">The built-in scheduler is the wedge</div><div class="r-d">The inverter’s own app plans a single day, needs resubmitting at midnight, and users hit errors linking it to variable tariffs.</div></div>
+      <div class="role-item fx"><div class="r-t">Nobody explains themselves</div><div class="r-d">No one offered a carbon mode, an open view of battery wear, or a plain-English account of each decision. Every tool was built for people who already speak kWh.</div></div>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">03</span> The Goal</div>
+    <h2 class="ch-h fx">Hand the battery over completely, and still <em>trust</em> what it’s doing.</h2>
+    <div class="prose measure fx">
+      <p>I set the bar as a set of promises the product had to keep, not features to ship:</p>
+    </div>
+    <div class="moves">
+      <div class="move fx">
+        <div class="m-idx">01</div>
+        <div>
+          <div class="m-t">Save real money, against an honest baseline</div>
+          <div class="m-d">Measure every pound against the battery’s own built-in mode, <b>after the cost of extra battery wear,</b> not against a flattering “no battery at all”.</div>
+        </div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">02</div>
+        <div>
+          <div class="m-t">No hardware, no hub, about two minutes to set up</div>
+          <div class="m-d">Paste two keys, pick a tariff, set a minimum charge. Everything else, from battery size to charge speed, is read from the system.</div>
+        </div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">03</div>
+        <div>
+          <div class="m-t">Every decision explainable in plain words</div>
+          <div class="m-d">Anyone in the house should be able to ask <em>“why did it charge at 2am?”</em> and get a straight answer.</div>
+        </div>
+      </div>
+      <div class="move fx">
+        <div class="m-idx">04</div>
+        <div>
+          <div class="m-t">Safe by default</div>
+          <div class="m-d">Try it in simulation before it touches anything, take back control at any time, and fall back to a safe schedule whenever data is missing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">04</span> The Idea</div>
+    <h2 class="ch-h fx">A butler for your battery: does the work quietly, <em>reports back</em> plainly.</h2>
+    <div class="prose measure fx">
+      <p>Wattsworth runs on its own servers, around the clock. Every 30 minutes it combines tomorrow’s and today’s prices, a solar forecast for the roof, the home’s learned usage pattern and the battery’s current charge into a plan for the next day or two, and writes it to the inverter. Each evening it makes the call people care about most: <b>how much to charge overnight, judged against tomorrow’s sun.</b></p>
+      <p>The butler gave the product its voice. Plans became <em>“This evening’s arrangements”</em>, savings became “the month’s accounts”, and the interface talks in sentences rather than settings. Above it sits <b>Ask</b>, a conversational layer that knows the tariff, the battery and every decision made. It is deliberately read-only for now: <em>he never changes anything without asking first.</em></p>
+    </div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure side">
+      <img src="assets/wattsworth/app-account.jpg" alt="Two account screens: the solar forecast and grid carbon intensity charts, and a per-day log of how many plans were made and how many were written to the battery." loading="lazy" />
+      <img src="assets/wattsworth/app-ask-window.jpg" alt="Ask answering when to run the washing machine: the cheapest window tonight from 23:30 to 01:00 at about 9.7p per kWh, with a sooner but pricier option." loading="lazy" />
+    </div>
+    <div class="cs-cap">The working shown: forecasts, plans versus writes per day, and Ask finding the cheapest window for the washing machine</div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">05</span> The Design System</div>
+    <h2 class="ch-h fx">Two colours, a paper, and three typefaces: a refined butler, <em>not another tech-green energy app.</em></h2>
+    <div class="prose measure fx">
+      <p>I built the brand and the digital system together so the app, landing page, emails and social posts would share one voice. Green and pink do the work and paper holds it together, roughly <b>60% paper, 30% green, 10% pink</b>, with every text pairing checked for AA contrast. Anton shouts the headlines, Bricolage Grotesque carries the wordmark and UI, and Work Sans does the reading. The butler illustration appears <b>once per page, and never inside the product UI.</b></p>
+    </div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure duo">
+      <img src="assets/wattsworth/ds-colour.jpg" alt="Colour page of the design system: green, deep green, pink, pink wash, paper and paper 2 swatches, with AA contrast ratios for each text pairing." loading="lazy" />
+      <img src="assets/wattsworth/ds-type.jpg" alt="Type page of the design system: Anton for display, Bricolage Grotesque for the wordmark and UI, Work Sans for body, with a type scale from Display L to Eyebrow." loading="lazy" />
+    </div>
+    <div class="cs-cap">Colour and type, documented with contrast ratios and a type scale</div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure">
+      <img src="assets/wattsworth/ds-parts.jpg" alt="Components page: pill buttons on paper and on green, chips and tags, data tiles with a charge and discharge plan bar chart, form fields and controls including a cost, balanced or carbon switch, and cards with a pull quote." loading="lazy" />
+    </div>
+    <div class="cs-cap">Working parts: buttons, chips, data tiles, plan bars, controls and cards</div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">06</span> The Chat Components</div>
+    <h2 class="ch-h fx">I designed how he talks before what he says: <em>files a report,</em> doesn’t chat.</h2>
+    <div class="prose measure fx">
+      <p>I explored three ways to hold a conversation: a familiar bubble thread, a timestamped house log, and a card feed. Bubbles cramped the charts and numbers that answers depend on, and the log read beautifully but felt least like something you could talk to. The <b>card feed</b> won: full-width paper cards he files, with your questions in green pills and a standing “now / next” strip so you know the state of play without asking.</p>
+      <p>The harder design work was behaviour. I wrote scenarios for the moments trust is won or lost: impatience (“I need the dishwasher on now”), silence (what happens if you never reply), and <b>being wrong</b>, where he shows what he predicted, what happened, what it cost and what he has changed, with no apology paragraph.</p>
+    </div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure">
+      <img src="assets/wattsworth/chat-explore.jpg" alt="Three conversation explorations: a spoken bubble thread, a timestamped house log called the Day Book, and the first-run state of Ask with suggested questions." loading="lazy" />
+    </div>
+    <div class="cs-cap">Exploring the conversation: spoken thread, house log, first run</div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure">
+      <img src="assets/wattsworth/chat-behaviour.jpg" alt="Three behaviour scenarios: pricing the cost of impatience when the user needs the dishwasher on now, an 'I got this wrong' card comparing forecast with actual solar, and an overnight record of a decision made while the user slept." loading="lazy" />
+    </div>
+    <div class="cs-cap">Behaviour, not just layout: impatience, being wrong, and acting while you sleep</div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="prose measure fx">
+      <p>Putting an AI model in front of real money needed guardrails, so I designed them into the system rather than the copy. Every sentence has a <b>fixed-wording fallback</b>. The model is only asked again when the facts change. Any number it writes <b>must appear in the underlying data or the sentence is rejected</b>, and rejected drafts are kept as an audit trail.</p>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">07</span> The Outcome So Far</div>
+    <h2 class="ch-h fx">Small numbers, <em>honestly counted,</em> from one real home.</h2>
+    <div class="prose measure fx">
+      <p>Wattsworth has run a real battery in my own home since 12 September 2026. Over the first 30 days, the battery saved <b>£42.55</b> against having no battery at all. Of that, <b>£8.71 came from Wattsworth’s timing</b> over the battery’s built-in mode, after pricing every extra kWh of battery wear. It came out ahead on <b>28 of the 30 days</b>, and it is improving: the last fortnight averaged about 48p a day, against roughly 95p a day that perfect hindsight could have earned. It isn’t a big number yet, and I chose to show it that way.</p>
+      <p>Running on real data mattered more than any test. It surfaced problems no simulation would have: the system had been <b>pricing on the wrong tariff</b>, the solar forecast ran <b>two to five times too low</b> because the panels face two directions, and the battery’s own sensors overstated its discharge, inflating the savings. I fixed each one and re-priced the history. In its first weeks Wattsworth also cycled the battery <b>about 49% more</b> than its built-in mode, so it now spends that wear only when it pays and never claims to protect battery health.</p>
+    </div>
+    <div class="outcome-grid">
+      <div class="ometric fx"><span class="o-num">£42.55</span><span class="o-lab">Saved by the battery vs none, first 30 days</span></div>
+      <div class="ometric fx"><span class="o-num">£8.71</span><span class="o-lab">Added by Wattsworth’s timing, after wear</span></div>
+      <div class="ometric fx"><span class="o-num">28<i>/30</i></span><span class="o-lab">Days ahead of the battery’s built-in mode</span></div>
+      <div class="ometric fx"><span class="o-num"><i>~</i>48p</span><span class="o-lab">A day over the last fortnight, vs a ~95p ceiling</span></div>
+    </div>
+    <div class="prose measure fx" style="margin-top:clamp(34px,5vh,52px)">
+      <p>Next: closing the gap to that ceiling through winter, when a heat pump nearly doubles the home’s demand, and inviting a second household, with onboarding already built for it.</p>
+    </div>
+  </section>
+
+  <section class="pull wrap">
+    <blockquote class="fx">“The hardest design question wasn’t a screen. It was deciding <em>what counts as a win,</em> and saying so when it isn’t one.”</blockquote>
+    <div class="attr fx">Reflection</div>
+  </section>
+
+  <nav class="wrap nextnav">
+    <a href="case-study-klaio.html">
+      <div>
+        <div class="nn-lab">Next case</div>
+        <div class="nn-t">Klaio.io</div>
+      </div>
+      <div class="nn-arrow">→</div>
+    </a>
+  </nav>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Mark George — Product Design Leadership</span>
+    <span style="display:flex;gap:26px;align-items:center"><a href="https://linkedin.com/in/mark-george-31b89360" target="_blank" rel="noopener">LinkedIn</a><a href="selected-work.html">Product Design</a><a href="index.html#contact">Contact</a><a href="curriculum-vitae.html">CV</a></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><span>↑</span></button>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>12)},{passive:true});
+  const toTop=document.getElementById('toTop');
+  function toggleTop(){toTop.classList.toggle('show',scrollY>innerHeight*0.6)}
+  addEventListener('scroll',toggleTop,{passive:true});toggleTop();
+  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  function play(el){if(!el||el.classList.contains('shown'))return;el.classList.add('shown','playing');setTimeout(()=>el.classList.remove('playing'),1000);}
+  const fxEls=[...document.querySelectorAll('.fx,.draw')];
+  function check(){
+    const vh=innerHeight;
+    fxEls.forEach(el=>{
+      if(el.classList.contains('shown'))return;
+      const r=el.getBoundingClientRect();
+      if(r.top<vh*0.92 && r.bottom>0) play(el);
+    });
+  }
+  addEventListener('scroll',check,{passive:true});
+  addEventListener('resize',check);
+  setTimeout(check,60);setTimeout(check,500);setTimeout(check,1400);
+</script>
+<script src="nav.js"></script>
+</body>
+</html>
