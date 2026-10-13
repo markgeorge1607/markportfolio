@@ -13,7 +13,12 @@
   .cs-hero img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 1px 0 var(--line)}
   .figure.side{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:start}
   .figure.side img{display:block;width:100%;height:auto;border:1px solid var(--line);background:var(--paper-2);border-radius:4px}
-  @media(max-width:820px){.figure.side{grid-template-columns:1fr}}
+  .figure.motion{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);align-items:start}
+  .figure.motion figure{margin:0;background:#EADFC6;/* Wattsworth paper 2, matches the clips */border-radius:4px;padding:clamp(14px,1.8vw,26px) clamp(14px,1.8vw,26px) 0;overflow:hidden}
+  .figure.motion img{display:block;width:100%;height:auto}
+  .figure.motion figcaption{padding:14px 0 18px;font-size:11.5px;letter-spacing:.06em;line-height:1.5;color:var(--gray);text-transform:uppercase}
+  .figure.motion figcaption b{display:block;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;margin-bottom:4px}
+  @media(max-width:820px){.figure.side{grid-template-columns:1fr}.figure.motion{grid-template-columns:1fr;max-width:420px}}
 </style>
 </head>
 <body>
@@ -196,7 +201,38 @@
   </section>
 
   <section class="chapter wrap">
-    <div class="ch-label fx"><span class="idx">07</span> The Outcome So Far</div>
+    <div class="ch-label fx"><span class="idx">07</span> Bringing Him to Life</div>
+    <h2 class="ch-h fx">Motion that tells you what the battery is doing <em>before you read a word.</em></h2>
+    <div class="prose measure fx">
+      <p>The latest round gave the butler a body. I drew him, his props and every money object as <b>pixel art from the brand palette</b>, so the whole family could be built in code from a few lines of characters, and gave each moment of the day its own hero. When he sells, pixel coins rise beside him and the money figure turns pink. In the evening the green deepens, a candle flickers and tonight’s plan arrives as one card. On Ask, a question mark bobs while he types, then three suggestions rise above the text box.</p>
+      <p>The rule throughout: <b>every animation reports a real state.</b> Nothing moves for decoration. The speech bubble types out his words because he is speaking, the status dot pulses faster while money is moving, and there is one way to change his mind, never a stop button.</p>
+    </div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure motion">
+      <figure><img src="assets/wattsworth/motion/18a.webp" alt="Animated selling screen: the pixel butler types 'Selling to the grid at 27.6p, Mark. Back to you by seven' while pixel coins rise beside him, then the headline, earnings so far and battery level appear." loading="lazy" /><figcaption><b>Selling · 17:12</b>Coins rise as he sells; one button to keep some back</figcaption></figure>
+      <figure><img src="assets/wattsworth/motion/18b.webp" alt="Animated evening screen: on a deeper green, the butler stands by a flickering pixel candle, types 'Good evening, Mark. Tonight's arranged, nothing for you to do', and tonight's plan arrives as a single card." loading="lazy" /><figcaption><b>Evening · 18:40</b>Calmer green, a candle, and tonight’s jobs in one card</figcaption></figure>
+      <figure><img src="assets/wattsworth/motion/18c.webp" alt="Animated Ask screen: a pink question mark bobs beside the butler as he types 'Anything I can help with, Mark?', then three suggested questions rise above the text box." loading="lazy" /><figcaption><b>Ask · 21:10</b>The bubble is the prompt; suggestions rise once he’s done</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="prose measure fx">
+      <p>The same thinking runs through the smaller components. The battery level became a <b>pixel battery</b>: ten chunky cells that light one after another on load, with the last one blinking while it drains. I explored three directions for the tariff card, each answering the same question at a glance: <em>what is running my house at this price?</em> One makes bar height the price and colour the source, one splits them into a stepped price line over a source strip, and one swaps the chart for his own words: what the price is now, and what he will do in each window for the rest of the day.</p>
+    </div>
+  </section>
+
+  <section class="figure wrap">
+    <div class="fx figure motion">
+      <figure><img src="assets/wattsworth/motion/23a.webp" alt="Animated pixel battery: the headline 'Running the house from the battery' fades in and four of ten pink cells light one by one beside 31%, the last one blinking." loading="lazy" /><figcaption><b>Pixel battery</b>Cells light in turn; the last blinks while it drains</figcaption></figure>
+      <figure><img src="assets/wattsworth/motion/tariff-21a.jpg" alt="Tariff card: import 26.9p and export 24.2p now, with a bar chart where each bar's height is the price and its colour shows whether grid, battery, sun or exporting is running the house." loading="lazy" /><figcaption><b>Tariff · bar height is the price</b>Colour shows what runs the house each half-hour</figcaption></figure>
+      <figure><img src="assets/wattsworth/motion/tariff-21c.jpg" alt="Tariff card headed 'Peak, now': buying costs 26.9p and selling pays 24.2p, a three-band strip for the day, and three windows each with a price and what he'll do." loading="lazy" /><figcaption><b>Tariff · now and next, in his words</b>Least chart, most explanation</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="chapter wrap">
+    <div class="ch-label fx"><span class="idx">08</span> The Outcome So Far</div>
     <h2 class="ch-h fx">Small numbers, <em>honestly counted,</em> from one real home.</h2>
     <div class="prose measure fx">
       <p>Wattsworth has run a real battery in my own home since 12 September 2026. Over the first 30 days, the battery saved <b>£42.55</b> against having no battery at all. Of that, <b>£8.71 came from Wattsworth’s timing</b> over the battery’s built-in mode, after pricing every extra kWh of battery wear. It came out ahead on <b>28 of the 30 days</b>, and it is improving: the last fortnight averaged about 48p a day, against roughly 95p a day that perfect hindsight could have earned. It isn’t a big number yet, and I chose to show it that way.</p>
